@@ -1,3 +1,53 @@
+/* color custom properties */
+
+:root {
+	--cl-primary1-50: #ebf7ff;
+	--cl-primary1-100: #e1eeff;
+	--cl-primary1-400: #9daac6;
+	--cl-primary1-800: #243148;
+	--cl-primary1-600: #55627b;
+	--cl-primary1-700: #424f67;
+	--cl-primary1-900: #011126;
+
+	--cl-primary3-500: #ff9f0c;
+	--cl-primary3-800: #d92b04;
+
+	/* dark theme colors */
+	--dt-radial-gradient: radial-gradient(
+		77.98% 5211.56% at 37% 100%,
+		#fe930a 0%,
+		#ff6139 77.12%
+	);
+
+	--dt-background: var(--cl-primary1-900);
+	--dt-play-button: linear-gradient(180deg, #1b283f 0%, #c2cfec 59.9%);
+	/* gradient rotated 90deg in figma */
+	--dt-sound-logo: #fc6f50;
+	--dt-body-font-bold: var(--cl-primary1-50);
+	--dt-body-font-regular: var(--cl-primary1-400);
+	--dt-active-color: var(--cl-primary3-500);
+	--dt-inactive-color: var(--cl-primary1-400);
+	--dt-searchbar-border: var(--cl-primary3-800);
+	--dt-navbar-background: var(--cl-primary1-800);
+	--dt-footer-background: var(--cl-primary1-800);
+	/* dark theme colors */
+
+	/* light theme colors */
+	--lt-background: var(--cl-primary1-50);
+	/* gradient rotated 90deg in figma */
+	--lt-play-button: linear-gradient(180deg, #fff4e1 46.88%, #424f67 100%);
+	--lt-sound-logo: var(--cl-primary1-700);
+	--lt-body-font-bold: var(--cl-primary1-700);
+	--lt-body-font-regular: var(--cl-primary1-600);
+	--lt-active-color: var(--cl-primary3-800);
+	--lt-inactive-color: var(--cl-primary1-700);
+	--lt-searchbar-border: var(--cl-primary3-800);
+	--lt-navbar-background: var(--cl-primary1-100);
+	--lt-footer-background: var(--cl-primary1-100);
+
+	/* light theme colors */
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
