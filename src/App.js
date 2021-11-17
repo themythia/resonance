@@ -1,14 +1,16 @@
-import './App.css';
+import "./App.css";
 // import WelcomePage from './components/WelcomePage/WelcomePage'
+// import Homepage from "./components/Homepage/Homepage";
 
 function App() {
-  return (
-    <div className="wrapper">
-    {/*
+	return (
+		<div className="wrapper">
+			{/*
       <WelcomePage />
     */}
-    </div>
-  );
+			{/* <Homepage /> */}
+		</div>
+	);
 }
 
 export default App;
