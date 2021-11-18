@@ -86,7 +86,6 @@ export const ProgressTextContainer = styled.div`
   max-width: 500px;
   display: flex;
   justify-content: space-between;
-  margin-top: 8px;
   margin-bottom: 32px;
 `;
 
