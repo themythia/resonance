@@ -21,10 +21,13 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
 
   --cl-primary1-50: #ebf7ff;
   --cl-primary1-100: #e1eeff;
+  --cl-primary1-200: #d5e1ff;
+  --cl-primary1-300: #c2cfec;
   --cl-primary1-400: #9daac6;
-  --cl-primary1-800: #243148;
+  --cl-primary1-500: #7c89a4;
   --cl-primary1-600: #55627b;
   --cl-primary1-700: #424f67;
+  --cl-primary1-800: #243148;
   --cl-primary1-900: #011126;
 
   --cl-primary3-50: #fff4e1;
@@ -35,7 +38,8 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   --cl-primary3-500: #ff9f0c;
   --cl-primary3-600: #ff9f0c;
   --cl-primary3-700: #f88307;
-  --cl-primary3-800: #d92b04;
+  --cl-primary3-800: #f27405;
+  --cl-primary3-900: #e95a03;
 
   /* dark theme colors */
   --dt-radial-gradient: radial-gradient(
