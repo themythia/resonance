@@ -1,12 +1,10 @@
 import './App.css';
-// import WelcomePage from './components/WelcomePage/WelcomePage'
+import NowPlayingPage from './components/Player/NowPlayingPage';
 
 function App() {
   return (
-    <div className="wrapper">
-    {/*
-      <WelcomePage />
-    */}
+    <div className='wrapper'>
+      <NowPlayingPage />
     </div>
   );
 }
