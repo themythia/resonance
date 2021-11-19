@@ -5,11 +5,12 @@ export const StyledGridWrapper = styled.div`
 	grid-row: 1 / 1;
 
 	display: grid;
+	row-gap: 16px;
 	width: 100vw;
 	height: 100vh;
 
 	grid-template-columns: 16px 1fr 16px;
-	grid-template-rows: 96px 1fr 96px;
+	grid-template-rows: 96px 1fr minmax(0, 1fr) 96px;
 	background-color: var(--lt-background);
 	@media (prefers-color-scheme: dark) {
 		background-color: var(--dt-background);
@@ -57,7 +58,6 @@ export const StyledArtistCover = styled.div`
 		margin-bottom: 10px;
 	}
 
-
 	/* string truncation ********* */
 	& > p,
 	h5 {
@@ -76,4 +76,24 @@ export const StyledArtistCover = styled.div`
 		color: var(--dt-body-font-regular);
 		text-transform: uppercase;
 	}
+`;
+
+// Recently Played Section ***********************
+
+export const StyledRecentlyPlayedContainer = styled.section`
+	grid-column: 2 / 3;
+	grid-row: 3 / 4;
+	background-color: red;
+	margin-bottom: -16px;  
+
+	overflow: auto;
+`;
+
+export const StyledRecentlyPlayedList = styled.div`
+	
+`;
+
+export const StyledRecentlyPlayedSong = styled.div`
+	min-height: 56px;
+	display: flex;
 `;

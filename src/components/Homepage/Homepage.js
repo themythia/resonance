@@ -1,8 +1,10 @@
 import {
 	StyledGridWrapper,
 	StyledListContainer,
+	StyledRecentlyPlayedContainer,
 } from "../../styled/Homepage.styled";
 import RecommendedList from "./RecommendedMusic/RecommendedList";
+import RecentlyPlayedList from "./RecentlyPlayedMusic/RecentlyPlayedList";
 
 const Homepage = () => {
 	return (
@@ -12,6 +14,10 @@ const Homepage = () => {
 				<p>Get better recommendations the more you listen.</p>
 				<RecommendedList />
 			</StyledListContainer>
+
+			<StyledRecentlyPlayedContainer>
+				<RecentlyPlayedList />
+			</StyledRecentlyPlayedContainer>
 		</StyledGridWrapper>
 	);
 };
