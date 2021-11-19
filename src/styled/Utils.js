@@ -5,7 +5,7 @@ import {Spotify} from '@styled-icons/boxicons-logos';
 import circleLight from './img/circle-light.svg';
 import circleDark from './img/circle-dark.svg';
 import wave from './img/wave.svg';
-
+import {ControllerFastBackward} from '@styled-icons/entypo/'
 export const StyledWrapper = styled.div`
  
   background: var(--lt-background);
@@ -53,6 +53,8 @@ export const CenterContainer = styled.div`
   grid-column: 2 / 6;
   position: relative;
 `;
+
+// Welcome Page
 
 export const ButtonContainer = styled.div`
   margin: 25% auto;
@@ -117,7 +119,7 @@ export const Circle = styled.img.attrs(() => ({
     top: 30px;
   }
   @media (min-width: 1280px) {
-    top: 25px;
+    top: 27px;
   }
   @media (min-width: 1440px) {
     top: 36px;
@@ -171,4 +173,51 @@ export const WaveLeft = styled.img.attrs(() => ({
     top: 41%;
     left: 31%;
   }
-`
+`;
+
+// Login Page 
+
+export const ButtonLogin = styled.button`
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--cl-primary1-800);
+  background: var(--cl-primary1-100);
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
+  margin: 25% auto 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (prefers-color-scheme: dark) {
+      background: var(--dt-radial-gradient);
+      color: white;
+  }
+  @media (min-width: 1280px) {
+    margin: 15% auto 10px auto;
+  }
+`;
+
+export const SpotifyButton = styled(Spotify)`
+  color: var(--cl-primary1-800);
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+  
+  @media (prefers-color-scheme: dark) {
+      color: white;
+  }
+`;
+
+export const Backward = styled(ControllerFastBackward)`
+  color: var(--cl-primary1-700);
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+
+  @media (prefers-color-scheme: dark) {
+      color: var(--dt-sound-logo);
+  }
+`;

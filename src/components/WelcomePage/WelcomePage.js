@@ -9,6 +9,8 @@ import {
   Circle,
   WaveRight,
   WaveLeft} from "../../styled/Utils";
+
+
 const WelcomePage = () => {
   return (
     <StyledWrapper>
