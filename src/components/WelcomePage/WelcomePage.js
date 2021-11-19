@@ -3,7 +3,7 @@ import {
   TopContainer, 
   Logo, 
   CenterContainer,
-  ButtonContainer} from '../../styled/WelcomePage';
+  ButtonContainer} from '../../styled/Utils.js';
 
 
 const WelcomePage = () => {
