@@ -4,22 +4,19 @@ import { StyledIconBase } from '@styled-icons/styled-icon';
 export const NowPlayingContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
+  height: 100%;
   background: var(--lt-background);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   color: var(--lt-body-font-regular);
   font: var(--font-body);
-
-  p {
-    margin-bottom: 64px;
-  }
 
   h5 {
     font: var(--h5-bold);
     color: var(--lt-body-font-bold);
-    margin-top: 40px;
+    margin-top: 4.45vh;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -86,7 +83,23 @@ export const ProgressTextContainer = styled.div`
   max-width: 500px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 3.58vh;
+  position: relative;
+  bottom: 0.67vh;
+`;
+
+export const SongInfoTextContainer = styled.div`
+  margin-bottom: 5.6vh;
+  text-align: center;
+`;
+
+export const PlayingFrom = styled.p`
+  font: var(--font-body-small-bold);
+  margin-top: 2.24vh;
+  margin-bottom: 3.36vh;
+  @media (prefers-color-scheme: dark) {
+    color: var(--cl-primary1-50);
+  }
 `;
 
 // https://codesandbox.io/s/input-range-custom-styled-components-x149y?file=/src/index.js

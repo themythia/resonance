@@ -3,17 +3,37 @@ import {
   PlayerControlContainer,
   ProgressBar,
   ProgressTextContainer,
-  ProgressBar2,
 } from '../../styled/NowPlaying';
 import PlayerButton from './PlayerButton';
 
 const Player = (props) => {
   const [playing, setPlaying] = useState(false);
-  console.log('playing:', playing);
   const [progress, setProgress] = useState(0);
-  console.log('progress:', progress);
   const time = useRef(null);
   const clear = () => window.clearInterval(time.current);
+
+  // handles time strings for progress bar
+  const handleTime = (time) => {
+    // let mins = Math.floor(time / 60);
+    // let seconds = time % 60;
+    // if (seconds < 10) {
+    //   return `${mins}:0${seconds}`;
+    // } else return `${mins}:${seconds}`;
+    const date = new Date(null);
+    date.setSeconds(time); // specify value for SECONDS here
+    console.log(date.toISOString());
+    const dateString = date.toISOString();
+    if (time < 600) {
+      // less than 10 mins returns m:ss
+      return dateString.substr(15, 4);
+    } else if (time < 3600) {
+      // less than an hour returns mm:ss
+      return dateString.substr(14, 5);
+    } else if (time < 36000) {
+      // less than 10 hours returns h:mm:ss
+      return dateString.substr(12, 7);
+    } else return dateString.substr(11, 8); // else returns hh:mm:ss
+  };
 
   useEffect(() => {
     if (playing) {
@@ -25,23 +45,25 @@ const Player = (props) => {
   }, [playing]);
 
   useEffect(() => {
-    if (progress >= 10) {
+    if (progress >= props.max) {
       clear();
+      setProgress(0);
+      setPlaying(false);
     }
-  }, [progress]);
+  }, [progress, props.max]);
 
   return (
     <React.Fragment>
       <ProgressBar
         type='range'
         min='0'
-        max='10'
+        max={props.max}
         value={progress}
         onChange={(e) => setProgress(parseInt(e.target.value))}
       />
       <ProgressTextContainer>
-        <p>0:00</p>
-        <p>5:04</p>
+        <p>{handleTime(progress)}</p>
+        <p>{handleTime(props.max)}</p>
       </ProgressTextContainer>
       <PlayerControlContainer>
         <PlayerButton icon='shuffle' />
@@ -51,7 +73,6 @@ const Player = (props) => {
         ) : (
           <PlayerButton icon='play' size='73px' setPlaying={setPlaying} />
         )}
-
         <PlayerButton icon='next' />
         <PlayerButton icon='repeat' />
       </PlayerControlContainer>
