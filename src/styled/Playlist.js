@@ -136,8 +136,7 @@ export const SongInfoText = styled.p`
 
   @media screen and (min-width: 1024px) {
     width: 50%;
-    font: ${(props) =>
-      props.weight === 'bold' ? 'var(--font-body-bold)' : 'var(--font-body)'};
+    font: var(--font-body);
   }
 `;
 
