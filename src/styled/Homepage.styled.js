@@ -10,23 +10,21 @@ export const StyledGridWrapper = styled.div`
 	height: 100vh;
 
 	grid-template-columns: 16px 1fr 16px;
-	grid-template-rows: 96px 1fr minmax(0, 1fr) 96px;
+	grid-template-rows:
+		96px auto 1fr auto minmax(0, 1fr)
+		96px;
 	background-color: var(--lt-background);
 	@media (prefers-color-scheme: dark) {
 		background-color: var(--dt-background);
 	}
 `;
 
-export const StyledListContainer = styled.section`
+export const StyledTitleRecommended = styled.div`
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
-
-	overflow-x: hidden;
-	align-self: start;
-
 	h5 {
-		color: var(--dt-body-font-bold);
 		font: var(--h5-bold);
+		color: var(--dt-body-font-bold);
 	}
 	p {
 		color: var(--dt-body-font-bold);
@@ -34,10 +32,18 @@ export const StyledListContainer = styled.section`
 	}
 `;
 
+export const StyledListContainer = styled.section`
+	grid-column: 2 / 3;
+	grid-row: 3 / 4;
+
+	overflow-x: hidden;
+	align-self: start;
+`;
+
 export const StyledRecommendedList = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-top: 16px;
+
 	height: max-content;
 
 	overflow-x: scroll;
@@ -80,18 +86,26 @@ export const StyledArtistCover = styled.div`
 
 // Recently Played Section ***********************
 
-export const StyledRecentlyPlayedContainer = styled.section`
+export const StyledTitleRecent = styled.div`
 	grid-column: 2 / 3;
-	grid-row: 3 / 4;
-
-	margin-bottom: -16px;
-
-	overflow: auto;
-
+	grid-row: 4 / 5;
 	h5 {
 		font: var(--h5-bold);
 		color: var(--dt-body-font-bold);
 	}
+	p {
+		color: var(--dt-body-font-bold);
+		font: var(--font-body-small);
+	}
+`;
+
+export const StyledRecentlyPlayedContainer = styled.section`
+	grid-column: 2 / 3;
+	grid-row: 5 / 6;
+
+	margin-bottom: -16px;
+
+	overflow: auto;
 `;
 
 export const StyledRecentlyPlayedList = styled.div``;

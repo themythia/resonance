@@ -2,6 +2,8 @@ import {
 	StyledGridWrapper,
 	StyledListContainer,
 	StyledRecentlyPlayedContainer,
+	StyledTitleRecent,
+	StyledTitleRecommended,
 } from "../../styled/Homepage.styled";
 import RecommendedList from "./RecommendedMusic/RecommendedList";
 import RecentlyPlayedList from "./RecentlyPlayedMusic/RecentlyPlayedList";
@@ -9,14 +11,18 @@ import RecentlyPlayedList from "./RecentlyPlayedMusic/RecentlyPlayedList";
 const Homepage = () => {
 	return (
 		<StyledGridWrapper>
-			<StyledListContainer>
+			<StyledTitleRecommended>
 				<h5>Recommended for you</h5>
-				<p>Get better recommendations the more you listen.</p>
+				<p>Get better recommendations the more you listen</p>
+			</StyledTitleRecommended>
+			<StyledListContainer>
 				<RecommendedList />
 			</StyledListContainer>
 
+			<StyledTitleRecent>
+				<h5>Recently played</h5>
+			</StyledTitleRecent>
 			<StyledRecentlyPlayedContainer>
-				<h5>Recently Played</h5>
 				<RecentlyPlayedList />
 			</StyledRecentlyPlayedContainer>
 		</StyledGridWrapper>
