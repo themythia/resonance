@@ -83,17 +83,54 @@ export const StyledArtistCover = styled.div`
 export const StyledRecentlyPlayedContainer = styled.section`
 	grid-column: 2 / 3;
 	grid-row: 3 / 4;
-	background-color: red;
-	margin-bottom: -16px;  
+
+	margin-bottom: -16px;
 
 	overflow: auto;
+
+	h5 {
+		font: var(--h5-bold);
+		color: var(--dt-body-font-bold);
+	}
 `;
 
-export const StyledRecentlyPlayedList = styled.div`
-	
-`;
+export const StyledRecentlyPlayedList = styled.div``;
 
 export const StyledRecentlyPlayedSong = styled.div`
-	min-height: 56px;
 	display: flex;
+	align-items: center;
+	margin-block: 16px;
+`;
+
+export const StyledSongThumbnail = styled.img`
+	max-width: 56px;
+	object-fit: cover;
+	src: url(${(props) => props.src});
+	aspect-ratio: 1 / 1;
+	border: 1px solid white;
+	border-radius: 14px;
+`;
+export const StyledSongInfoContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	border: 1px solid red;
+	margin-left: 8px;
+
+	& > p,
+	h5 {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	p {
+		color: var(--dt-body-font-bold);
+		font: var(--font-body-small-bold);
+	}
+
+	h5 {
+		color: var(--dt-body-font-regular);
+		font: var(--font-body-small);
+	}
 `;

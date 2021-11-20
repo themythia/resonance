@@ -16,6 +16,7 @@ const Homepage = () => {
 			</StyledListContainer>
 
 			<StyledRecentlyPlayedContainer>
+				<h5>Recently Played</h5>
 				<RecentlyPlayedList />
 			</StyledRecentlyPlayedContainer>
 		</StyledGridWrapper>

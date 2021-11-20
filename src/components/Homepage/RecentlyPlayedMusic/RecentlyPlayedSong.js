@@ -1,10 +1,17 @@
-import { StyledRecentlyPlayedSong } from "../../../styled/Homepage.styled";
+import {
+	StyledRecentlyPlayedSong,
+	StyledSongInfoContainer,
+	StyledSongThumbnail,
+} from "../../../styled/Homepage.styled";
 
-const RecentlyPlayedSong = ({ artist, album }) => {
+const RecentlyPlayedSong = ({ artist, album, albumImage }) => {
 	return (
 		<StyledRecentlyPlayedSong>
-			<h5>{album}</h5>
-			<p>{artist}</p>
+			<StyledSongThumbnail src={albumImage} />
+			<StyledSongInfoContainer>
+				<p>{album}</p>
+				<h5>{artist}</h5>
+			</StyledSongInfoContainer>
 		</StyledRecentlyPlayedSong>
 	);
 };
