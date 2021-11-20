@@ -119,6 +119,7 @@ export const SongInfo = styled.div`
   @media screen and (min-width: 1024px) {
     display: flex;
     width: 100%;
+    align-items: center;
   }
 `;
 
