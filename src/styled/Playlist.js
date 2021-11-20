@@ -131,6 +131,13 @@ export const SongInfoText = styled.p`
 
   color: ${(props) => props.weight === 'bold' && 'var(--lt-body-font-bold)'};
 
+  ${SongContainer}:hover & {
+    color: var(--lt-active-color);
+    @media (prefers-color-scheme: dark) {
+      color: var(--dt-active-color);
+    }
+  }
+
   @media (prefers-color-scheme: dark) {
     color: ${(props) => props.weight === 'bold' && 'var(--dt-body-font-bold)'};
   }
