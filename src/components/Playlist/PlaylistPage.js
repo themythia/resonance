@@ -2,9 +2,10 @@ import React from 'react';
 import {
   ListContainer,
   PlaylistCover,
-  PlaylistInfo,
+  PlaylistInfoText,
   PlaylistPageContainer,
   ScrollingDiv,
+  PlayListInfoContainer,
 } from '../../styled/Playlist';
 import PlaylistItem from './PlaylistItem';
 import dummySongs from './dummySongs';
@@ -13,11 +14,13 @@ const PlaylistPage = (props) => {
   return (
     <PlaylistPageContainer>
       <ScrollingDiv>
-        <PlaylistCover src='https://i.redd.it/hwiqn9qtkt271.jpg' />
-        <PlaylistInfo>
-          <h5>{props.name}</h5>
-          <p>{`${props.type} • ${props.creator}`}</p>
-        </PlaylistInfo>
+        <PlayListInfoContainer>
+          <PlaylistCover src='https://i.redd.it/hwiqn9qtkt271.jpg' />
+          <PlaylistInfoText>
+            <h5>{props.name}</h5>
+            <p>{`${props.type} • ${props.creator}`}</p>
+          </PlaylistInfoText>
+        </PlayListInfoContainer>
         <ListContainer>
           {dummySongs.map((song, index) => (
             <PlaylistItem
@@ -26,6 +29,7 @@ const PlaylistPage = (props) => {
               artist={song.artist}
               duration={song.duration}
               cover={song.cover}
+              album={song.album}
             />
           ))}
         </ListContainer>

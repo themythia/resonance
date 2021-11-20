@@ -1,8 +1,10 @@
 import React from 'react';
 import {
+  SongAlbum,
   SongContainer,
   SongContainerLeft,
   SongCover,
+  SongDuration,
   SongInfo,
   SongInfoText,
 } from '../../styled/Playlist';
@@ -17,7 +19,8 @@ const PlaylistItem = (props) => {
           <SongInfoText>{props.artist}</SongInfoText>
         </SongInfo>
       </SongContainerLeft>
-      <p>{props.duration}</p>
+      <SongAlbum>{props.album}</SongAlbum>
+      <SongDuration>{props.duration}</SongDuration>
     </SongContainer>
   );
 };
