@@ -11,17 +11,26 @@ export const StyledGridWrapper = styled.div`
 
 	grid-template-columns: 16px 1fr 16px;
 	grid-template-rows:
-		96px auto 1fr auto minmax(0, 1fr)
+		96px auto minmax(max-content, auto) auto minmax(0, 1fr)
 		96px;
-	background-color: var(--lt-background);
-	@media (prefers-color-scheme: dark) {
-		background-color: var(--dt-background);
+	background-color: var(--dt-background);
+
+	@media screen and (min-width: 1024px) {
+		gap: 24px;
+		grid-template-columns: minmax(316px, 1fr) 3fr;
+		grid-template-rows:
+			minmax(80px, max-content) minmax(48px, auto) minmax(auto, 1fr)
+			minmax(48px, auto) minmax(auto, 1fr) 90px;
 	}
 `;
 
 export const StyledTitleRecommended = styled.div`
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
+	@media screen and (min-width: 1024px) {
+		grid-column: 2 / -1;
+		grid-row: 2 / 3;
+	}
 	h5 {
 		font: var(--h5-bold);
 		color: var(--dt-body-font-bold);
@@ -38,6 +47,10 @@ export const StyledListContainer = styled.section`
 
 	overflow-x: hidden;
 	align-self: start;
+	@media screen and (min-width: 1024px) {
+		grid-column: 2 / -1;
+		grid-row: 3 / 4;
+	}
 `;
 
 export const StyledRecommendedList = styled.div`
@@ -54,6 +67,9 @@ export const StyledArtistCover = styled.div`
 	max-height: max-content;
 	margin-inline: 8px;
 	text-align: center;
+	@media screen and (min-width: 1024px) {
+		min-width: 216px;
+	}
 
 	img {
 		max-width: 100%;
@@ -89,6 +105,10 @@ export const StyledArtistCover = styled.div`
 export const StyledTitleRecent = styled.div`
 	grid-column: 2 / 3;
 	grid-row: 4 / 5;
+	@media screen and (min-width: 1024px) {
+		grid-column: 2 / -1;
+		grid-row: 4 / 5;
+	}
 	h5 {
 		font: var(--h5-bold);
 		color: var(--dt-body-font-bold);
@@ -102,27 +122,48 @@ export const StyledTitleRecent = styled.div`
 export const StyledRecentlyPlayedContainer = styled.section`
 	grid-column: 2 / 3;
 	grid-row: 5 / 6;
+	@media screen and (min-width: 1024px) {
+		grid-column: 2 / -1;
+		grid-row: 5 / 6;
+	}
 
 	margin-bottom: -16px;
 
 	overflow: auto;
 `;
 
-export const StyledRecentlyPlayedList = styled.div``;
+export const StyledRecentlyPlayedList = styled.div`
+	display: flex;
+	flex-direction: column;
+	@media screen and (min-width: 1024px) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+`;
 
 export const StyledRecentlyPlayedSong = styled.div`
 	display: flex;
 	align-items: center;
 	margin-block: 16px;
+	@media screen and (min-width: 1024px) {
+		flex-direction: column;
+		text-align: center;
+		margin-inline: 24px;
+	}
 `;
 
 export const StyledSongThumbnail = styled.img`
-	max-width: 56px;
+	width: 56px;
 	object-fit: cover;
 	src: url(${(props) => props.src});
 	aspect-ratio: 1 / 1;
 	border: 1px solid white;
 	border-radius: 14px;
+	@media screen and (min-width: 1024px) {
+		max-width: 216px;
+		width: 216px;
+		margin-bottom: 16px;
+	}
 `;
 export const StyledSongInfoContainer = styled.div`
 	display: flex;
@@ -130,6 +171,9 @@ export const StyledSongInfoContainer = styled.div`
 
 	border: 1px solid red;
 	margin-left: 8px;
+	@media screen and (min-width: 1024px) {
+		margin: 0;
+	}
 
 	& > p,
 	h5 {
