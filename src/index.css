@@ -14,6 +14,7 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
 	--h5-bold: 700 20px/28px "Roboto", sans-serif;
 
 	--font-body: 400 16px/24px "Roboto", sans-serif;
+	--font-body-bold: 700 16px/24px "Roboto", sans-serif;
 	--font-body-small: 400 13px/20px "Roboto", sans-serif;
 	--font-body-small-bold: 700 13px/20px "Roboto", sans-serif;
 	--font-body-extrasmall: 400 10px/16px "Roboto", sans-serif;

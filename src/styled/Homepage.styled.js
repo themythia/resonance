@@ -17,20 +17,16 @@ export const StyledGridWrapper = styled.div`
 
 	@media screen and (min-width: 1024px) {
 		gap: 24px;
-		grid-template-columns: minmax(316px, 1fr) 3fr;
+		grid-template-columns: 320px 3fr;
 		grid-template-rows:
-			minmax(80px, max-content) minmax(48px, auto) minmax(auto, 1fr)
-			minmax(48px, auto) minmax(auto, 1fr) 90px;
+			minmax(100px, max-content) minmax(96px, auto) minmax(auto, 1fr)
+			minmax(max-content, auto) minmax(max-content, 1fr) 90px;
 	}
 `;
 
 export const StyledTitleRecommended = styled.div`
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
-	@media screen and (min-width: 1024px) {
-		grid-column: 2 / -1;
-		grid-row: 2 / 3;
-	}
 	h5 {
 		font: var(--h5-bold);
 		color: var(--dt-body-font-bold);
@@ -39,6 +35,17 @@ export const StyledTitleRecommended = styled.div`
 		color: var(--dt-body-font-bold);
 		font: var(--font-body-small);
 	}
+	@media screen and (min-width: 1024px) {
+		grid-column: 2 / -1;
+		grid-row: 2 / 3;
+
+		h5 {
+			font: var(--h4-bold);
+		}
+		p {
+			font: var(--font-body);
+		}
+	}
 `;
 
 export const StyledListContainer = styled.section`
@@ -46,6 +53,7 @@ export const StyledListContainer = styled.section`
 	grid-row: 3 / 4;
 
 	overflow-x: hidden;
+
 	align-self: start;
 	@media screen and (min-width: 1024px) {
 		grid-column: 2 / -1;
@@ -59,7 +67,17 @@ export const StyledRecommendedList = styled.div`
 
 	height: max-content;
 
-	overflow-x: scroll;
+	/* overflow-x: scroll; */
+	/* hide scrollbar but allow scrolling */
+	& {
+		-ms-overflow-style: none; /* for Internet Explorer, Edge */
+		scrollbar-width: none; /* for Firefox */
+		overflow-x: scroll;
+	}
+
+	&::-webkit-scrollbar {
+		display: none; /* for Chrome, Safari, and Opera */
+	}
 `;
 
 export const StyledArtistCover = styled.div`
@@ -67,9 +85,6 @@ export const StyledArtistCover = styled.div`
 	max-height: max-content;
 	margin-inline: 8px;
 	text-align: center;
-	@media screen and (min-width: 1024px) {
-		min-width: 216px;
-	}
 
 	img {
 		max-width: 100%;
@@ -98,6 +113,16 @@ export const StyledArtistCover = styled.div`
 		color: var(--dt-body-font-regular);
 		text-transform: uppercase;
 	}
+
+	@media screen and (min-width: 1024px) {
+		min-width: 216px;
+		p {
+			font: var(--font-body-bold);
+		}
+		h5 {
+			font: var(--font-body);
+		}
+	}
 `;
 
 // Recently Played Section ***********************
@@ -105,10 +130,6 @@ export const StyledArtistCover = styled.div`
 export const StyledTitleRecent = styled.div`
 	grid-column: 2 / 3;
 	grid-row: 4 / 5;
-	@media screen and (min-width: 1024px) {
-		grid-column: 2 / -1;
-		grid-row: 4 / 5;
-	}
 	h5 {
 		font: var(--h5-bold);
 		color: var(--dt-body-font-bold);
@@ -117,19 +138,29 @@ export const StyledTitleRecent = styled.div`
 		color: var(--dt-body-font-bold);
 		font: var(--font-body-small);
 	}
+	@media screen and (min-width: 1024px) {
+		grid-column: 2 / -1;
+		grid-row: 4 / 5;
+
+		h5 {
+			font: var(--h4-bold);
+		}
+	}
 `;
 
 export const StyledRecentlyPlayedContainer = styled.section`
 	grid-column: 2 / 3;
 	grid-row: 5 / 6;
+
+	margin-bottom: -16px;
+	overflow: auto;
+
 	@media screen and (min-width: 1024px) {
 		grid-column: 2 / -1;
 		grid-row: 5 / 6;
+		overflow-x: scroll;
+		overflow-y: hidden;
 	}
-
-	margin-bottom: -16px;
-
-	overflow: auto;
 `;
 
 export const StyledRecentlyPlayedList = styled.div`
@@ -145,6 +176,17 @@ export const StyledRecentlyPlayedSong = styled.div`
 	display: flex;
 	align-items: center;
 	margin-block: 16px;
+	cursor: pointer;
+
+	&:hover {
+		p {
+			color: var(--cl-primary3-500);
+		}
+		h5 {
+			color: var(--cl-primary3-500);
+		}
+	}
+
 	@media screen and (min-width: 1024px) {
 		flex-direction: column;
 		text-align: center;
@@ -169,17 +211,14 @@ export const StyledSongInfoContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	border: 1px solid red;
 	margin-left: 8px;
-	@media screen and (min-width: 1024px) {
-		margin: 0;
-	}
 
 	& > p,
 	h5 {
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
+		transition: ease-in-out 300ms color;
 	}
 
 	p {
@@ -190,5 +229,15 @@ export const StyledSongInfoContainer = styled.div`
 	h5 {
 		color: var(--dt-body-font-regular);
 		font: var(--font-body-small);
+	}
+	@media screen and (min-width: 1024px) {
+		margin: 0;
+		p {
+			font: var(--font-body-bold);
+		}
+		h5 {
+			font: var(--font-body);
+			text-transform: uppercase;
+		}
 	}
 `;
