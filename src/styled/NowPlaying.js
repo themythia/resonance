@@ -4,7 +4,7 @@ import { StyledIconBase } from '@styled-icons/styled-icon';
 export const NowPlayingContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
-  height: 100%;
+  height: calc(100% - 48px);
   background: var(--lt-background);
   display: flex;
   flex-direction: column;
