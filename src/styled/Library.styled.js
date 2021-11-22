@@ -52,6 +52,8 @@ export const StyledAlbumSection = styled.section`
 		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 		column-gap: 24px;
 
+		justify-items: center;
+
 		grid-column: 2 / -1;
 		grid-row: 3 / 4;
 		margin-bottom: -24px;
@@ -65,6 +67,7 @@ export const StyledPlaylistItem = styled.div`
 	border: 1px solid red;
 	@media screen and (min-width: 1024px) {
 		max-width: 220px;
+		min-width: 220px;
 		flex-direction: column;
 		text-align: center;
 	}
@@ -78,7 +81,7 @@ export const StyledAlbumThumbnail = styled.img`
 	border: 1px solid white;
 	border-radius: 14px;
 	@media screen and (min-width: 1024px) {
-		max-width: 216px;
+		max-width: 100%;
 	}
 `;
 
