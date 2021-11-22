@@ -1,11 +1,14 @@
 import './App.css';
+import WelcomePage from './components/WelcomePage/WelcomePage';
+import Login from './components/Login/Login.js';
 import PlaylistPage from './components/Playlist/PlaylistPage';
-// import WelcomePage from './components/WelcomePage/WelcomePage'
 
 function App() {
   return (
     <div className='wrapper'>
-      <PlaylistPage name='Chvrches Playlist' type='Playlist' creator='Emir' />
+      {/*<WelcomePage />*/}
+      {/* <PlaylistPage name='Chvrches Playlist' type='Playlist' creator='Emir' /> */}
+      <Login />
     </div>
   );
 }
