@@ -1,51 +1,81 @@
 /* color custom properties */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 :root {
-	--cl-primary1-50: #ebf7ff;
-	--cl-primary1-100: #e1eeff;
-	--cl-primary1-400: #9daac6;
-	--cl-primary1-800: #243148;
-	--cl-primary1-600: #55627b;
-	--cl-primary1-700: #424f67;
-	--cl-primary1-900: #011126;
+  /* Shorthand syntax */
+  /* font: font-style font-variant font-weight font-size/line-height font-family; */
+  /* Two of the values in font shorthand are mandatory: font-size and font-family. If either of these is not included, the entire declaration will be ignored.
+Also, font-family must be declared last of all values, otherwise, again, the entire declaration will be ignored. */
 
-	--cl-primary3-500: #ff9f0c;
-	--cl-primary3-800: #d92b04;
+  --h1-bold: 700 49px/64px 'Roboto', sans-serif;
+  --h2-bold: 700 39px/60px 'Roboto', sans-serif;
+  --h3-bold: 700 31px/56px 'Roboto', sans-serif;
+  --h4-bold: 700 25px/32px 'Roboto', sans-serif;
+  --h5-bold: 700 20px/28px 'Roboto', sans-serif;
 
-	/* dark theme colors */
-	--dt-radial-gradient: radial-gradient(
-		77.98% 5211.56% at 37% 100%,
-		#fe930a 0%,
-		#ff6139 77.12%
-	);
+  --font-body: 400 16px/24px 'Roboto', sans-serif;
+  --font-body-bold: 700 16px/24px 'Roboto', sans-serif;
+  --font-body-small: 400 13px/20px 'Roboto', sans-serif;
+  --font-body-small-bold: 700 13px/20px 'Roboto', sans-serif;
+  --font-body-extrasmall: 400 10px/16px 'Roboto', sans-serif;
 
-	--dt-background: var(--cl-primary1-900);
-	--dt-play-button: linear-gradient(180deg, #1b283f 0%, #c2cfec 59.9%);
-	/* gradient rotated 90deg in figma */
-	--dt-sound-logo: #fc6f50;
-	--dt-body-font-bold: var(--cl-primary1-50);
-	--dt-body-font-regular: var(--cl-primary1-400);
-	--dt-active-color: var(--cl-primary3-500);
-	--dt-inactive-color: var(--cl-primary1-400);
-	--dt-searchbar-border: var(--cl-primary3-800);
-	--dt-navbar-background: var(--cl-primary1-800);
-	--dt-footer-background: var(--cl-primary1-800);
-	/* dark theme colors */
+  /* usage: font:var(--h1-bold); */
 
-	/* light theme colors */
-	--lt-background: var(--cl-primary1-50);
-	/* gradient rotated 90deg in figma */
-	--lt-play-button: linear-gradient(180deg, #fff4e1 46.88%, #424f67 100%);
-	--lt-sound-logo: var(--cl-primary1-700);
-	--lt-body-font-bold: var(--cl-primary1-700);
-	--lt-body-font-regular: var(--cl-primary1-600);
-	--lt-active-color: var(--cl-primary3-800);
-	--lt-inactive-color: var(--cl-primary1-700);
-	--lt-searchbar-border: var(--cl-primary3-800);
-	--lt-navbar-background: var(--cl-primary1-100);
-	--lt-footer-background: var(--cl-primary1-100);
+  --cl-primary1-50: #ebf7ff;
+  --cl-primary1-100: #e1eeff;
+  --cl-primary1-200: #d5e1ff;
+  --cl-primary1-300: #c2cfec;
+  --cl-primary1-400: #9daac6;
+  --cl-primary1-500: #7c89a4;
+  --cl-primary1-600: #55627b;
+  --cl-primary1-700: #424f67;
+  --cl-primary1-800: #243148;
+  --cl-primary1-900: #011126;
 
-	/* light theme colors */
+  --cl-primary3-50: #fff4e1;
+  --cl-primary3-100: #ffe2b4;
+  --cl-primary3-200: #ffd083;
+  --cl-primary3-300: #ffbc51;
+  --cl-primary3-400: #ffad2c;
+  --cl-primary3-500: #ff9f0c;
+  --cl-primary3-600: #ff9f0c;
+  --cl-primary3-700: #f88307;
+  --cl-primary3-800: #f27405;
+  --cl-primary3-900: #e95a03;
+
+  /* dark theme colors */
+  --dt-radial-gradient: radial-gradient(
+    77.98% 5211.56% at 37% 100%,
+    #fe930a 0%,
+    #ff6139 77.12%
+  );
+
+  --dt-background: var(--cl-primary1-900);
+  --dt-play-button: linear-gradient(180deg, #1b283f 0%, #c2cfec 59.9%);
+  /* gradient rotated 90deg in figma */
+  --dt-sound-logo: #fc6f50;
+  --dt-body-font-bold: var(--cl-primary1-50);
+  --dt-body-font-regular: var(--cl-primary1-400);
+  --dt-active-color: var(--cl-primary3-500);
+  --dt-inactive-color: var(--cl-primary1-400);
+  --dt-searchbar-border: var(--cl-primary3-800);
+  --dt-navbar-background: var(--cl-primary1-800);
+  --dt-footer-background: var(--cl-primary1-800);
+  /* dark theme colors */
+
+  /* light theme colors */
+  --lt-background: var(--cl-primary1-50);
+  /* gradient rotated 90deg in figma */
+  --lt-play-button: linear-gradient(180deg, #fff4e1 46.88%, #424f67 100%);
+  --lt-sound-logo: var(--cl-primary1-700);
+  --lt-body-font-bold: var(--cl-primary1-700);
+  --lt-body-font-regular: var(--cl-primary1-600);
+  --lt-active-color: var(--cl-primary3-800);
+  --lt-inactive-color: var(--cl-primary1-700);
+  --lt-searchbar-border: var(--cl-primary3-800);
+  --lt-navbar-background: var(--cl-primary1-100);
+  --lt-footer-background: var(--cl-primary1-100);
+
+  /* light theme colors */
 }
 
 *::after,
