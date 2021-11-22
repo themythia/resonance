@@ -67,17 +67,17 @@ export const StyledRecommendedList = styled.div`
 
 	height: max-content;
 
-	/* overflow-x: scroll; */
+	overflow-x: scroll;
 	/* hide scrollbar but allow scrolling */
-	& {
-		-ms-overflow-style: none; /* for Internet Explorer, Edge */
-		scrollbar-width: none; /* for Firefox */
+	/* & {
+		-ms-overflow-style: none; 
+		scrollbar-width: none; 
 		overflow-x: scroll;
 	}
 
 	&::-webkit-scrollbar {
-		display: none; /* for Chrome, Safari, and Opera */
-	}
+		display: none; 
+	} */
 `;
 
 export const StyledArtistCover = styled.div`
