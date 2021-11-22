@@ -15,6 +15,16 @@ const playlistAlbums = [
 		picture: logo,
 	},
 	{
+		name: "blink 182, smashing pumpkins",
+		description: "punk rock for retards",
+		picture: logo,
+	},
+	{
+		name: "GymWorkout2",
+		description: "Djent and Brootalz",
+		picture: logo,
+	},
+	{
 		name: "90SlowJam",
 		description: "nice bedroom playlist",
 		picture: logo,
@@ -25,13 +35,33 @@ const playlistAlbums = [
 		picture: logo,
 	},
 	{
-		name: "OST",
+		name: "OST1",
+		description: "favorite soundtracks",
+		picture: logo,
+	},
+	{
+		name: "OST2",
+		description: "favorite soundtracks",
+		picture: logo,
+	},
+	{
+		name: "OST3",
+		description: "favorite soundtracks",
+		picture: logo,
+	},
+	{
+		name: "OST4",
 		description: "favorite soundtracks",
 		picture: logo,
 	},
 	{
 		name: "ProgMetal",
 		description: "Evergrey and Symphony X for life!",
+		picture: logo,
+	},
+	{
+		name: "Adriano Celentano",
+		description: "CAZZO!",
 		picture: logo,
 	},
 ];
@@ -43,13 +73,13 @@ const Library = () => {
 				<h5>Your Library</h5>
 			</StyledLibraryTitle>
 			<StyledAlbumSection>
-				{playlistAlbums.map((item) => {
+				{playlistAlbums.map((item,index) => {
 					return (
-						<StyledPlaylistItem>
+						<StyledPlaylistItem key={index}>
 							<StyledAlbumThumbnail src={item.picture} />
 							<StyledAlbumTextContainer>
 								<p>{item.name}</p>
-								<p>{item.description}</p>
+								<h5>{item.description}</h5>
 							</StyledAlbumTextContainer>
 						</StyledPlaylistItem>
 					);
