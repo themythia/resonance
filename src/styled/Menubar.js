@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 export const MenuContainer = styled.div`
-    background: #243148;
+    background: var(--lt-background);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 48px;
+    height: calc(100% - 48px);
     left: 0px;
+    grid-column: 1/7;
     
 `;
 export const LeftContainer = styled.div`
@@ -27,6 +28,6 @@ export const RightContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin-left: 20px;
-    color:white;
+    color:black;
 `;
     
