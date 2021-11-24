@@ -1,75 +1,76 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledGridWrapper = styled.div`
-	grid-column: 1 / -1;
-	grid-row: 1 / 1;
+  grid-column: 1 / -1;
+  grid-row: 1 / 1;
 
-	display: grid;
-	row-gap: 16px;
-	width: 100vw;
-	height: 100vh;
+  display: grid;
+  row-gap: 16px;
+  width: 100vw;
+  height: 100vh;
 
-	grid-template-columns: 16px 1fr 16px;
-	grid-template-rows:
-		96px auto minmax(max-content, auto) auto minmax(0, 1fr)
-		96px;
-	background-color: var(--dt-background);
+  grid-template-columns: 16px 1fr 16px;
+  grid-template-rows:
+    96px auto minmax(max-content, auto) auto minmax(0, 1fr)
+    96px;
+  background-color: var(--dt-background);
 
-	@media screen and (min-width: 1024px) {
-		gap: 24px;
-		grid-template-columns: 320px 3fr;
-		grid-template-rows:
-			minmax(100px, max-content) minmax(96px, auto) minmax(max-content, 1fr)
-			minmax(max-content, auto) minmax(max-content, 1fr) 90px;
-	}
+  @media screen and (min-width: 1024px) {
+    gap: 24px;
+    grid-template-columns: 320px 3fr;
+    grid-template-rows:
+      minmax(100px, max-content) minmax(96px, auto) minmax(max-content, 1fr)
+      auto minmax(max-content, 1fr) minmax(90px, max-content);
+  }
 `;
 
 export const StyledTitleRecommended = styled.div`
-	grid-column: 2 / 3;
-	grid-row: 2 / 3;
-	h5 {
-		font: var(--h5-bold);
-		color: var(--dt-body-font-bold);
-	}
-	p {
-		color: var(--dt-body-font-bold);
-		font: var(--font-body-small);
-	}
-	@media screen and (min-width: 1024px) {
-		grid-column: 2 / -1;
-		grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  h5 {
+    font: var(--h5-bold);
+    color: var(--dt-body-font-bold);
+  }
+  p {
+    color: var(--dt-body-font-bold);
+    font: var(--font-body-small);
+  }
+  @media screen and (min-width: 1024px) {
+    grid-column: 2 / -1;
+    grid-row: 2 / 3;
 
-		h5 {
-			font: var(--h4-bold);
-		}
-		p {
-			font: var(--font-body);
-		}
-	}
+    h5 {
+      font: var(--h4-bold);
+    }
+    p {
+      font: var(--font-body);
+    }
+  }
 `;
 
 export const StyledListContainer = styled.section`
-	grid-column: 2 / 3;
-	grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
 
-	overflow-x: hidden;
+  overflow-x: hidden;
 
-	align-self: start;
-	@media screen and (min-width: 1024px) {
-		grid-column: 2 / -1;
-		grid-row: 3 / 4;
-	}
+  align-self: start;
+  @media screen and (min-width: 1024px) {
+    grid-column: 2 / -1;
+    grid-row: 3 / 4;
+  }
 `;
 
 export const StyledRecommendedList = styled.div`
-	display: flex;
-	justify-content: space-between;
+  display: flex;
 
-	height: max-content;
+  justify-content: space-between;
 
-	overflow-x: auto;
-	/* hide scrollbar but allow scrolling */
-	/* & {
+  height: max-content;
+
+  overflow-x: auto;
+  /* hide scrollbar but allow scrolling */
+  /* & {
 		-ms-overflow-style: none; 
 		scrollbar-width: none; 
 		overflow-x: scroll;
@@ -80,165 +81,215 @@ export const StyledRecommendedList = styled.div`
 	} */
 `;
 
+export const StyledAlbumContainer = styled.div`
+  min-width: 120px;
+  margin-inline: 8px;
+`;
+export const StyledAlbumCover = styled.div`
+  border: 1px solid white;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 30px;
+`;
+export const StyledAlbumImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  display: block;
+
+  object-fit: cover;
+  src: url(${(props) => props.src});
+`;
+export const StyledAlbumTextContainer = styled.div`
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: red;
+
+  & > p,
+  h5 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: ease-in-out 300ms color;
+  }
+
+  p {
+    color: var(--dt-body-font-bold);
+    font: var(--font-body-small-bold);
+  }
+
+  h5 {
+    color: var(--dt-body-font-regular);
+    font: var(--font-body-small);
+  }
+`;
+
 export const StyledArtistCover = styled.div`
-	min-width: 120px;
-	max-height: max-content;
-	margin-inline: 8px;
-	text-align: center;
+  min-width: 120px;
 
-	img {
-		max-width: 100%;
-		aspect-ratio: 1 / 1;
-		object-fit: cover;
-		border-radius: 30px;
-		border: 1px solid white;
-		margin-bottom: 10px;
-	}
+  margin-inline: 8px;
+  text-align: center;
+  border: 1px solid red;
 
-	/* string truncation ********* */
-	& > p,
-	h5 {
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	}
+  img {
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 30px;
+    border: 1px solid white;
+    margin-bottom: 10px;
+  }
 
-	p {
-		color: var(--dt-body-font-bold);
-		font: var(--font-body-small-bold);
-	}
+  /* string truncation ********* */
+  & > p,
+  h5 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
-	h5 {
-		font: var(--font-body-small);
-		color: var(--dt-body-font-regular);
-		text-transform: uppercase;
-	}
+  p {
+    color: var(--dt-body-font-bold);
+    font: var(--font-body-small-bold);
+  }
 
-	@media screen and (min-width: 1024px) {
-		margin-inline: 24px;
-		min-width: 216px;
-		p {
-			font: var(--font-body-bold);
-		}
-		h5 {
-			font: var(--font-body);
-		}
-	}
+  h5 {
+    font: var(--font-body-small);
+    color: var(--dt-body-font-regular);
+    text-transform: uppercase;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-inline: 24px;
+    min-width: 152px;
+
+    p {
+      font: var(--font-body-bold);
+    }
+    h5 {
+      font: var(--font-body);
+    }
+  }
 `;
 
 // Recently Played Section ***********************
 
 export const StyledTitleRecent = styled.div`
-	grid-column: 2 / 3;
-	grid-row: 4 / 5;
-	h5 {
-		font: var(--h5-bold);
-		color: var(--dt-body-font-bold);
-	}
-	p {
-		color: var(--dt-body-font-bold);
-		font: var(--font-body-small);
-	}
-	@media screen and (min-width: 1024px) {
-		grid-column: 2 / -1;
-		grid-row: 4 / 5;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  h5 {
+    font: var(--h5-bold);
+    color: var(--dt-body-font-bold);
+  }
+  p {
+    color: var(--dt-body-font-bold);
+    font: var(--font-body-small);
+  }
+  @media screen and (min-width: 1024px) {
+    grid-column: 2 / -1;
+    grid-row: 4 / 5;
 
-		h5 {
-			font: var(--h4-bold);
-		}
-	}
+    h5 {
+      font: var(--h4-bold);
+    }
+  }
 `;
 
 export const StyledRecentlyPlayedContainer = styled.section`
-	grid-column: 2 / 3;
-	grid-row: 5 / 6;
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
 
-	margin-bottom: -16px;
-	overflow: auto;
+  margin-bottom: -16px;
+  overflow: auto;
 
-	@media screen and (min-width: 1024px) {
-		grid-column: 2 / -1;
-		grid-row: 5 / 6;
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
+  @media screen and (min-width: 1024px) {
+    grid-column: 2 / -1;
+    grid-row: 5 / 6;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 `;
 
 export const StyledRecentlyPlayedList = styled.div`
-	display: flex;
-	flex-direction: column;
-	@media screen and (min-width: 1024px) {
-		flex-direction: row;
-		justify-content: space-between;
-	}
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const StyledRecentlyPlayedSong = styled.div`
-	display: flex;
-	align-items: center;
-	margin-block: 16px;
-	cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-block: 16px;
+  cursor: pointer;
+  border: 1px solid red;
 
-	&:hover {
-		p {
-			color: var(--cl-primary3-500);
-		}
-		h5 {
-			color: var(--cl-primary3-500);
-		}
-	}
+  &:hover {
+    p {
+      color: var(--cl-primary3-500);
+    }
+    h5 {
+      color: var(--cl-primary3-500);
+    }
+  }
 
-	@media screen and (min-width: 1024px) {
-		flex-direction: column;
-		text-align: center;
-		margin-inline: 24px;
-	}
+  @media screen and (min-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+    min-width: max-content;
+    margin-inline: 24px;
+  }
 `;
 
 export const StyledSongThumbnail = styled.img`
-	width: 56px;
-	object-fit: cover;
-	src: url(${(props) => props.src});
-	aspect-ratio: 1 / 1;
-	border: 1px solid white;
-	border-radius: 14px;
-	@media screen and (min-width: 1024px) {
-		max-width: 216px;
-		width: 216px;
-		margin-bottom: 16px;
-	}
+  width: 56px;
+  object-fit: cover;
+  src: url(${(props) => props.src});
+  aspect-ratio: 1 / 1;
+  border: 1px solid white;
+  border-radius: 14px;
+  @media screen and (min-width: 1024px) {
+    max-width: 216px;
+    min-width: 152px;
+    margin-bottom: 16px;
+  }
 `;
 export const StyledSongInfoContainer = styled.div`
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	margin-left: 8px;
+  margin-left: 8px;
 
-	& > p,
-	h5 {
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-		transition: ease-in-out 300ms color;
-	}
+  & > p,
+  h5 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: ease-in-out 300ms color;
+  }
 
-	p {
-		color: var(--dt-body-font-bold);
-		font: var(--font-body-small-bold);
-	}
+  p {
+    color: var(--dt-body-font-bold);
+    font: var(--font-body-small-bold);
+  }
 
-	h5 {
-		color: var(--dt-body-font-regular);
-		font: var(--font-body-small);
-	}
-	@media screen and (min-width: 1024px) {
-		margin: 0;
-		p {
-			font: var(--font-body-bold);
-		}
-		h5 {
-			font: var(--font-body);
-			text-transform: uppercase;
-		}
-	}
+  h5 {
+    color: var(--dt-body-font-regular);
+    font: var(--font-body-small);
+  }
+  @media screen and (min-width: 1024px) {
+    margin: 0;
+    p {
+      font: var(--font-body-bold);
+    }
+    h5 {
+      font: var(--font-body);
+      text-transform: uppercase;
+    }
+  }
 `;
