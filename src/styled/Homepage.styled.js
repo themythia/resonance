@@ -19,7 +19,7 @@ export const StyledGridWrapper = styled.div`
 		gap: 24px;
 		grid-template-columns: 320px 3fr;
 		grid-template-rows:
-			minmax(100px, max-content) minmax(96px, auto) minmax(auto, 1fr)
+			minmax(100px, max-content) minmax(96px, auto) minmax(max-content, 1fr)
 			minmax(max-content, auto) minmax(max-content, 1fr) 90px;
 	}
 `;
@@ -67,7 +67,7 @@ export const StyledRecommendedList = styled.div`
 
 	height: max-content;
 
-	overflow-x: scroll;
+	overflow-x: auto;
 	/* hide scrollbar but allow scrolling */
 	/* & {
 		-ms-overflow-style: none; 
@@ -158,7 +158,7 @@ export const StyledRecentlyPlayedContainer = styled.section`
 	@media screen and (min-width: 1024px) {
 		grid-column: 2 / -1;
 		grid-row: 5 / 6;
-		overflow-x: scroll;
+		overflow-x: auto;
 		overflow-y: hidden;
 	}
 `;
