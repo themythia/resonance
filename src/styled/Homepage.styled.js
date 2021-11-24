@@ -115,6 +115,7 @@ export const StyledArtistCover = styled.div`
 	}
 
 	@media screen and (min-width: 1024px) {
+		margin-inline: 24px;
 		min-width: 216px;
 		p {
 			font: var(--font-body-bold);
