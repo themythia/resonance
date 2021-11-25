@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   StyledWrapper,
   TopContainer,
@@ -5,8 +6,8 @@ import {
   CenterContainer,
   ButtonLogin,
   SpotifyButton,
-  Backward} from "../../styled/Utils";
-
+  Backward,
+} from '../../styled/Utils';
 
 const Login = () => {
   return (
@@ -15,8 +16,14 @@ const Login = () => {
         <Logo />
       </TopContainer>
       <CenterContainer>
-        <ButtonLogin>Log in with <SpotifyButton /></ButtonLogin>
-        <Backward />
+        <Link to='/home'>
+          <ButtonLogin>
+            Log in with <SpotifyButton />
+          </ButtonLogin>
+        </Link>
+        <Link to='/'>
+          <Backward />
+        </Link>
       </CenterContainer>
     </StyledWrapper>
   );
