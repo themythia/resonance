@@ -108,11 +108,12 @@ export const StyledAlbumImage = styled.img`
   src: url(${(props) => props.src});
 `;
 export const StyledAlbumTextContainer = styled.div`
-  max-width: 100%;
+  text-align: center;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  max-width: 90%;
 
   & > p,
   h5 {
@@ -130,6 +131,14 @@ export const StyledAlbumTextContainer = styled.div`
   h5 {
     color: var(--dt-body-font-regular);
     font: var(--font-body-small);
+  }
+  @media screen and (min-width: 1024px) {
+    p {
+      font: var(--font-body-bold);
+    }
+    h5 {
+      font: var(--font-body);
+    }
   }
 `;
 
@@ -198,8 +207,11 @@ export const StyledSongContainer = styled.div`
   }
   @media screen and (min-width: 1024px) {
     flex-direction: column;
+
     margin-block: 0px;
     margin-inline: 8px;
+    min-width: 120px;
+    max-width: 144px;
   }
 `;
 
@@ -208,12 +220,12 @@ export const StyledSongImageContainer = styled.div`
   min-width: 60px;
   max-width: 60px;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
+
   border-radius: 15%;
   @media screen and (min-width: 1024px) {
     border-radius: 30px;
-    min-width: 120px;
-    max-width: 144px;
+
+    max-width: 100%;
 
     margin-bottom: 8px;
   }
@@ -228,8 +240,10 @@ export const StyledSongAlbumImage = styled.img`
 `;
 
 export const StyledSongTextInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   max-width: 50%;
-  width: 100%;
+  width: 50%;
   margin-left: 8px;
 
   & > p,
@@ -251,7 +265,16 @@ export const StyledSongTextInfo = styled.div`
   }
   @media screen and (min-width: 1024px) {
     margin-left: 0;
-    max-width: 90%;
+    max-width: fit-content;
+    width: 90%;
+    margin: 0 auto;
     text-align: center;
+
+    p {
+      font: var(--font-body-bold);
+    }
+    h5 {
+      font: var(--font-body);
+    }
   }
 `;
