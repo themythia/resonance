@@ -16,10 +16,13 @@ export const StyledGridWrapper = styled.div`
   background-color: var(--dt-background);
 
   @media screen and (min-width: 1024px) {
-    gap: 24px;
+    gap: 16px;
     grid-template-columns: 320px 3fr;
     grid-template-rows:
-      minmax(100px, max-content) minmax(96px, auto) minmax(max-content, 1fr)
+      minmax(100px, max-content) minmax(min-content, max-content) minmax(
+        max-content,
+        1fr
+      )
       auto minmax(max-content, 1fr) minmax(90px, max-content);
   }
 `;
@@ -81,22 +84,27 @@ export const StyledRecommendedList = styled.div`
 	} */
 `;
 
+// gonna reuse this somehow ****************
+
 export const StyledAlbumContainer = styled.div`
   min-width: 120px;
+  max-width: 144px;
   margin-inline: 8px;
 `;
 export const StyledAlbumCover = styled.div`
   border: 1px solid white;
   width: 100%;
+  overflow: hidden;
   aspect-ratio: 1 / 1;
   border-radius: 30px;
+  margin-bottom: 8px;
 `;
 export const StyledAlbumImage = styled.img`
   max-width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 
-  object-fit: cover;
+  object-fit: contain;
   src: url(${(props) => props.src});
 `;
 export const StyledAlbumTextContainer = styled.div`
@@ -105,8 +113,6 @@ export const StyledAlbumTextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background-color: red;
 
   & > p,
   h5 {
@@ -124,54 +130,6 @@ export const StyledAlbumTextContainer = styled.div`
   h5 {
     color: var(--dt-body-font-regular);
     font: var(--font-body-small);
-  }
-`;
-
-export const StyledArtistCover = styled.div`
-  min-width: 120px;
-
-  margin-inline: 8px;
-  text-align: center;
-  border: 1px solid red;
-
-  img {
-    max-width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 30px;
-    border: 1px solid white;
-    margin-bottom: 10px;
-  }
-
-  /* string truncation ********* */
-  & > p,
-  h5 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  p {
-    color: var(--dt-body-font-bold);
-    font: var(--font-body-small-bold);
-  }
-
-  h5 {
-    font: var(--font-body-small);
-    color: var(--dt-body-font-regular);
-    text-transform: uppercase;
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-inline: 24px;
-    min-width: 152px;
-
-    p {
-      font: var(--font-body-bold);
-    }
-    h5 {
-      font: var(--font-body);
-    }
   }
 `;
 
@@ -215,6 +173,7 @@ export const StyledRecentlyPlayedContainer = styled.section`
 
 export const StyledRecentlyPlayedList = styled.div`
   display: flex;
+
   flex-direction: column;
   @media screen and (min-width: 1024px) {
     flex-direction: row;
@@ -222,12 +181,12 @@ export const StyledRecentlyPlayedList = styled.div`
   }
 `;
 
-export const StyledRecentlyPlayedSong = styled.div`
+export const StyledSongContainer = styled.div`
   display: flex;
   align-items: center;
+
   margin-block: 16px;
   cursor: pointer;
-  border: 1px solid red;
 
   &:hover {
     p {
@@ -237,32 +196,40 @@ export const StyledRecentlyPlayedSong = styled.div`
       color: var(--cl-primary3-500);
     }
   }
-
   @media screen and (min-width: 1024px) {
     flex-direction: column;
-    text-align: center;
-    min-width: max-content;
-    margin-inline: 24px;
+    margin-block: 0px;
+    margin-inline: 8px;
   }
 `;
 
-export const StyledSongThumbnail = styled.img`
-  width: 56px;
-  object-fit: cover;
-  src: url(${(props) => props.src});
-  aspect-ratio: 1 / 1;
+export const StyledSongImageContainer = styled.div`
   border: 1px solid white;
-  border-radius: 14px;
+  min-width: 60px;
+  max-width: 60px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 15%;
   @media screen and (min-width: 1024px) {
-    max-width: 216px;
-    min-width: 152px;
-    margin-bottom: 16px;
+    border-radius: 30px;
+    min-width: 120px;
+    max-width: 144px;
+
+    margin-bottom: 8px;
   }
 `;
-export const StyledSongInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
 
+export const StyledSongAlbumImage = styled.img`
+  src: url(${(props) => props.src});
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+`;
+
+export const StyledSongTextInfo = styled.div`
+  max-width: 50%;
+  width: 100%;
   margin-left: 8px;
 
   & > p,
@@ -283,13 +250,8 @@ export const StyledSongInfoContainer = styled.div`
     font: var(--font-body-small);
   }
   @media screen and (min-width: 1024px) {
-    margin: 0;
-    p {
-      font: var(--font-body-bold);
-    }
-    h5 {
-      font: var(--font-body);
-      text-transform: uppercase;
-    }
+    margin-left: 0;
+    max-width: 90%;
+    text-align: center;
   }
 `;
