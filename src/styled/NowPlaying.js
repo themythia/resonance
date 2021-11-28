@@ -5,6 +5,7 @@ export const NowPlayingContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
   height: calc(100% - 48px);
+  margin-bottom: 48px;
   background: var(--lt-background);
   display: flex;
   flex-direction: column;
@@ -30,9 +31,12 @@ export const NowPlayingContainer = styled.div`
   @media screen and (min-width: 1024px) {
     height: 90px;
     width: 100%;
+    padding: 0 24px;
     flex-direction: row;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
+    margin-bottom: 0;
 
     h5 {
       margin-top: 0;
@@ -92,25 +96,35 @@ export const Icon = styled.div`
     }
 
     @media screen and (min-width: 1024px) {
-      height: 16px;
-      width: 16px;
+      height: ${(props) => (props.type === 'volume' ? '24px' : '16px')};
+      width: ${(props) => (props.type === 'volume' ? '24px' : '16px')};
     }
   }
 `;
 
 export const AlbumCover = styled.img`
-  max-width: 500px;
-  width: 75%;
+  max-width: 75%;
+  max-height: 33%;
   height: auto;
+  width: auto;
   border-radius: 25%;
+  aspect-ratio: 1;
 
   @media screen and (min-width: 1024px) {
-    display: none;
+    border-radius: 0;
+    position: absolute;
+    max-width: calc(100vw / 6);
+    max-height: calc(100vw / 6);
+    width: calc(100vw / 6);
+    height: calc(100vw / 6);
+    left: 0;
+    bottom: 90px;
+    z-index: 9999;
   }
 `;
 
 export const ProgressTextContainer = styled.div`
-  width: 75%;
+  width: 100%;
   height: 27px;
   max-width: 500px;
   display: flex;
@@ -121,6 +135,10 @@ export const ProgressTextContainer = styled.div`
 
   @media screen and (min-width: 1024px) {
     margin-bottom: 0;
+    position: absolute;
+    bottom: 14px;
+    width: calc(100vw / 3 + 100px);
+    max-width: calc(100vw / 3 + 100px);
   }
 `;
 
@@ -154,7 +172,7 @@ const thumbColor = 'var(--cl-primary3-700)';
 const thumbHoverColor = 'var(--cl-primary3-900)';
 const trackHeight = '4px';
 const height = '32px';
-const thumbHeight = 20;
+const thumbHeight = 0;
 const upperBackground = `linear-gradient(to bottom, ${upperColor}, ${upperColor}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
 const lowerBackground = `linear-gradient(to bottom, ${lowerColor}, ${lowerColor}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
 
@@ -162,7 +180,7 @@ const makeLongShadow = (color, size) => {
   let i = 1;
   let shadow = `${i}px 0 0 ${size} ${color}`;
 
-  for (; i < 506; i++) {
+  for (; i < 1000; i++) {
     shadow = `${shadow}, ${i}px 0 0 ${size} ${color}`;
   }
 
@@ -174,11 +192,17 @@ export const ProgressBar = styled.input`
   display: block;
   appearance: none;
   max-width: 500px;
-  width: 75%;
+  width: 100%;
   margin: 0;
   height: ${height};
   cursor: pointer;
   background: transparent;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 100%;
+    position: relative;
+    z-index: 9999;
+  }
 
   &:focus {
     outline: none;
@@ -200,7 +224,7 @@ export const ProgressBar = styled.input`
     border: 0;
     top: 50%;
     transform: translateY(-50%);
-    box-shadow: ${makeLongShadow(upperColor, '-8px')};
+    box-shadow: ${makeLongShadow(upperColor, '2px')};
     transition: background-color 150ms;
   }
 
@@ -270,4 +294,30 @@ export const ProgressBar = styled.input`
   }
 `;
 
-export const PlayerContainer = styled.div``;
+export const PlayerContainer = styled.div`
+  @media screen and (min-width: 1024px) {
+    width: calc(100vw / 3);
+    max-width: calc(100vw / 3);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const VolumeControlContainer = styled.div`
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    width: calc(100vw / 12 + 32px);
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const VolumeControl = styled(ProgressBar)`
+  width: calc(100vw / 12);
+  margin-left: 8px;
+`;
