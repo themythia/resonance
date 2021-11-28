@@ -42,6 +42,12 @@ export const NavLinkMobile = styled(NavLink)`
   width: 100%;
   transition: 0.2s all;
 
+  p {
+    margin-left: 8px;
+    position: relative;
+    top: 1px;
+  }
+
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     font: var(--font-body);
@@ -83,6 +89,10 @@ export const NavLinkMobile = styled(NavLink)`
 `;
 
 export const NavLogo = styled(Logo)`
-  width: 100%;
-  margin: 24px 0 48px;
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: block;
+    width: 100%;
+    margin: 24px 0 48px;
+  }
 `;
