@@ -1,23 +1,19 @@
 import React from 'react';
-import {Home} from '@styled-icons/boxicons-solid/';
-import {Library} from '@styled-icons/boxicons-regular/'
-import {
-    MenuContainer, 
-    LeftContainer,
-    RightContainer 
-} from '../../../styled/Menubar';
+import { Home } from '@styled-icons/fluentui-system-filled';
+import { Library } from '@styled-icons/fluentui-system-filled';
+import { MenuContainer, NavLinkMobile } from '../../../styled/Menubar';
 
 const MenuBar = () => {
   return (
     <MenuContainer>
-      <LeftContainer> 
-          <Home size='25' cursor='pointer'/>
-          Home
-      </LeftContainer>
-      <RightContainer>
-          <Library size='25' cursor='pointer'/>
-          Library
-      </RightContainer>
+      <NavLinkMobile to='home'>
+        <Home size='24' cursor='pointer' />
+        <span>Home</span>
+      </NavLinkMobile>
+      <NavLinkMobile to='library'>
+        <Library size='24' cursor='pointer' />
+        <span>Library</span>
+      </NavLinkMobile>
     </MenuContainer>
   );
 };
