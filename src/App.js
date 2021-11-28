@@ -7,8 +7,8 @@ import PlaylistPage from './components/Playlist/PlaylistPage';
 function App() {
   return (
     <div className='wrapper'>
-      {/* <NowPlayingPage /> */}
-      <WelcomePage />
+      <NowPlayingPage />
+      {/* <WelcomePage /> */}
       {/* <PlaylistPage name='Chvrches Playlist' type='Playlist' creator='Emir' /> */}
       {/* <Login /> */}
     </div>

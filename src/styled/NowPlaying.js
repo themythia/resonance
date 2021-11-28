@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { StyledIconBase } from '@styled-icons/styled-icon';
 
 export const NowPlayingContainer = styled.div`
@@ -22,8 +22,21 @@ export const NowPlayingContainer = styled.div`
   @media (prefers-color-scheme: dark) {
     background: var(--dt-background);
     color: var(--dt-body-font-regular);
+    justify-content: center;
     h5 {
       color: var(--dt-body-font-bold);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    height: 90px;
+    width: 100%;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+
+    h5 {
+      margin-top: 0;
+      font: var(--font-body-bold);
     }
   }
 `;
@@ -34,6 +47,11 @@ export const PlayerControlContainer = styled.div`
   align-items: center;
   height: 75px;
   width: 292px;
+
+  @media screen and (min-width: 1024px) {
+    width: 192px;
+    height: 32px;
+  }
 `;
 
 export const StyledPlayerButton = styled.button`
@@ -49,6 +67,11 @@ export const StyledPlayerButton = styled.button`
   transition: transform 0.1s;
   &:hover {
     transform: ${(props) => props.size && 'scale(1.05)'};
+  }
+
+  @media screen and (min-width: 1024px) {
+    height: 32px;
+    width: 32px;
   }
 `;
 
@@ -67,6 +90,11 @@ export const Icon = styled.div`
         color: var(--cl-primary1-300);
       }
     }
+
+    @media screen and (min-width: 1024px) {
+      height: 16px;
+      width: 16px;
+    }
   }
 `;
 
@@ -75,6 +103,10 @@ export const AlbumCover = styled.img`
   width: 75%;
   height: auto;
   border-radius: 25%;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const ProgressTextContainer = styled.div`
@@ -86,11 +118,20 @@ export const ProgressTextContainer = styled.div`
   margin-bottom: 3.58vh;
   position: relative;
   bottom: 0.67vh;
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const SongInfoTextContainer = styled.div`
   margin-bottom: 5.6vh;
   text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    text-align: left;
+    margin-bottom: 0;
+  }
 `;
 
 export const PlayingFrom = styled.p`
@@ -99,6 +140,10 @@ export const PlayingFrom = styled.p`
   margin-bottom: 3.36vh;
   @media (prefers-color-scheme: dark) {
     color: var(--cl-primary1-50);
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: none;
   }
 `;
 
@@ -224,3 +269,5 @@ export const ProgressBar = styled.input`
     }
   }
 `;
+
+export const PlayerContainer = styled.div``;
