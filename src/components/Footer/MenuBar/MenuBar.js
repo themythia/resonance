@@ -2,7 +2,6 @@ import React from 'react';
 import { Home } from '@styled-icons/fluentui-system-filled';
 import { Library } from '@styled-icons/fluentui-system-filled';
 import { MenuContainer, NavLinkMobile, NavLogo } from '../../../styled/Menubar';
-import { Logo } from '../../../styled/Utils';
 
 const MenuBar = () => {
   return (
