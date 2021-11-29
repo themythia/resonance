@@ -190,12 +190,17 @@ export const ButtonLogin = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   @media (prefers-color-scheme: dark) {
       background: var(--dt-radial-gradient);
       color: white;
   }
   @media (min-width: 1280px) {
     margin: 15% auto 10px auto;
+  }
+
+  @media (min-width: 1440px) {
+    margin: 10% auto 10px auto;
   }
 `;
 

@@ -10,6 +10,7 @@ import {
   WaveRight,
   WaveLeft} from "../../styled/Utils";
 
+import {Link } from 'react-router-dom';
 
 const WelcomePage = () => {
   return (
@@ -23,7 +24,9 @@ const WelcomePage = () => {
         <WaveLeft />
         <WaveRight />
         <ButtonContainer>
-          <PlayDiv />         
+          <Link to="/login">
+            <PlayDiv />         
+          </Link>
         </ButtonContainer>
       </CenterContainer>
     </StyledWrapper>
