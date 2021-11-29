@@ -91,6 +91,15 @@ export const StyledAlbumContainer = styled.div`
   min-width: 120px;
   max-width: 144px;
   margin-inline: 8px;
+  cursor: pointer;
+  &:hover {
+    p {
+      color: var(--cl-primary3-500);
+    }
+    h5 {
+      color: var(--cl-primary3-500);
+    }
+  }
 `;
 export const StyledAlbumCover = styled.div`
   border: 1px solid white;
