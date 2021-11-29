@@ -64,6 +64,15 @@ export const StyledPlaylistItem = styled.div`
   max-width: 100%;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    p {
+      color: var(--cl-primary3-500);
+    }
+    h5 {
+      color: var(--cl-primary3-500);
+    }
+  }
 
   @media screen and (min-width: 1024px) {
     max-width: 220px;
