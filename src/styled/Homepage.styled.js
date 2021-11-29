@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const StyledGridWrapper = styled.div`
   grid-column: 1 / -1;
@@ -57,12 +57,13 @@ export const StyledListContainer = styled.section`
 
   overflow-x: hidden;
 
-  align-self: start;
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
     grid-row: 3 / 4;
   }
 `;
+
+export const StyledInnerWrapper = styled.div``;
 
 export const StyledRecommendedList = styled.div`
   display: flex;
