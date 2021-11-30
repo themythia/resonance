@@ -11,14 +11,14 @@ import Library from './components/LibraryPage/Library';
 function App() {
   return (
     <div className='wrapper'>
-      <Router>
+      {/* <Router>
         <Routes>
           <Route path='/home' element={<Homepage />} />
           <Route path='/library' element={<Library />} />
         </Routes>
         <MenuBar />
-      </Router>
-      {/* <NowPlayingPage /> */}
+      </Router> */}
+      <NowPlayingPage />
       {/* <WelcomePage /> */}
       {/* <PlaylistPage name='Chvrches Playlist' type='Playlist' creator='Emir' /> */}
       {/* <Login /> */}
