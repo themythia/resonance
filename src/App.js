@@ -3,7 +3,10 @@ import NowPlayingPage from './components/Player/NowPlayingPage';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 import Login from './components/Login/Login.js';
 import PlaylistPage from './components/Playlist/PlaylistPage';
+import MenuBar from './components/Footer/MenuBar/MenuBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Homepage from './components/Homepage/Homepage';
+import Library from './components/LibraryPage/Library';
 
 function App() {
   return (
@@ -12,12 +15,8 @@ function App() {
         <Routes>
           <Route exact path='/' element={<WelcomePage />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/home' element={<p>Placeholder home page</p>} />
-          <Route
-            exact
-            path='/library'
-            element={<p>Placeholder library page</p>}
-          />
+          <Route path='/home' element={<Homepage />} />
+          <Route exact path='/library' element={<Library />} />
           <Route
             path='/library/:playlistId'
             element={
