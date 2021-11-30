@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const PlaylistPageContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
-  max-height: 80vh;
-  height: 80vh;
+  max-height: calc(100vh - 196px);
+  height: calc(100vh - 196px);
+  margin-top: 96px;
   background: var(--lt-background);
   display: flex;
   flex-direction: column;
