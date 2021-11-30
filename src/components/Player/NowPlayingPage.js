@@ -5,7 +5,9 @@ import {
   NowPlayingContainer,
   PlayingFrom,
   SongInfoTextContainer,
+  VolumeControl,
 } from '../../styled/NowPlaying';
+import VolumeBar from './VolumeBar';
 
 const NowPlayingPage = () => {
   const songName = 'Asking For A Friend';
@@ -20,6 +22,7 @@ const NowPlayingPage = () => {
         <p>{artistName}</p>
       </SongInfoTextContainer>
       <Player max={304} />
+      <VolumeBar />
     </NowPlayingContainer>
   );
 };
