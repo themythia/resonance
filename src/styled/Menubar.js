@@ -39,14 +39,7 @@ export const NavLinkMobile = styled(NavLink)`
   color: var(--lt-body-font-bold);
   text-decoration: none;
   font: var(--font-body-small);
-  width: 100%;
   transition: 0.2s all;
-
-  p {
-    margin-left: 8px;
-    position: relative;
-    top: 1px;
-  }
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
@@ -54,6 +47,14 @@ export const NavLinkMobile = styled(NavLink)`
     align-self: flex-start;
     margin-bottom: 8px;
     padding: 6px;
+    align-items: center;
+    width: 100%;
+
+    p {
+      margin-left: 8px;
+      position: relative;
+      top: 1px;
+    }
   }
 
   @media (prefers-color-scheme: dark) {
