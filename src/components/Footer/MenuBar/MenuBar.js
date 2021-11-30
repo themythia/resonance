@@ -1,20 +1,20 @@
 import React from 'react';
 import { Home } from '@styled-icons/fluentui-system-filled';
 import { Library } from '@styled-icons/fluentui-system-filled';
-import { MenuContainer, NavLinkMobile, NavLogo } from '../../../styled/Menubar';
+import { MenuContainer, StyledNavLink, NavLogo } from '../../../styled/Menubar';
 
 const MenuBar = () => {
   return (
     <MenuContainer>
       <NavLogo />
-      <NavLinkMobile to='home'>
+      <StyledNavLink to='home'>
         <Home size='24' cursor='pointer' />
         <p>Home</p>
-      </NavLinkMobile>
-      <NavLinkMobile to='library'>
+      </StyledNavLink>
+      <StyledNavLink to='library'>
         <Library size='24' cursor='pointer' />
         <p>Library</p>
-      </NavLinkMobile>
+      </StyledNavLink>
     </MenuContainer>
   );
 };

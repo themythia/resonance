@@ -32,7 +32,7 @@ export const MenuContainer = styled.div`
   }
 `;
 
-export const NavLinkMobile = styled(NavLink)`
+export const StyledNavLink = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
