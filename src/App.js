@@ -13,15 +13,13 @@ function App() {
     <div className='wrapper'>
       <Router>
         <Routes>
-          <Route path='/home' element={<NowPlayingPage />} />
-          <Route path='/library' element={<WelcomePage />} />
+          <Route path='/home' element={<Homepage />} />
+          <Route path='/library' element={<Library />} />
         </Routes>
         <MenuBar />
       </Router>
       {/* <NowPlayingPage /> */}
-      <WelcomePage />
-      {/* <Homepage /> */}
-      {/* <Library /> */}
+      {/* <WelcomePage /> */}
       {/* <PlaylistPage name='Chvrches Playlist' type='Playlist' creator='Emir' /> */}
       {/* <Login /> */}
     </div>
