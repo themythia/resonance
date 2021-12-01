@@ -11,9 +11,10 @@ import Library from './components/LibraryPage/Library';
 
 function App() {
   const location = useLocation();
+  const showMenuBar =
+    location.pathname !== '/' && location.pathname !== '/login';
 
   const [width, setWidth] = useState(window.innerWidth);
-  console.log(width);
 
   useLayoutEffect(() => {
     window.addEventListener('resize', () => setWidth(window.innerWidth));
@@ -21,9 +22,6 @@ function App() {
       setWidth(window.innerWidth)
     );
   }, [width]);
-
-  const showMenuBar =
-    location.pathname !== '/' && location.pathname !== '/login';
 
   return (
     <div className='wrapper'>
