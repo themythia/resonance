@@ -37,6 +37,11 @@ export const NowPlayingContainer = styled.div`
     position: fixed;
     bottom: 0;
     margin-bottom: 0;
+    z-index: 9999;
+    background: var(--lt-navbar-background);
+    @media (prefers-color-scheme: dark) {
+      background: var(--dt-navbar-background);
+    }
 
     h5 {
       margin-top: 0;

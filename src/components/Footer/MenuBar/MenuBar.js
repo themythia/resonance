@@ -7,11 +7,11 @@ const MenuBar = () => {
   return (
     <MenuContainer>
       <NavLogo />
-      <StyledNavLink to='home'>
+      <StyledNavLink to='/home'>
         <Home size='24' cursor='pointer' />
         <p>Home</p>
       </StyledNavLink>
-      <StyledNavLink to='library'>
+      <StyledNavLink to='/library'>
         <Library size='24' cursor='pointer' />
         <p>Library</p>
       </StyledNavLink>
