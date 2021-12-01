@@ -1,20 +1,26 @@
 import React from 'react';
-import SearchBar from './Search/SearchBar';
-import Account from './Account/Account'
+// import SearchBar from './Search/SearchBar';
+import Account from './Account/Account';
 
-import {songs} from './Search/data';
-import {HeaderContainer} from '../../styled/Header';
+// import { HeaderContainer } from '../../styled/Header';
+import {
+  Input,
+  HeaderContainer,
+  SearchBarContainer,
+  ProfilePic,
+} from '../../styled/SearchBar';
+import { Search } from '@styled-icons/fluentui-system-filled';
 
 const Header = () => {
-    return (
-        <>
-        <HeaderContainer>
-            <SearchBar placeholder="Artists, songs or podcasts..." songs={songs}/> 
-        </HeaderContainer>
-        <Account/> 
-
-        </>
-    )
-}
+  return (
+    <HeaderContainer>
+      <SearchBarContainer>
+        <Input />
+        <Search size={24} />
+      </SearchBarContainer>
+      <ProfilePic src='https://puu.sh/IsNdG/069cf308d1.png' alt='user avatar' />
+    </HeaderContainer>
+  );
+};
 
 export default Header;
