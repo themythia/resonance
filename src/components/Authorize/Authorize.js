@@ -1,9 +1,10 @@
 import { useEffect, useContext } from 'react';
 import request from 'request';
 import { UserContext } from '../../contexts/UserContext';
+import { Navigate } from 'react-router-dom';
 
 const Authorize = () => {
-  const { setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
 
   useEffect(() => {
     let access_token = window.location.hash
@@ -28,6 +29,7 @@ const Authorize = () => {
 
   return (
     <div>
+      {userData.isLoggedIn && <Navigate to='/home' />}
       <h1>Hello</h1>
     </div>
   );
