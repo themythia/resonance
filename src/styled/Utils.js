@@ -1,22 +1,21 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import resonanceDark from '../resonance-dark.svg';
 import resonanceLight from '../resonance-light-welcome.svg';
-import {Spotify} from '@styled-icons/boxicons-logos';
+import { Spotify } from '@styled-icons/boxicons-logos';
 import circleLight from './img/circle-light.svg';
 import circleDark from './img/circle-dark.svg';
 import wave from './img/wave.svg';
-import {ControllerFastBackward} from '@styled-icons/entypo/'
+import { ControllerFastBackward } from '@styled-icons/entypo/';
 export const StyledWrapper = styled.div`
- 
   background: var(--lt-background);
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  
+
   @media (prefers-color-scheme: dark) {
-    background : var(--dt-background);
+    background: var(--dt-background);
   }
 `;
 
@@ -25,7 +24,7 @@ export const TopContainer = styled.div`
   grid-column: 2 / 6;
   align-self: center;
   justify-self: center;
-  
+
   p {
     color: var(--cl-primary1-600);
     font-size: 18px;
@@ -36,15 +35,17 @@ export const TopContainer = styled.div`
   }
   @media (prefers-color-scheme: dark) {
     p {
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
 `;
 export const Logo = styled.img.attrs(() => ({
-  src: (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) 
-                ? resonanceDark 
-                : resonanceLight,
-  }))`
+  src:
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? resonanceDark
+      : resonanceLight,
+}))`
   object-fit: cover;
 `;
 
@@ -52,6 +53,10 @@ export const CenterContainer = styled.div`
   grid-row: 3 / 5;
   grid-column: 2 / 6;
   position: relative;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 // Welcome Page
@@ -66,7 +71,7 @@ export const ButtonContainer = styled.div`
   background: var(--cl-primary1-700);
   @media (prefers-color-scheme: dark) {
     background: var(--dt-radial-gradient);
-  } 
+  }
   @media (min-width: 768px) {
     margin: 12% auto;
   }
@@ -74,7 +79,6 @@ export const ButtonContainer = styled.div`
     margin: 9% auto;
   }
 `;
-
 
 export const PlayDiv = styled.div`
   position: absolute;
@@ -92,18 +96,20 @@ export const PlayDiv = styled.div`
 
 export const SpotifyLogo = styled(Spotify)`
   color: var(--cl-primary1-900);
-  width:  35px;
+  width: 35px;
   height: 35px;
-  
+
   @media (prefers-color-scheme: dark) {
-    color: #1DB954;
+    color: #1db954;
   }
 `;
 
 export const Circle = styled.img.attrs(() => ({
-  src: (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) 
-       ? circleDark
-       : circleLight,
+  src:
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? circleDark
+      : circleLight,
 }))`
   position: absolute;
   top: 12.5px;
@@ -132,7 +138,7 @@ export const WaveRight = styled.img.attrs(() => ({
   top: 15%;
   left: 70%;
   position: absolute;
-  
+
   @media (min-width: 768px) {
     top: 11%;
     left: 60%;
@@ -142,7 +148,7 @@ export const WaveRight = styled.img.attrs(() => ({
     left: 58%;
   }
   @media (min-width: 1280px) {
-    top:20%;
+    top: 20%;
     left: 56%;
   }
   @media (min-width: 1440px) {
@@ -159,14 +165,14 @@ export const WaveLeft = styled.img.attrs(() => ({
   left: -23%;
   transform: rotate(180deg);
   @media (min-width: 768px) {
-    top:22%;
+    top: 22%;
     left: 14%;
   }
   @media (min-width: 1024px) {
     left: 23%;
   }
   @media (min-width: 1280px) {
-    top:35%;
+    top: 35%;
     left: 28%;
   }
   @media (min-width: 1440px) {
@@ -175,7 +181,7 @@ export const WaveLeft = styled.img.attrs(() => ({
   }
 `;
 
-// Login Page 
+// Login Page
 
 export const ButtonLogin = styled.button`
   font-size: 16px;
@@ -192,8 +198,8 @@ export const ButtonLogin = styled.button`
   align-items: center;
   cursor: pointer;
   @media (prefers-color-scheme: dark) {
-      background: var(--dt-radial-gradient);
-      color: white;
+    background: var(--dt-radial-gradient);
+    color: white;
   }
   @media (min-width: 1280px) {
     margin: 15% auto 10px auto;
@@ -209,9 +215,8 @@ export const SpotifyButton = styled(Spotify)`
   width: 40px;
   height: 40px;
   margin-left: 5px;
-  
   @media (prefers-color-scheme: dark) {
-      color: white;
+    color: white;
   }
 `;
 
@@ -223,6 +228,6 @@ export const Backward = styled(ControllerFastBackward)`
   margin: 0 auto;
 
   @media (prefers-color-scheme: dark) {
-      color: var(--dt-sound-logo);
+    color: var(--dt-sound-logo);
   }
 `;

@@ -3,19 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Login from './components/Login/Login.js';
-import Authorize from './components/Authorize/Authorize.js';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/authorize" element={<Authorize />} />
-      </Routes>
-    </React.StrictMode>
-  </BrowserRouter>,
+  <React.StrictMode>
+    {/* Used Router here to be able to use useLocation on App component*/}
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

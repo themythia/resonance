@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
+  PlayerContainer,
   PlayerControlContainer,
   ProgressBar,
   ProgressTextContainer,
@@ -53,7 +54,7 @@ const Player = (props) => {
   }, [progress, props.max]);
 
   return (
-    <React.Fragment>
+    <PlayerContainer>
       <ProgressBar
         type='range'
         min='0'
@@ -76,7 +77,7 @@ const Player = (props) => {
         <PlayerButton icon='next' />
         <PlayerButton icon='repeat' />
       </PlayerControlContainer>
-    </React.Fragment>
+    </PlayerContainer>
   );
 };
 export default Player;

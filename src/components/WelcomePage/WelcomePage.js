@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   StyledWrapper,
   TopContainer,
@@ -8,26 +9,27 @@ import {
   SpotifyLogo,
   Circle,
   WaveRight,
-  WaveLeft} from "../../styled/Utils";
-
-import {Link } from 'react-router-dom';
+  WaveLeft,
+} from '../../styled/Utils';
 
 const WelcomePage = () => {
   return (
     <StyledWrapper>
       <TopContainer>
         <Logo />
-        <p>Powered By <SpotifyLogo /></p>
+        <p>
+          Powered By <SpotifyLogo />
+        </p>
       </TopContainer>
       <CenterContainer>
         <Circle />
         <WaveLeft />
         <WaveRight />
-        <ButtonContainer>
-          <Link to="/login">
-            <PlayDiv />         
-          </Link>
-        </ButtonContainer>
+        <Link to='/login'>
+          <ButtonContainer>
+            <PlayDiv />
+          </ButtonContainer>
+        </Link>
       </CenterContainer>
     </StyledWrapper>
   );
