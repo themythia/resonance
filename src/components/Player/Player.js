@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import {
   PlayerContainer,
   PlayerControlContainer,
@@ -15,12 +15,9 @@ const Player = (props) => {
   const clear = () => window.clearInterval(time.current);
 
   // handles time strings for progress bar
+  // kinda unnecessary as we deal with songs that are 30 seconds
+  // but leaving here for future developments
   const handleTime = (time) => {
-    // let mins = Math.floor(time / 60);
-    // let seconds = time % 60;
-    // if (seconds < 10) {
-    //   return `${mins}:0${seconds}`;
-    // } else return `${mins}:${seconds}`;
     const date = new Date(null);
     date.setSeconds(time); // specify value for SECONDS here
     const dateString = date.toISOString();
@@ -36,33 +33,26 @@ const Player = (props) => {
     } else return dateString.substr(11, 8); // else returns hh:mm:ss
   };
 
-  useEffect(() => {
-    if (songRef && songRef.current) {
-      // console.log('currentTime:', songRef.current.currentTime);
-      // console.log('duration:', songRef.current.duration);
-      // console.log('muted:', songRef.current.muted);
-      console.log('canplay:', songRef.current.canPlay);
-    }
-  }, [progress]);
-
+  // handles the bar progress
   useEffect(() => {
     if (playing) {
       time.current = window.setInterval(() => {
-        setProgress((progress) => progress + 1);
+        setProgress((progress) => songRef.current.currentTime);
       }, 1000);
     }
     return clear;
   }, [playing]);
 
+  // resets the progress to zero when song ends and clears the interval
   useEffect(() => {
-    if (progress >= props.max) {
+    if (songRef.current.ended) {
       clear();
       setProgress(0);
       setPlaying(false);
-      songRef.current.currentTime = 0;
     }
-  }, [progress, props.max]);
+  }, [progress]);
 
+  // controls the play/pause functions
   useEffect(() => {
     if (playing) songRef.current.play();
     else songRef.current.pause();
@@ -70,22 +60,30 @@ const Player = (props) => {
 
   useEffect(() => {
     songRef.current.volume = props.volume.volume / 100;
-    console.log('curent volume:', songRef.current.volume);
   }, [props.volume.volume]);
+
+  // console.log('props mute?', props.mute.muted);
+  useEffect(() => {
+    songRef.current.muted = props.muted;
+  }, [props.muted]);
 
   return (
     <PlayerContainer>
-      <audio controls ref={songRef}>
-        <source src='https://p.scdn.co/mp3-preview/e0c72d148c26dd4d17d85f573f97a1bb60c4f244?cid=774b29d4f13844c495f206cafdad9c86' />
+      <audio ref={songRef}>
+        <source src='https://p.scdn.co/mp3-preview/125600801a1b94d214cd8cd20251cfd10ec8abce?cid=774b29d4f13844c495f206cafdad9c86' />
       </audio>
       <ProgressBar
         type='range'
         min='0'
-        max={props.max}
+        max={props.max || songRef.current.duration}
         value={progress}
+        step='0.1'
         onClick={() => (songRef.current.currentTime = progress)}
+        onTouchEnd={() => {
+          songRef.current.currentTime = progress;
+        }}
         onChange={(e) => {
-          setProgress(parseInt(e.target.value));
+          setProgress(parseFloat(e.target.value));
         }}
       />
       <ProgressTextContainer>
