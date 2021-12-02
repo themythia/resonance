@@ -12,6 +12,7 @@ import {
   Speaker1,
   Speaker2,
 } from '@styled-icons/fluentui-system-filled';
+import { useEffect } from 'react/cjs/react.development';
 
 const VolumeBar = (props) => {
   const [volumeLevel, setVolumeLevel] = useState(50);
@@ -21,6 +22,10 @@ const VolumeBar = (props) => {
       setVolumeLevel(0);
     } else setVolumeLevel(50);
   };
+
+  useEffect(() => {
+    props.volume.setVolume(volumeLevel);
+  }, [volumeLevel]);
 
   return (
     <VolumeControlContainer>
