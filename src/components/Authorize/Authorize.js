@@ -23,13 +23,14 @@ const Authorize = () => {
       setUserData({
         isLoggedIn: true,
         data: body,
+        token: access_token,
       });
     });
   }, []);
 
   return (
     <div>
-      {userData.isLoggedIn && <Navigate to='/home' />}
+      {userData.isLoggedIn && <Navigate to='/library/2KqLYZ1ky6MR9VZb06bbb7' />}
       <h1>Hello</h1>
     </div>
   );
