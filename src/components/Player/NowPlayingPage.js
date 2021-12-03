@@ -18,16 +18,16 @@ const NowPlayingPage = () => {
   return (
     <NowPlayingContainer>
       <PlayingFrom>
-        {`Playing from the playlist: ${state.playlistName}`}
+        {`Playing from the playlist: ${state?.playlistName}`}
       </PlayingFrom>
-      <AlbumCover src={state.image} />
+      <AlbumCover src={state?.image} />
       <SongInfoTextContainer>
-        <h5>{state.name}</h5>
-        <p>{state.artist}</p>
+        <h5>{state?.name}</h5>
+        <p>{state?.artist}</p>
       </SongInfoTextContainer>
       <Player
         max={30}
-        src={state.src}
+        src={state?.src}
         volume={{ volume, setVolume }}
         muted={muted}
       />

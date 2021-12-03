@@ -1,7 +1,8 @@
 import './App.css';
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState, useReducer } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
+import { PlayerContext } from './contexts/PlayerContext';
 import NowPlayingPage from './components/Player/NowPlayingPage';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 import Login from './components/Login/Login.js';
@@ -10,6 +11,7 @@ import MenuBar from './components/Footer/MenuBar/MenuBar';
 import Homepage from './components/Homepage/Homepage';
 import Library from './components/LibraryPage/Library';
 import Authorize from './components/Authorize/Authorize';
+import { playerReducer } from './reducers/playerReducer';
 
 function App() {
   const location = useLocation();
@@ -22,6 +24,8 @@ function App() {
     data: {},
     token: null,
   });
+
+  const [playerData, dispatch] = useReducer(playerReducer, {});
 
   console.log('userData', userData);
 
@@ -38,29 +42,31 @@ function App() {
   return (
     <div className='wrapper'>
       <UserContext.Provider value={{ userData, setUserData }}>
-        <Routes>
-          <Route exact path='/' element={<WelcomePage />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/authorize' element={<Authorize />} />
-          <Route path='/home' element={<Homepage />} />
-          <Route exact path='/library' element={<Library />} />
-          <Route
-            path='/library/:playlistId'
-            element={
-              <PlaylistPage
-                name='Chvrches Playlist'
-                type='Playlist'
-                creator='Emir'
-              />
-            }
-          />
-          {width < 1024 && (
-            <Route path='/nowplaying' element={<NowPlayingPage />} />
-          )}
-          <Route path='*' element={<p>404</p>} />
-        </Routes>
-        {showMenuBar && width > 1023 && <NowPlayingPage />}
-        {showMenuBar && <MenuBar />}
+        <PlayerContext.Provider value={null}>
+          <Routes>
+            <Route exact path='/' element={<WelcomePage />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/authorize' element={<Authorize />} />
+            <Route path='/home' element={<Homepage />} />
+            <Route exact path='/library' element={<Library />} />
+            <Route
+              path='/library/:playlistId'
+              element={
+                <PlaylistPage
+                  name='Chvrches Playlist'
+                  type='Playlist'
+                  creator='Emir'
+                />
+              }
+            />
+            {width < 1024 && (
+              <Route path='/nowplaying' element={<NowPlayingPage />} />
+            )}
+            <Route path='*' element={<p>404</p>} />
+          </Routes>
+          {showMenuBar && width > 1023 && <NowPlayingPage />}
+          {showMenuBar && <MenuBar />}
+        </PlayerContext.Provider>
       </UserContext.Provider>
       {/* TO DO:
       - create a private route

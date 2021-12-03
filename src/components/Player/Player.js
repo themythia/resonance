@@ -67,6 +67,8 @@ const Player = (props) => {
     songRef.current.muted = props.muted;
   }, [props.muted]);
 
+  console.log('src', props.src);
+
   return (
     <PlayerContainer>
       <audio ref={songRef}>
