@@ -30,7 +30,9 @@ const VolumeBar = (props) => {
   useEffect(() => {
     props.volume.setVolume(volumeLevel);
     if (volumeLevel === 0) props.setMuted(true);
-  }, [volumeLevel, props]);
+    else props.setMuted(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [volumeLevel]);
 
   return (
     <VolumeControlContainer>
