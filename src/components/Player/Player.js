@@ -70,7 +70,7 @@ const Player = (props) => {
   return (
     <PlayerContainer>
       <audio ref={songRef}>
-        <source src='https://p.scdn.co/mp3-preview/125600801a1b94d214cd8cd20251cfd10ec8abce?cid=774b29d4f13844c495f206cafdad9c86' />
+        <source src={props.src} />
       </audio>
       <ProgressBar
         type='range'

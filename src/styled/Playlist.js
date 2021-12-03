@@ -13,6 +13,11 @@ export const PlaylistPageContainer = styled.div`
   color: var(--lt-body-font-regular);
   font: var(--font-body-small);
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   h5 {
     font: var(--h5-bold);
   }

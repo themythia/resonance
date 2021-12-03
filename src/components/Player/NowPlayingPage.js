@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Player from './Player';
 import {
   AlbumCover,
@@ -11,18 +12,25 @@ import VolumeBar from './VolumeBar';
 const NowPlayingPage = () => {
   const [volume, setVolume] = useState(50);
   const [muted, setMuted] = useState(false);
-  const songName = 'Asking For A Friend';
-  const artistName = 'CHVRCHES';
-  const playlistName = 'CHVRCHES Playlist';
+  const { state } = useLocation();
+  console.log('state:', state);
+
   return (
     <NowPlayingContainer>
-      <PlayingFrom>{`Playing from the playlist: ${playlistName}`} </PlayingFrom>
-      <AlbumCover src='https://i.redd.it/hwiqn9qtkt271.jpg' />
+      <PlayingFrom>
+        {`Playing from the playlist: ${state.playlistName}`}
+      </PlayingFrom>
+      <AlbumCover src={state.image} />
       <SongInfoTextContainer>
-        <h5>{songName}</h5>
-        <p>{artistName}</p>
+        <h5>{state.name}</h5>
+        <p>{state.artist}</p>
       </SongInfoTextContainer>
-      <Player max={30} volume={{ volume, setVolume }} muted={muted} />
+      <Player
+        max={30}
+        src={state.src}
+        volume={{ volume, setVolume }}
+        muted={muted}
+      />
       <VolumeBar
         volume={{ volume, setVolume }}
         setMuted={setMuted}
