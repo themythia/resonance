@@ -20,6 +20,7 @@ function App() {
   const [userData, setUserData] = useState({
     isLoggedIn: false,
     data: {},
+    token: null,
   });
 
   console.log('userData', userData);
