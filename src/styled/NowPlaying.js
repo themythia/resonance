@@ -74,6 +74,7 @@ export const StyledPlayerButton = styled.button`
   border-radius: 100%;
   border: none;
   transition: transform 0.1s;
+  cursor: ${(props) => props.disabled && 'not-allowed'};
   &:hover {
     transform: ${(props) => props.size && 'scale(1.05)'};
   }

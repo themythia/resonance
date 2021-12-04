@@ -14,7 +14,7 @@ const Player = (props) => {
   const time = useRef(null);
   const songRef = useRef(null);
   const clear = () => window.clearInterval(time.current);
-  const { dispatch } = useContext(PlayerContext);
+  const { playerData, dispatch } = useContext(PlayerContext);
 
   // handles time strings for progress bar
   // kinda unnecessary as we deal with songs that are 30 seconds
@@ -99,15 +99,20 @@ const Player = (props) => {
         <p>{handleTime(props.max)}</p>
       </ProgressTextContainer>
       <PlayerControlContainer>
-        <PlayerButton icon='shuffle' />
-        <PlayerButton icon='prev' />
+        <PlayerButton icon='shuffle' disabled={!playerData.current && true} />
+        <PlayerButton icon='prev' disabled={!playerData.current && true} />
         {playing ? (
           <PlayerButton icon='pause' size='73px' setPlaying={setPlaying} />
         ) : (
-          <PlayerButton icon='play' size='73px' setPlaying={setPlaying} />
+          <PlayerButton
+            icon='play'
+            disabled={!playerData.current && true}
+            size='73px'
+            setPlaying={setPlaying}
+          />
         )}
-        <PlayerButton icon='next' />
-        <PlayerButton icon='repeat' />
+        <PlayerButton icon='next' disabled={!playerData.current && true} />
+        <PlayerButton icon='repeat' disabled={!playerData.current && true} />
       </PlayerControlContainer>
     </PlayerContainer>
   );

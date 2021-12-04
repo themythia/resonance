@@ -22,6 +22,7 @@ const PlayerButton = (props) => {
     <StyledPlayerButton
       size={props.size}
       onClick={() => handleClick(props.icon)}
+      disabled={props.disabled}
     >
       <Icon>
         {props.icon === 'prev' ? (
