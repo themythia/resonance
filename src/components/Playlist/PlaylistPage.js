@@ -106,6 +106,8 @@ const PlaylistPage = (props) => {
                     track,
                     index,
                     playlistId,
+                    playlistLength: playlist.tracks.length,
+                    shuffle: null,
                   })
                 }
               >
@@ -126,6 +128,8 @@ const PlaylistPage = (props) => {
                     track,
                     index,
                     playlistId,
+                    playlistLength: playlist.tracks.length,
+                    shuffle: null,
                   })
                 }
               >

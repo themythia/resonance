@@ -51,6 +51,9 @@ const Player = (props) => {
       clear();
       setProgress(0);
       setPlaying(false);
+      dispatch({
+        type: 'NEXT_TRACK',
+      });
     }
   }, [progress]);
 
@@ -69,10 +72,13 @@ const Player = (props) => {
     songRef.current.muted = props.muted;
   }, [props.muted]);
 
+  // triggers on track change, resets the play/pause button
   useEffect(() => {
-    console.log('trigger!');
     setPlaying(playing && false);
     setProgress(0);
+    if (!playing) {
+      setPlaying(true);
+    }
   }, [props.src]);
 
   console.log('src', props.src);
