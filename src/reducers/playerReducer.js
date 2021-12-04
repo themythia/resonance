@@ -1,5 +1,3 @@
-import { SteamDimensions } from '@styled-icons/boxicons-logos/Steam';
-
 export const initialPlayerState = {
   currentTrack: null,
   playlists: {},
