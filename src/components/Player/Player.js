@@ -51,9 +51,25 @@ const Player = (props) => {
       clear();
       setProgress(0);
       setPlaying(false);
-      dispatch({
-        type: 'NEXT_TRACK',
-      });
+      if (!playerData.current.shuffle) {
+        if (
+          playerData.current.index !==
+          playerData.current.playlistLength - 1
+        ) {
+          // if not on shuffle
+          // and not on the last track of the playlist
+          // play next track
+          dispatch({
+            type: 'NEXT_TRACK',
+          });
+        }
+      } else {
+        // if on shuffle
+        // play next track
+        dispatch({
+          type: 'NEXT_TRACK',
+        });
+      }
     }
   }, [progress]);
 
@@ -76,12 +92,11 @@ const Player = (props) => {
   useEffect(() => {
     setPlaying(playing && false);
     setProgress(0);
+    //plays the next track
     if (!playing) {
       setPlaying(true);
     }
   }, [props.src]);
-
-  console.log('src', props.src);
 
   return (
     <PlayerContainer>

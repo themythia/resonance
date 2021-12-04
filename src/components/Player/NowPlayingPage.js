@@ -23,15 +23,12 @@ const NowPlayingPage = () => {
     console.log('currentTrack', playerData.current.index);
     console.log('current', playerData.current);
     console.log('currentSrc:', current?.track.src);
+    console.log('playlists[current.playlistId].tracks[index].album.image');
   }
 
   return (
     <NowPlayingContainer>
-      {current && (
-        <AlbumCover
-          src={playlists[current.playlistId].tracks[index].album.image}
-        />
-      )}
+      {current && <AlbumCover src={current.track.album.image} />}
       <SongInfoTextContainer>
         {current && <h5>{current.track.name}</h5>}
         {current && <p>{current.track.artists[0]}</p>}

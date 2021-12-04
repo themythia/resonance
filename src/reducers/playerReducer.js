@@ -48,15 +48,18 @@ export const playerReducer = (state, action) => {
       };
 
     case 'NEXT_TRACK':
+      const nextTrack = () => {
+        if (state.current.shuffle) {
+          return Math.floor(Math.random() * state.current.playlistLength);
+        } else return state.current.index + 1;
+      };
+
       return {
         ...state,
         current: {
           ...state.current,
-          index: state.current.index + 1,
-          track:
-            state.playlists[state.current.playlistId].tracks[
-              state.current.index + 1
-            ],
+          index: nextTrack(),
+          track: state.playlists[state.current.playlistId].tracks[nextTrack()],
         },
       };
     default:
