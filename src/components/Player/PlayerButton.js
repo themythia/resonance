@@ -13,7 +13,7 @@ import { PlayerContext } from '../../contexts/PlayerContext';
 
 const PlayerButton = (props) => {
   const { playerData, dispatch } = useContext(PlayerContext);
-  const [shuffle, setShuffle] = useState(false);
+
   const handleClick = (icon) => {
     if (icon === 'pause') {
       props.setPlaying(false);
