@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+import { PlayerContext } from '../../contexts/PlayerContext';
 import {
   PlayerContainer,
   PlayerControlContainer,
@@ -13,6 +14,7 @@ const Player = (props) => {
   const time = useRef(null);
   const songRef = useRef(null);
   const clear = () => window.clearInterval(time.current);
+  const { dispatch } = useContext(PlayerContext);
 
   // handles time strings for progress bar
   // kinda unnecessary as we deal with songs that are 30 seconds
@@ -67,13 +69,17 @@ const Player = (props) => {
     songRef.current.muted = props.muted;
   }, [props.muted]);
 
+  useEffect(() => {
+    console.log('trigger!');
+    setPlaying(playing && false);
+    setProgress(0);
+  }, [props.src]);
+
   console.log('src', props.src);
 
   return (
     <PlayerContainer>
-      <audio ref={songRef}>
-        <source src={props.src} />
-      </audio>
+      <audio ref={songRef} preload='auto' src={props.src} controls />
       <ProgressBar
         type='range'
         min='0'

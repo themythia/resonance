@@ -10,9 +10,29 @@ export const playerReducer = (state, action) => {
         ...state,
         playlists: {
           ...state.playlists,
-          [action.id]: action.playlistData,
+          [action.id]: action.playlist,
         },
       };
+    case 'SET_CURRENT':
+      return {
+        ...state,
+        current: {
+          index: action.index,
+          track: action.track,
+          playlistId: action.playlistId,
+        },
+      };
+    case 'SET_DEVICE':
+      return {
+        ...state,
+        device: action.device,
+      };
+
+    // case 'NEXT_TRACK':
+    //   return {
+    //     ...state,
+    //     current: {},
+    //   };
     default:
       return state;
   }

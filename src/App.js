@@ -25,15 +25,22 @@ function App() {
     token: null,
   });
 
-  const [playerData, dispatch] = useReducer(playerReducer, {});
-
-  console.log('userData', userData);
+  const [playerData, dispatch] = useReducer(playerReducer, {
+    device: 'mobile',
+    current: null,
+    playlists: null,
+  });
+  console.log('playerData:', playerData);
 
   const showMenuBar =
     location.pathname !== '/' && location.pathname !== '/login';
 
   useLayoutEffect(() => {
     window.addEventListener('resize', () => setWidth(window.innerWidth));
+    if (width > 1023) {
+      dispatch({ type: 'SET_DEVICE', device: 'desktop' });
+    } else dispatch({ type: 'SET_DEVICE', device: 'mobile' });
+
     return window.removeEventListener('resize', () =>
       setWidth(window.innerWidth)
     );
@@ -42,7 +49,7 @@ function App() {
   return (
     <div className='wrapper'>
       <UserContext.Provider value={{ userData, setUserData }}>
-        <PlayerContext.Provider value={null}>
+        <PlayerContext.Provider value={{ playerData, dispatch }}>
           <Routes>
             <Route exact path='/' element={<WelcomePage />} />
             <Route path='/login' element={<Login />} />

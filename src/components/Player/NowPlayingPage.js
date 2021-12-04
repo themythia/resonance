@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Player from './Player';
 import {
@@ -8,26 +8,37 @@ import {
   SongInfoTextContainer,
 } from '../../styled/NowPlaying';
 import VolumeBar from './VolumeBar';
+import { PlayerContext } from '../../contexts/PlayerContext';
 
 const NowPlayingPage = () => {
   const [volume, setVolume] = useState(50);
   const [muted, setMuted] = useState(false);
-  const { state } = useLocation();
-  console.log('state:', state);
+  const { playerData, dispatch } = useContext(PlayerContext);
+  const { playlists, current } = playerData;
+  const index = current?.index;
+  const currentTrack = playlists?.[current?.playlistId]?.tracks?.[index];
+  console.log('index', index);
+
+  if (current) {
+    console.log('currentTrack', playerData.current.index);
+    console.log('current', playerData.current);
+    console.log('currentSrc:', current?.track.src);
+  }
 
   return (
     <NowPlayingContainer>
-      <PlayingFrom>
-        {`Playing from the playlist: ${state?.playlistName}`}
-      </PlayingFrom>
-      <AlbumCover src={state?.image} />
+      {current && (
+        <AlbumCover
+          src={playlists[current.playlistId].tracks[index].album.image}
+        />
+      )}
       <SongInfoTextContainer>
-        <h5>{state?.name}</h5>
-        <p>{state?.artist}</p>
+        {current && <h5>{current.track.name}</h5>}
+        {current && <p>{current.track.artists[0]}</p>}
       </SongInfoTextContainer>
       <Player
         max={30}
-        src={state?.src}
+        src={current?.track.src}
         volume={{ volume, setVolume }}
         muted={muted}
       />
