@@ -93,7 +93,7 @@ const Player = (props) => {
     setPlaying(playing && false);
     setProgress(0);
     //plays the next track
-    if (!playing) {
+    if (!playing && playerData.current) {
       setPlaying(true);
     }
   }, [props.src]);
