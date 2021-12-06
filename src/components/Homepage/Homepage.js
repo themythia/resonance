@@ -7,13 +7,23 @@ import {
 } from '../../styled/Homepage.styled';
 import RecommendedList from './RecommendedMusic/RecommendedList';
 import RecentlyPlayedList from './RecentlyPlayedMusic/RecentlyPlayedList';
+import { useContext, useEffect } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 
 const Homepage = () => {
+  const { userData } = useContext(UserContext);
 
+  console.log(userData);
 
+  useEffect(() => {
+    fetch(`https://api.spotify.com/v1/recommendations`, {
+      method: 'GET',
+      headers: { Authorization: 'Bearer ' + userData.token },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
 
-
-  
   return (
     <StyledGridWrapper>
       <StyledTitleRecommended>
