@@ -44,8 +44,14 @@ export const playerReducer = (state, action) => {
       const nextTrack = () => {
         if (state.current.shuffle) {
           return Math.floor(Math.random() * state.current.playlistLength);
-        } else return state.current.index + 1;
+        } else {
+          if (state.current.index === state.current.playlistLength - 1) {
+            return state.current.index;
+          } else return state.current.index + 1;
+        }
       };
+
+      console.log('nextTrack:', nextTrack());
 
       return {
         ...state,
