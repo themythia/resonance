@@ -54,7 +54,7 @@ const Authorize = () => {
     <div>
       {userData.isLoggedIn === true ? 
         <Navigate to='/home' /> :
-        userData.isLoggedIn === "state not valid" ? 
+        userData.isLoggedIn === "error" ? 
         <Navigate to="/login" /> : 
         <h1>Hello</h1>
       }
