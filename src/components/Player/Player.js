@@ -75,27 +75,37 @@ const Player = (props) => {
 
   // controls the play/pause functions
   useEffect(() => {
-    if (playing) songRef.current.play();
-    else songRef.current.pause();
+    if (playing) {
+      songRef.current.play();
+      dispatch({
+        type: 'ADD_PLAYED',
+        index: playerData.current.index,
+      });
+    } else songRef.current.pause();
   }, [playing]);
 
   useEffect(() => {
     songRef.current.volume = props.volume.volume / 100;
   }, [props.volume.volume]);
 
-  // console.log('props mute?', props.mute.muted);
   useEffect(() => {
     songRef.current.muted = props.muted;
   }, [props.muted]);
 
   // triggers on track change, resets the play/pause button
   useEffect(() => {
-    setPlaying(playing && false);
-    setProgress(0);
-    //plays the next track
-    if (!playing && playerData.current) {
-      setPlaying(true);
+    // setPlaying(playing && false);
+    console.log('props.src', props.src);
+    if (props.src) {
+      clear();
+      setProgress(0);
+      setPlaying(false);
+      setTimeout(() => setPlaying(true), 500);
     }
+    //plays the next track
+    // if (!playing && playerData.current) {
+    //   setPlaying(true);
+    // }
   }, [props.src]);
 
   return (
