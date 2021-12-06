@@ -15,7 +15,7 @@ const Login = () => {
     let state = 'some-state-of-my-choice';
     let clientID = 'f573531847c5435e80f1ba528eceed98';
     let responsetype = 'token';
-    let scope = 'user-read-private user-read-email';
+    let scope = 'user-read-private user-read-email user-read-recently-played';
     let redirect_uri = 'http://localhost:3000/authorize';
     let url = `https://accounts.spotify.com/authorize?`;
     url += querystring.stringify({

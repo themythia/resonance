@@ -9,6 +9,11 @@ import RecommendedList from './RecommendedMusic/RecommendedList';
 import RecentlyPlayedList from './RecentlyPlayedMusic/RecentlyPlayedList';
 
 const Homepage = () => {
+
+
+
+
+  
   return (
     <StyledGridWrapper>
       <StyledTitleRecommended>
