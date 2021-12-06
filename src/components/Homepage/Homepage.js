@@ -13,15 +13,17 @@ import { UserContext } from '../../contexts/UserContext';
 const Homepage = () => {
   const { userData } = useContext(UserContext);
 
-  console.log(userData);
+  console.log(userData.token);
 
   useEffect(() => {
-    fetch(`https://api.spotify.com/v1/recommendations`, {
+    if (!userData) return;
+    fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
       method: 'GET',
       headers: { Authorization: 'Bearer ' + userData.token },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .catch((e) => console.error(e));
   }, []);
 
   return (
