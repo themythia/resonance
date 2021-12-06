@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import request from 'request';
 import { UserContext } from '../../contexts/UserContext';
-import { Navigate } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 
 const Authorize = () => {
   const { userData, setUserData } = useContext(UserContext);
@@ -11,26 +11,54 @@ const Authorize = () => {
       .substring(1)
       .split('access_token=')[1]
       .split('&')[0];
-    var options = {
-      url: 'https://api.spotify.com/v1/me',
-      headers: { Authorization: 'Bearer ' + access_token },
-      json: true,
-    };
+    console.log(access_token);
+    let state = window.location.hash
+      .substring(1)
+      .split('state=')[1];
+    if(state === localStorage.getItem("stateValue")){
+     var options = {
+        url: 'https://api.spotify.com/v1/me',
+        headers: { Authorization: 'Bearer ' + access_token },
+        json: true,
+      };
 
-    // use the access token to access the Spotify Web API
-    request.get(options, function (error, response, body) {
-      console.log(body);
-      setUserData({
-        isLoggedIn: true,
-        data: body,
+      // use the access token to access the Spotify Web API
+      request.get(options, function (error, response, body) {
+        if(error) {
+          localStorage.removeItem("stateValue")
+          return setUserData({
+            ...userData,
+            isLoggedIn: "error",
+            data: {}
+          });
+          
+        }
+        localStorage.setItem("token", access_token);
+        setUserData({
+          ...userData,
+          isLoggedIn: true,
+          data: body,
+        });
       });
-    });
+    } else {
+      setUserData({
+        ...userData,
+        isLoggedIn: "error",
+        data: {}
+      });
+      localStorage.removeItem("stateValue");
+    }
   }, []);
 
   return (
     <div>
-      {userData.isLoggedIn && <Navigate to='/home' />}
-      <h1>Hello</h1>
+      {userData.isLoggedIn === true ? 
+        <Navigate to='/home' /> :
+        userData.isLoggedIn === "state not valid" ? 
+        <Navigate to="/login" /> : 
+        <h1>Hello</h1>
+      }
+  
     </div>
   );
 };

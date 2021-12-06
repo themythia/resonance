@@ -19,9 +19,10 @@ function App() {
   // can change to useReducer if needed
   const [userData, setUserData] = useState({
     isLoggedIn: false,
-    data: {},
+    data: {}
   });
-
+  
+  
   console.log('userData', userData);
 
   const showMenuBar =
@@ -36,10 +37,10 @@ function App() {
 
   return (
     <div className='wrapper'>
-      <UserContext.Provider value={{ userData, setUserData }}>
+      <UserContext.Provider value={{userData, setUserData}}>
         <Routes>
           <Route exact path='/' element={<WelcomePage />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login  />} />
           <Route path='/authorize' element={<Authorize />} />
           <Route path='/home' element={<Homepage />} />
           <Route exact path='/library' element={<Library />} />
