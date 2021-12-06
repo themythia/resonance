@@ -23,6 +23,10 @@ const PlayerButton = (props) => {
       dispatch({
         type: 'TOGGLE_SHUFFLE',
       });
+    } else if (icon === 'next') {
+      dispatch({
+        type: 'NEXT_TRACK',
+      });
     }
   };
   return (

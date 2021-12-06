@@ -1,8 +1,3 @@
-export const initialPlayerState = {
-  currentTrack: null,
-  playlists: {},
-};
-
 export const playerReducer = (state, action) => {
   switch (action.type) {
     case 'NEW_PLAYLIST':
@@ -58,6 +53,20 @@ export const playerReducer = (state, action) => {
           ...state.current,
           index: nextTrack(),
           track: state.playlists[state.current.playlistId].tracks[nextTrack()],
+        },
+      };
+
+    case 'ADD_PLAYED':
+      let played = [];
+      if (!state.current?.played) {
+        played.push(action.index);
+      } else played = [...state.current.played, action.index];
+
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          played,
         },
       };
     default:
