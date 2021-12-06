@@ -160,6 +160,7 @@ export const SongInfoTextContainer = styled.div`
   @media screen and (min-width: 1024px) {
     text-align: left;
     margin-bottom: 0;
+    width: calc(100vw / 3);
   }
 `;
 
@@ -320,10 +321,10 @@ export const VolumeControlContainer = styled.div`
   display: none;
 
   @media screen and (min-width: 1024px) {
-    width: calc(100vw / 12 + 32px);
+    width: calc(100vw / 3);
     height: 24px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
   }
 `;
