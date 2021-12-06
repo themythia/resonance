@@ -1,10 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 import Player from './Player';
 import {
   AlbumCover,
   NowPlayingContainer,
-  PlayingFrom,
   SongInfoTextContainer,
 } from '../../styled/NowPlaying';
 import VolumeBar from './VolumeBar';
@@ -13,18 +11,8 @@ import { PlayerContext } from '../../contexts/PlayerContext';
 const NowPlayingPage = () => {
   const [volume, setVolume] = useState(50);
   const [muted, setMuted] = useState(false);
-  const { playerData, dispatch } = useContext(PlayerContext);
-  const { playlists, current } = playerData;
-  const index = current?.index;
-  const currentTrack = playlists?.[current?.playlistId]?.tracks?.[index];
-  console.log('index', index);
-
-  if (current) {
-    console.log('currentTrack', playerData.current.index);
-    console.log('current', playerData.current);
-    console.log('currentSrc:', current?.track.src);
-    console.log('playlists[current.playlistId].tracks[index].album.image');
-  }
+  const { playerData } = useContext(PlayerContext);
+  const { current } = playerData;
 
   return (
     <NowPlayingContainer>
