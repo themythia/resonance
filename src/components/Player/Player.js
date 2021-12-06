@@ -95,7 +95,7 @@ const Player = (props) => {
   // triggers on track change, resets the play/pause button
   useEffect(() => {
     // setPlaying(playing && false);
-    console.log('props.src', props.src);
+
     if (props.src) {
       clear();
       setProgress(0);

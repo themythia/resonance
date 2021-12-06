@@ -67,7 +67,9 @@ export const StyledPlayerButton = styled.button`
   height: ${(props) => props.size || '36px'};
   width: ${(props) => props.size || '36px'};
   background: ${(props) => {
-    return props.size || (props?.status?.shuffle && props.icon === 'shuffle')
+    return props.size ||
+      (props?.status?.shuffle && props.icon === 'shuffle') ||
+      (props?.status?.repeat && props.icon === 'repeat')
       ? 'var(--dt-radial-gradient)'
       : 'transparent';
   }};

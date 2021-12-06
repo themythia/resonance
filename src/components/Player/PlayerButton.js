@@ -27,6 +27,14 @@ const PlayerButton = (props) => {
       dispatch({
         type: 'NEXT_TRACK',
       });
+    } else if (icon === 'prev') {
+      dispatch({
+        type: 'PREV_TRACK',
+      });
+    } else if (icon === 'repeat') {
+      dispatch({
+        type: 'TOGGLE_REPEAT',
+      });
     }
   };
   return (
@@ -36,6 +44,7 @@ const PlayerButton = (props) => {
       disabled={props.disabled}
       status={{
         shuffle: playerData.current?.shuffle,
+        repeat: playerData.current?.repeat,
       }}
       icon={props.icon}
     >

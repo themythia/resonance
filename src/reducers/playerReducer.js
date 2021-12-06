@@ -23,6 +23,12 @@ export const playerReducer = (state, action) => {
               : state.current.shuffle === true
               ? true
               : state.current.shuffle === false && false,
+          repeat:
+            state.current?.repeat === undefined
+              ? false
+              : state.current.repeat === true
+              ? true
+              : state.current.repeat === false && false,
         },
       };
     case 'SET_DEVICE':
@@ -45,9 +51,15 @@ export const playerReducer = (state, action) => {
         if (state.current.shuffle) {
           return Math.floor(Math.random() * state.current.playlistLength);
         } else {
-          if (state.current.index === state.current.playlistLength - 1) {
-            return state.current.index;
-          } else return state.current.index + 1;
+          if (state.current.repeat) {
+            if (state.current.index === state.current.playlistLength - 1) {
+              return 0;
+            } else return state.current.index + 1;
+          } else if (!state.current.repeat) {
+            if (state.current.index === state.current.playlistLength - 1) {
+              return state.current.index;
+            } else return state.current.index + 1;
+          }
         }
       };
 
@@ -95,6 +107,15 @@ export const playerReducer = (state, action) => {
           },
         };
       }
+
+    case 'TOGGLE_REPEAT':
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          repeat: !state.current.repeat,
+        },
+      };
 
     default:
       return state;

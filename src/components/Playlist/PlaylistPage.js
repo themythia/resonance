@@ -43,6 +43,7 @@ const PlaylistPage = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log('data:', data);
         dispatch({
           type: 'NEW_PLAYLIST',
           id: playlistId,
