@@ -51,19 +51,20 @@ export const playerReducer = (state, action) => {
         }
       };
 
-      console.log('nextTrack:', nextTrack());
+      let next = nextTrack(); // to have a same index in return object
 
       return {
         ...state,
         current: {
           ...state.current,
-          index: nextTrack(),
-          track: state.playlists[state.current.playlistId].tracks[nextTrack()],
+          index: next,
+          track: state.playlists[state.current.playlistId].tracks[next],
         },
       };
 
     case 'ADD_PLAYED':
       let played = [];
+      console.log('ADD_PLAYED - played:', state.current.played);
       if (!state.current?.played) {
         played.push(action.index);
       } else played = [...state.current.played, action.index];
@@ -75,6 +76,26 @@ export const playerReducer = (state, action) => {
           played,
         },
       };
+
+    case 'PREV_TRACK':
+      if (!state.current?.played || state.current.played.length === 1) {
+        return state;
+      } else {
+        let played = [...state.current.played];
+        return {
+          ...state,
+          current: {
+            ...state.current,
+            index: played[played.length - 2],
+            played: played.slice(0, -2), // -2 because ADD_PLAYED will add the song again
+            track:
+              state.playlists[state.current.playlistId].tracks[
+                played[played.length - 2]
+              ],
+          },
+        };
+      }
+
     default:
       return state;
   }
