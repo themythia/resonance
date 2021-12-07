@@ -11,7 +11,6 @@ const Authorize = () => {
       .substring(1)
       .split('access_token=')[1]
       .split('&')[0];
-    console.log(access_token);
     let state = window.location.hash
       .substring(1)
       .split('state=')[1];
@@ -33,9 +32,6 @@ const Authorize = () => {
           });
           
         }
-        console.log(error);
-        console.log(response);
-        console.log(body);
         localStorage.setItem("token", access_token);
         setUserData({
           ...userData,
