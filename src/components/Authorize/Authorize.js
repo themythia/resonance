@@ -24,7 +24,7 @@ const Authorize = () => {
 
       // use the access token to access the Spotify Web API
       request.get(options, function (error, response, body) {
-        if(error) {
+        if(error || response.statusCode !== 200) {
           localStorage.removeItem("stateValue")
           return setUserData({
             ...userData,
@@ -33,6 +33,9 @@ const Authorize = () => {
           });
           
         }
+        console.log(error);
+        console.log(response);
+        console.log(body);
         localStorage.setItem("token", access_token);
         setUserData({
           ...userData,
@@ -53,12 +56,11 @@ const Authorize = () => {
   return (
     <div>
       {userData.isLoggedIn === true ? 
-        <Navigate to='/home' /> :
-        userData.isLoggedIn === "error" ? 
-        <Navigate to="/login" /> : 
+        <Navigate to='/home' />  :
+        userData.isLoggedIn === "error"  ?
+        <Navigate to="/login" /> :
         <h1>Hello</h1>
       }
-  
     </div>
   );
 };
