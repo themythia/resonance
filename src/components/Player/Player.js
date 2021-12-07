@@ -7,6 +7,7 @@ import {
   ProgressTextContainer,
 } from '../../styled/NowPlaying';
 import PlayerButton from './PlayerButton';
+import { handleTime } from '../../utils/handleTime';
 
 const Player = (props) => {
   const [playing, setPlaying] = useState(false);
@@ -15,25 +16,6 @@ const Player = (props) => {
   const songRef = useRef(null);
   const clear = () => window.clearInterval(time.current);
   const { playerData, dispatch } = useContext(PlayerContext);
-
-  // handles time strings for progress bar
-  // kinda unnecessary as we deal with songs that are 30 seconds
-  // but leaving here for future developments
-  const handleTime = (time) => {
-    const date = new Date(null);
-    date.setSeconds(time); // specify value for SECONDS here
-    const dateString = date.toISOString();
-    if (time < 600) {
-      // less than 10 mins returns m:ss
-      return dateString.substr(15, 4);
-    } else if (time < 3600) {
-      // less than an hour returns mm:ss
-      return dateString.substr(14, 5);
-    } else if (time < 36000) {
-      // less than 10 hours returns h:mm:ss
-      return dateString.substr(12, 7);
-    } else return dateString.substr(11, 8); // else returns hh:mm:ss
-  };
 
   // handles the bar progress
   useEffect(() => {
@@ -126,8 +108,8 @@ const Player = (props) => {
         }}
       />
       <ProgressTextContainer>
-        <p>{handleTime(progress)}</p>
-        <p>{handleTime(props.max)}</p>
+        <p>{handleTime(progress * 1000)}</p>
+        <p>{handleTime(props.max * 1000)}</p>
       </ProgressTextContainer>
       <PlayerControlContainer>
         <PlayerButton icon='shuffle' disabled={!playerData.current && true} />

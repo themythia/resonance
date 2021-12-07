@@ -11,6 +11,7 @@ import PlaylistItem from './PlaylistItem';
 import { useParams, Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { PlayerContext } from '../../contexts/PlayerContext';
+import { handleTime } from '../../utils/handleTime';
 
 const PlaylistPage = (props) => {
   const { playlistId } = useParams();
@@ -19,22 +20,6 @@ const PlaylistPage = (props) => {
   const [fetchStatus, setFetchStatus] = useState(false);
   const [loading, setLoading] = useState(true);
   const [playlist, setPlaylist] = useState(null);
-
-  const handleTime = (time) => {
-    const date = new Date(null);
-    date.setMilliseconds(time); // specify value for milliseconds here
-    const dateString = date.toISOString();
-    if (time < 600) {
-      // less than 10 mins returns m:ss
-      return dateString.substr(15, 4);
-    } else if (time < 3600) {
-      // less than an hour returns mm:ss
-      return dateString.substr(14, 5);
-    } else if (time < 36000) {
-      // less than 10 hours returns h:mm:ss
-      return dateString.substr(12, 7);
-    } else return dateString.substr(11, 8); // else returns hh:mm:ss
-  };
 
   useEffect(() => {
     fetch(`https://api.spotify.com/v1/playlists/${playlistId}?market=TR`, {
