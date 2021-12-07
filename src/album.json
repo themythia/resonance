@@ -1,0 +1,369 @@
+{
+  "album_type": "album",
+  "artists": [
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+      },
+      "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+      "id": "3CjlHNtplJyTf9npxaPl5w",
+      "name": "CHVRCHES",
+      "type": "artist",
+      "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+    }
+  ],
+  "copyrights": [
+    {
+      "text": "© 2021 CHVRCHES, under exclusive license to Universal Music GmbH",
+      "type": "C"
+    },
+    {
+      "text": "A Vertigo Berlin release; ℗ 2021 CHVRCHES, under exclusive license to Universal Music GmbH",
+      "type": "P"
+    }
+  ],
+  "external_ids": {
+    "upc": "00602438412280"
+  },
+  "external_urls": {
+    "spotify": "https://open.spotify.com/album/1oDHd8X6KrmLW3jFNsSfMu"
+  },
+  "genres": [],
+  "href": "https://api.spotify.com/v1/albums/1oDHd8X6KrmLW3jFNsSfMu",
+  "id": "1oDHd8X6KrmLW3jFNsSfMu",
+  "images": [
+    {
+      "height": 640,
+      "url": "https://i.scdn.co/image/ab67616d0000b2737625a4b6e1461c143e7b76a0",
+      "width": 640
+    },
+    {
+      "height": 300,
+      "url": "https://i.scdn.co/image/ab67616d00001e027625a4b6e1461c143e7b76a0",
+      "width": 300
+    },
+    {
+      "height": 64,
+      "url": "https://i.scdn.co/image/ab67616d000048517625a4b6e1461c143e7b76a0",
+      "width": 64
+    }
+  ],
+  "label": "Vertigo Berlin",
+  "name": "Screen Violence",
+  "popularity": 51,
+  "release_date": "2021-08-27",
+  "release_date_precision": "day",
+  "total_tracks": 10,
+  "tracks": {
+    "href": "https://api.spotify.com/v1/albums/1oDHd8X6KrmLW3jFNsSfMu/tracks?offset=0&limit=50&market=TR&locale=en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7",
+    "items": [
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 304675,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/3xFoRfoSomjdsQrQHJAOto"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3xFoRfoSomjdsQrQHJAOto",
+        "id": "3xFoRfoSomjdsQrQHJAOto",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Asking For A Friend",
+        "preview_url": "https://p.scdn.co/mp3-preview/125600801a1b94d214cd8cd20251cfd10ec8abce?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 1,
+        "type": "track",
+        "uri": "spotify:track:3xFoRfoSomjdsQrQHJAOto"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 189385,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/1rXjRr2KVpmlyJbK2Aa49R"
+        },
+        "href": "https://api.spotify.com/v1/tracks/1rXjRr2KVpmlyJbK2Aa49R",
+        "id": "1rXjRr2KVpmlyJbK2Aa49R",
+        "is_local": false,
+        "is_playable": true,
+        "name": "He Said She Said",
+        "preview_url": "https://p.scdn.co/mp3-preview/b7622ec7588c193b8743b14ed365b20f33175c49?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 2,
+        "type": "track",
+        "uri": "spotify:track:1rXjRr2KVpmlyJbK2Aa49R"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 248147,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/42oRQ6pk3rrjKrYFAGcLhW"
+        },
+        "href": "https://api.spotify.com/v1/tracks/42oRQ6pk3rrjKrYFAGcLhW",
+        "id": "42oRQ6pk3rrjKrYFAGcLhW",
+        "is_local": false,
+        "is_playable": true,
+        "name": "California",
+        "preview_url": "https://p.scdn.co/mp3-preview/5c5476b32b143ddc0c9d9380a98edcbe126db7ca?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 3,
+        "type": "track",
+        "uri": "spotify:track:42oRQ6pk3rrjKrYFAGcLhW"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 319984,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/39LUihkJzZGVAOCEAZayJb"
+        },
+        "href": "https://api.spotify.com/v1/tracks/39LUihkJzZGVAOCEAZayJb",
+        "id": "39LUihkJzZGVAOCEAZayJb",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Violent Delights",
+        "preview_url": "https://p.scdn.co/mp3-preview/500ecdaea777af4fef22ee5211109f0dcd281152?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 4,
+        "type": "track",
+        "uri": "spotify:track:39LUihkJzZGVAOCEAZayJb"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6G7P2EzH5A36ujN9VPm4B0"
+            },
+            "href": "https://api.spotify.com/v1/artists/6G7P2EzH5A36ujN9VPm4B0",
+            "id": "6G7P2EzH5A36ujN9VPm4B0",
+            "name": "Robert Smith",
+            "type": "artist",
+            "uri": "spotify:artist:6G7P2EzH5A36ujN9VPm4B0"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 331011,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/6Hqj8TOps7LeWwPCIyrder"
+        },
+        "href": "https://api.spotify.com/v1/tracks/6Hqj8TOps7LeWwPCIyrder",
+        "id": "6Hqj8TOps7LeWwPCIyrder",
+        "is_local": false,
+        "is_playable": true,
+        "name": "How Not To Drown (feat. Robert Smith)",
+        "preview_url": "https://p.scdn.co/mp3-preview/7a555a7c55e7b368370444f25014184eaf3aee83?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 5,
+        "type": "track",
+        "uri": "spotify:track:6Hqj8TOps7LeWwPCIyrder"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 269640,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/0gMeiFVCXHubeQQNbWWwUK"
+        },
+        "href": "https://api.spotify.com/v1/tracks/0gMeiFVCXHubeQQNbWWwUK",
+        "id": "0gMeiFVCXHubeQQNbWWwUK",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Final Girl",
+        "preview_url": "https://p.scdn.co/mp3-preview/9fb517587b1b60f5124cc7380d4a4d83565affff?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 6,
+        "type": "track",
+        "uri": "spotify:track:0gMeiFVCXHubeQQNbWWwUK"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 199455,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/4eSVxppEiEikoX8uz4ZBE8"
+        },
+        "href": "https://api.spotify.com/v1/tracks/4eSVxppEiEikoX8uz4ZBE8",
+        "id": "4eSVxppEiEikoX8uz4ZBE8",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Good Girls",
+        "preview_url": "https://p.scdn.co/mp3-preview/3812e6e6f4cf8e165e29e4945c8185972101d0e1?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 7,
+        "type": "track",
+        "uri": "spotify:track:4eSVxppEiEikoX8uz4ZBE8"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 224602,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/21RCYdFlmsJzgjsbbuHVwU"
+        },
+        "href": "https://api.spotify.com/v1/tracks/21RCYdFlmsJzgjsbbuHVwU",
+        "id": "21RCYdFlmsJzgjsbbuHVwU",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Lullabies",
+        "preview_url": "https://p.scdn.co/mp3-preview/64f08e75b0fcdc5c37670d9f4b52ec778ba89d32?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 8,
+        "type": "track",
+        "uri": "spotify:track:21RCYdFlmsJzgjsbbuHVwU"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 273830,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/0lDDvkMXd9mml8b4SKIFVC"
+        },
+        "href": "https://api.spotify.com/v1/tracks/0lDDvkMXd9mml8b4SKIFVC",
+        "id": "0lDDvkMXd9mml8b4SKIFVC",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Nightmares",
+        "preview_url": "https://p.scdn.co/mp3-preview/5a109a7e04b3025cf44bd1bd3daf840b68c70d24?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 9,
+        "type": "track",
+        "uri": "spotify:track:0lDDvkMXd9mml8b4SKIFVC"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3CjlHNtplJyTf9npxaPl5w"
+            },
+            "href": "https://api.spotify.com/v1/artists/3CjlHNtplJyTf9npxaPl5w",
+            "id": "3CjlHNtplJyTf9npxaPl5w",
+            "name": "CHVRCHES",
+            "type": "artist",
+            "uri": "spotify:artist:3CjlHNtplJyTf9npxaPl5w"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 211987,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/2pT6crrgeJQ4xTId9I8QoL"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2pT6crrgeJQ4xTId9I8QoL",
+        "id": "2pT6crrgeJQ4xTId9I8QoL",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Better If You Don't",
+        "preview_url": "https://p.scdn.co/mp3-preview/909c94e8e475a589b51c6b9c70749f365267d762?cid=774b29d4f13844c495f206cafdad9c86",
+        "track_number": 10,
+        "type": "track",
+        "uri": "spotify:track:2pT6crrgeJQ4xTId9I8QoL"
+      }
+    ],
+    "limit": 50,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 10
+  },
+  "type": "album",
+  "uri": "spotify:album:1oDHd8X6KrmLW3jFNsSfMu"
+}

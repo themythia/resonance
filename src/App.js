@@ -2,6 +2,7 @@ import './App.css';
 import { useLayoutEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
+import Header from './components/Header/Header';
 import NowPlayingPage from './components/Player/NowPlayingPage';
 import WelcomePage from './components/WelcomePage/WelcomePage';
 import Login from './components/Login/Login.js';
@@ -37,6 +38,7 @@ function App() {
   return (
     <div className='wrapper'>
       <UserContext.Provider value={{ userData, setUserData }}>
+        {showMenuBar && <Header />}
         <Routes>
           <Route exact path='/' element={<WelcomePage />} />
           <Route path='/login' element={<Login />} />
