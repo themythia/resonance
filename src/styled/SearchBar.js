@@ -13,6 +13,17 @@ export const HeaderContainer = styled.div`
   @media (prefers-color-scheme: dark) {
     background: var(--dt-navbar-background);
   }
+
+  @media screen and (min-width: 1024px) {
+    height: 104px;
+    width: calc(100vw - calc(100vw / 6));
+    right: 0;
+    background: var(--lt-background);
+    justify-content: flex-end;
+    @media (prefers-color-scheme: dark) {
+      background: var(--dt-background);
+    }
+  }
 `;
 
 export const SearchBarContainer = styled.div`
@@ -28,6 +39,10 @@ export const SearchBarContainer = styled.div`
   color: var(--lt-body-font-bold);
   @media (prefers-color-scheme: dark) {
     color: var(--dt-body-font-bold);
+  }
+  @media screen and (min-width: 1024px) {
+    width: 292px;
+    margin-right: 24px;
   }
 `;
 
@@ -50,6 +65,9 @@ export const ProfilePic = styled.img`
   height: 56px;
   width: 56px;
   border-radius: 100%;
+  @media screen and (min-width: 1024px) {
+    margin-right: 24px;
+  }
 `;
 
 export const SearchInputs = styled.div``;
