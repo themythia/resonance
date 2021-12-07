@@ -1,30 +1,22 @@
-import { StyledRecentlyPlayedList } from "../../../styled/Homepage.styled";
-import RecentlyPlayedSong from "./RecentlyPlayedSong";
-import logo from "../../../logo.svg";
+import { StyledRecentlyPlayedList } from '../../../styled/Homepage.styled';
+import RecentlyPlayedSong from './RecentlyPlayedSong';
+import logo from '../../../logo.svg';
 
-const RecentlyPlayedList = () => {
-	const artistList = [
-		{ artist: "Evergrey", album: "Glorious Collision", image: logo },
-		{ artist: "Evergrey", album: "Torn", image: logo },
-		{ artist: "John Petrucci", album: "Suspended Animation", image: logo },
-		{ artist: "Erra", album: "Drift", image: logo },
-		{ artist: "Novelists FR", album: "C`est La Vie", image: logo },
-	];
-
-	return (
-		<StyledRecentlyPlayedList>
-			{artistList.map(({ artist, album, image }, index) => {
-				return (
-					<RecentlyPlayedSong
-						key={index}
-						artist={artist}
-						album={album}
-						albumImage={image}
-					/>
-				);
-			})}
-		</StyledRecentlyPlayedList>
-	);
+const RecentlyPlayedList = ({ songlist }) => {
+  return (
+    <StyledRecentlyPlayedList>
+      {songlist.map((song) => {
+        return (
+          <RecentlyPlayedSong
+            key={song.track.id}
+            artist={song.track.artists[0].name}
+            song={song.track.name}
+            albumImage={song.track.album.images[1].url}
+          />
+        );
+      })}
+    </StyledRecentlyPlayedList>
+  );
 };
 
 export default RecentlyPlayedList;

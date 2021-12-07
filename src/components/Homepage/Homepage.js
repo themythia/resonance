@@ -12,7 +12,7 @@ import { UserContext } from '../../contexts/UserContext';
 
 const Homepage = () => {
   const { userData } = useContext(UserContext);
-  const [song, setSong] = useState([]);
+  const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState([]);
 
   console.log(userData.token);
 
@@ -23,19 +23,20 @@ const Homepage = () => {
       headers: { Authorization: 'Bearer ' + userData.token },
     })
       .then((res) => res.json())
-      .then((data) => setSong(data.items))
+      .then((data) => setRecentlyPlayedSongs(data.items))
       .catch((e) => console.error(e));
   }, [userData.token]);
 
-  console.log(
-    song.map((song) => {
-      return {
-        artist: song.track.artists[0].name,
-        song: song.track.name,
-        image: song.track.album.images[1],
-      };
+  useEffect(() => {
+    if (!userData.token) return;
+    fetch(`https://api.spotify.com/v1/recommendations`, {
+      method: 'GET',
+      headers: { Authorization: 'Bearer ' + userData.token },
     })
-  );
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((e) => console.error(e));
+  }, [userData.token]);
 
   return (
     <StyledGridWrapper>
@@ -52,7 +53,9 @@ const Homepage = () => {
         <h5>Recently played</h5>
       </StyledTitleRecent>
       <StyledRecentlyPlayedContainer>
-        <RecentlyPlayedList />
+        {recentlyPlayedSongs && (
+          <RecentlyPlayedList songlist={recentlyPlayedSongs} />
+        )}
       </StyledRecentlyPlayedContainer>
     </StyledGridWrapper>
   );

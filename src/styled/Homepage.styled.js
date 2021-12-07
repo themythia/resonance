@@ -102,7 +102,6 @@ export const StyledAlbumContainer = styled.div`
   }
 `;
 export const StyledAlbumCover = styled.div`
-  border: 1px solid white;
   width: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
@@ -226,7 +225,6 @@ export const StyledSongContainer = styled.div`
 `;
 
 export const StyledSongImageContainer = styled.div`
-  border: 1px solid white;
   min-width: 60px;
   max-width: 60px;
   overflow: hidden;
