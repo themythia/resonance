@@ -38,6 +38,7 @@ function App() {
   return (
     <div className='wrapper'>
       <UserContext.Provider value={{ userData, setUserData }}>
+        {showMenuBar && <Header />}
         <Routes>
           <Route exact path='/' element={<WelcomePage />} />
           <Route path='/login' element={<Login />} />
