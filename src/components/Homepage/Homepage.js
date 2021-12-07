@@ -7,24 +7,35 @@ import {
 } from '../../styled/Homepage.styled';
 import RecommendedList from './RecommendedMusic/RecommendedList';
 import RecentlyPlayedList from './RecentlyPlayedMusic/RecentlyPlayedList';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
 const Homepage = () => {
   const { userData } = useContext(UserContext);
+  const [song, setSong] = useState([]);
 
   console.log(userData.token);
 
   useEffect(() => {
-    if (!userData) return;
+    if (!userData.token) return;
     fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
       method: 'GET',
       headers: { Authorization: 'Bearer ' + userData.token },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => setSong(data.items))
       .catch((e) => console.error(e));
-  }, []);
+  }, [userData.token]);
+
+  console.log(
+    song.map((song) => {
+      return {
+        artist: song.track.artists[0].name,
+        song: song.track.name,
+        image: song.track.album.images[1],
+      };
+    })
+  );
 
   return (
     <StyledGridWrapper>
