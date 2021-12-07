@@ -92,7 +92,7 @@ const Player = (props) => {
 
   return (
     <PlayerContainer>
-      <audio ref={songRef} preload='auto' src={props.src} />
+      <audio controls ref={songRef} preload='auto' src={props.src} />
       <ProgressBar
         type='range'
         min='0'

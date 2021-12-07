@@ -30,7 +30,6 @@ function App() {
     current: null,
     playlists: null,
   });
-  console.log('playerData:', playerData);
 
   const showMenuBar =
     location.pathname !== '/' && location.pathname !== '/login';

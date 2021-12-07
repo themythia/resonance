@@ -76,7 +76,6 @@ export const playerReducer = (state, action) => {
 
     case 'ADD_PLAYED':
       let played = [];
-      console.log('ADD_PLAYED - played:', state.current.played);
       if (!state.current?.played) {
         played.push(action.index);
       } else played = [...state.current.played, action.index];
@@ -114,6 +113,15 @@ export const playerReducer = (state, action) => {
         current: {
           ...state.current,
           repeat: !state.current.repeat,
+        },
+      };
+
+    case 'NEW_ALBUM':
+      return {
+        ...state,
+        playlists: {
+          ...state.playlists,
+          [action.id]: action.playlist,
         },
       };
 

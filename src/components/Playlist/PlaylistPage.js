@@ -12,6 +12,8 @@ import { useParams, Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { PlayerContext } from '../../contexts/PlayerContext';
 import { handleTime } from '../../utils/handleTime';
+import { useLocation } from 'react-router-dom';
+import { newAlbum, newPlaylist } from '../../utils/dispatch';
 
 const PlaylistPage = (props) => {
   const { playlistId } = useParams();
@@ -20,44 +22,26 @@ const PlaylistPage = (props) => {
   const [fetchStatus, setFetchStatus] = useState(false);
   const [loading, setLoading] = useState(true);
   const [playlist, setPlaylist] = useState(null);
+  const { state } = useLocation();
+  console.log('playerData', playerData);
 
   useEffect(() => {
-    fetch(`https://api.spotify.com/v1/playlists/${playlistId}?market=TR`, {
+    const apiEndpoint = `https://api.spotify.com/v1/${state.type}/${playlistId}?market=${userData.data.country}`;
+    fetch(apiEndpoint, {
       method: 'GET',
       headers: { Authorization: 'Bearer ' + userData.token },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('data:', data);
-        dispatch({
-          type: 'NEW_PLAYLIST',
-          id: playlistId,
-          playlist: {
-            name: data.name,
-            image: data.images[1].url,
-            owner: data.owner.display_name,
-            type: data.type,
-            tracks: data.tracks.items.map((track) => {
-              let { track: t } = track;
-              return {
-                name: t.name,
-                duration: t.duration_ms,
-                id: t.id,
-                src: t.preview_url,
-                artists: t.artists.map((artist) => artist.name),
-                album: {
-                  albumId: t.album.id,
-                  image: t.album.images[1].url,
-                  name: t.album.name,
-                },
-              };
-            }),
-          },
-        });
+        if (state.type === 'playlists') {
+          dispatch(newPlaylist(playlistId, data));
+        } else if (state.type === 'albums') {
+          dispatch(newAlbum(playlistId, data));
+        }
       })
       .then(() => setFetchStatus(true))
       .catch((error) => console.warn(error));
-  }, [playlistId, dispatch, userData]);
+  }, [playlistId, dispatch, userData, state.type]);
 
   useEffect(() => {
     if (fetchStatus) {

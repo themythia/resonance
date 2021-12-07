@@ -30,7 +30,16 @@ const Authorize = () => {
 
   return (
     <div>
-      {userData.isLoggedIn && <Navigate to='/library/2KqLYZ1ky6MR9VZb06bbb7' />}
+      {userData.isLoggedIn && (
+        <Navigate
+          to='/library/2KqLYZ1ky6MR9VZb06bbb7'
+          state={{ type: 'playlists' }}
+        />
+        // <Navigate
+        //   to='/library/1oDHd8X6KrmLW3jFNsSfMu'
+        //   state={{ type: 'albums' }}
+        // />
+      )}
       <h1>Hello</h1>
     </div>
   );
