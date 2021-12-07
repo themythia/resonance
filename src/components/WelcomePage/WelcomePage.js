@@ -1,25 +1,38 @@
+import { Link } from 'react-router-dom';
 import {
-  StyledWrapper, 
-  TopContainer, 
-  Logo, 
+  StyledWrapper,
+  TopContainer,
+  Logo,
   CenterContainer,
-  ButtonContainer} from '../../styled/WelcomePage';
-
+  ButtonContainer,
+  PlayDiv,
+  SpotifyLogo,
+  Circle,
+  WaveRight,
+  WaveLeft,
+} from '../../styled/Utils';
 
 const WelcomePage = () => {
-
-    return (
+  return (
     <StyledWrapper>
-     <TopContainer>
-         <Logo />
-          <p>Powered By *logo*</p>
+      <TopContainer>
+        <Logo />
+        <p>
+          Powered By <SpotifyLogo />
+        </p>
       </TopContainer>
       <CenterContainer>
-        <ButtonContainer>
-        </ButtonContainer>
+        <Circle />
+        <WaveLeft />
+        <WaveRight />
+        <Link to='/login'>
+          <ButtonContainer>
+            <PlayDiv />
+          </ButtonContainer>
+        </Link>
       </CenterContainer>
     </StyledWrapper>
-  )
-}
+  );
+};
 
 export default WelcomePage;

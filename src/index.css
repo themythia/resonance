@@ -1,6 +1,11 @@
 /* color custom properties */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 :root {
+  /* Shorthand syntax */
+  /* font: font-style font-variant font-weight font-size/line-height font-family; */
+  /* Two of the values in font shorthand are mandatory: font-size and font-family. If either of these is not included, the entire declaration will be ignored.
+Also, font-family must be declared last of all values, otherwise, again, the entire declaration will be ignored. */
+
   --h1-bold: 700 49px/64px 'Roboto', sans-serif;
   --h2-bold: 700 39px/60px 'Roboto', sans-serif;
   --h3-bold: 700 31px/56px 'Roboto', sans-serif;
@@ -12,16 +17,30 @@
   --font-body-small: 400 13px/20px 'Roboto', sans-serif;
   --font-body-small-bold: 700 13px/20px 'Roboto', sans-serif;
   --font-body-extrasmall: 400 10px/16px 'Roboto', sans-serif;
+
+  /* usage: font:var(--h1-bold); */
+
   --cl-primary1-50: #ebf7ff;
   --cl-primary1-100: #e1eeff;
+  --cl-primary1-200: #d5e1ff;
+  --cl-primary1-300: #c2cfec;
   --cl-primary1-400: #9daac6;
-  --cl-primary1-800: hsl(218, 33%, 21%);
+  --cl-primary1-500: #7c89a4;
   --cl-primary1-600: #55627b;
   --cl-primary1-700: #424f67;
+  --cl-primary1-800: #243148;
   --cl-primary1-900: #011126;
 
+  --cl-primary3-50: #fff4e1;
+  --cl-primary3-100: #ffe2b4;
+  --cl-primary3-200: #ffd083;
+  --cl-primary3-300: #ffbc51;
+  --cl-primary3-400: #ffad2c;
   --cl-primary3-500: #ff9f0c;
-  --cl-primary3-800: #d92b04;
+  --cl-primary3-600: #ff9f0c;
+  --cl-primary3-700: #f88307;
+  --cl-primary3-800: #f27405;
+  --cl-primary3-900: #e95a03;
 
   /* dark theme colors */
   --dt-radial-gradient: radial-gradient(
@@ -74,7 +93,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+html {
+  overflow: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
