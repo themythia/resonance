@@ -87,7 +87,7 @@ export const StyledAlbumThumbnail = styled.img`
   max-width: 56px;
   object-fit: cover;
   aspect-ratio: 1;
-  border: 1px solid white;
+
   border-radius: 14px;
   @media screen and (min-width: 1024px) {
     max-width: 100%;
