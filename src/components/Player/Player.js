@@ -16,6 +16,34 @@ const Player = (props) => {
   const songRef = useRef(null);
   const clear = () => window.clearInterval(time.current);
   const { playerData, dispatch } = useContext(PlayerContext);
+  const [source, setSource] = useState();
+  const API_KEY = process.env.REACT_APP_SCRAPE_API_KEY;
+
+  useEffect(() => {
+    if (props.src) {
+      // if API returns a valid preview_url uses it as source
+      setSource(props.src);
+    } else if (props.src === null) {
+      // if API returns preview_url as null
+      // scrapes song page from open.spoyify.com
+      // gets the preview_url through scraping
+      // sets it as source
+      const spotifyUrl = `https://open.spotify.com/embed/track/${playerData?.current?.track?.id}`;
+
+      const scrapingApiUrl = `https://api.webscrapingapi.com/v1?api_key=${API_KEY}&url=${spotifyUrl}&method=GET&device=desktop&proxy_type=datacenter`;
+      fetch(scrapingApiUrl)
+        .then((res) => res.text())
+        .then((data) => {
+          const scrapedURL = data
+            .split('preview_url%22%3A%22')[1]
+            .split('%22%2C%22track_number')[0];
+          setSource(decodeURIComponent(scrapedURL)); // decodes html entities to string
+        })
+        .catch((error) =>
+          console.error('An error occurred while scraping', error)
+        );
+    }
+  }, [props.src, playerData?.current?.track]);
 
   // handles the bar progress
   useEffect(() => {
@@ -78,7 +106,7 @@ const Player = (props) => {
   useEffect(() => {
     // setPlaying(playing && false);
 
-    if (props.src) {
+    if (source) {
       clear();
       setProgress(0);
       setPlaying(false);
@@ -88,11 +116,11 @@ const Player = (props) => {
     // if (!playing && playerData.current) {
     //   setPlaying(true);
     // }
-  }, [props.src]);
+  }, [source]);
 
   return (
     <PlayerContainer>
-      <audio ref={songRef} preload='auto' src={props.src} />
+      <audio ref={songRef} preload='auto' src={source} />
       <ProgressBar
         type='range'
         min='0'
