@@ -10,34 +10,11 @@ import logo from '../../logo.svg';
 import { UserContext } from '../../contexts/UserContext';
 import { useEffect, useContext, useState } from 'react';
 
-const playlistAlbums = [
-  {
-    name: 'GymWorkout',
-    description: 'headbanging metal',
-    picture: logo,
-  },
-  {
-    name: 'blink 182, smashing pumpkins',
-    description: 'punk rock for retards',
-    picture: logo,
-  },
-  {
-    name: 'GymWorkout2',
-    description: 'Djent and Brootalz',
-    picture: logo,
-  },
-  {
-    name: '90SlowJam',
-    description: 'nice bedroom playlist',
-    picture: logo,
-  },
-];
-
 const Library = () => {
   const { userData } = useContext(UserContext);
   const [albums, setAlbums] = useState([]);
 
-  console.log(albums)
+  console.log(albums);
 
   useEffect(() => {
     if (!userData.token) return;
@@ -46,13 +23,12 @@ const Library = () => {
       headers: { Authorization: 'Bearer ' + userData.token },
     })
       .then((res) => res.json())
-      .then((data) => setAlbums(data.items))
+      .then((data) => {
+        setAlbums(data.items);
+        console.log('albumdata', data);
+      })
       .catch((e) => console.error(e));
   }, [userData.token]);
-
-  // item.album.name
-  // item.album.artists[0].name
-    //item.album.images[1].url
 
   return (
     <StyledGridWrapper>
@@ -60,9 +36,9 @@ const Library = () => {
         <h5>Your Library</h5>
       </StyledLibraryTitle>
       <StyledAlbumSection>
-        {albums.map((item, index) => {
+        {albums.map((item) => {
           return (
-            <StyledPlaylistItem key={index}>
+            <StyledPlaylistItem key={item.album.id}>
               <StyledAlbumThumbnail src={item.album.images[1].url} />
               <StyledAlbumTextContainer>
                 <p>{item.album.name}</p>
