@@ -7,6 +7,8 @@ import {
   StyledAlbumTextContainer,
 } from '../../styled/Library.styled';
 import logo from '../../logo.svg';
+import { UserContext } from '../../contexts/UserContext';
+import { useEffect, useContext } from 'react';
 
 const playlistAlbums = [
   {
@@ -29,44 +31,22 @@ const playlistAlbums = [
     description: 'nice bedroom playlist',
     picture: logo,
   },
-  {
-    name: 'Instrumentals',
-    description: 'Guitar music',
-    picture: logo,
-  },
-  {
-    name: 'OST1',
-    description: 'favorite soundtracks',
-    picture: logo,
-  },
-  {
-    name: 'OST2',
-    description: 'favorite soundtracks',
-    picture: logo,
-  },
-  {
-    name: 'OST3',
-    description: 'favorite soundtracks',
-    picture: logo,
-  },
-  {
-    name: 'OST4',
-    description: 'favorite soundtracks',
-    picture: logo,
-  },
-  {
-    name: 'ProgMetal',
-    description: 'Evergrey and Symphony X for life!',
-    picture: logo,
-  },
-  {
-    name: 'Adriano Celentano',
-    description: 'CAZZO!',
-    picture: logo,
-  },
 ];
 
 const Library = () => {
+  const { userData } = useContext(UserContext);
+
+  useEffect(() => {
+    if (!userData.token) return;
+    fetch(`https://api.spotify.com/v1/me/albums`, {
+      method: 'GET',
+      headers: { Authorization: 'Bearer ' + userData.token },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((e) => console.error(e));
+  }, [userData.token]);
+
   return (
     <StyledGridWrapper>
       <StyledLibraryTitle>

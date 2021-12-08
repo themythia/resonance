@@ -23,6 +23,7 @@ const Authorize = () => {
       setUserData({
         isLoggedIn: true,
         data: body,
+        token: access_token,
       });
     });
   }, []);
