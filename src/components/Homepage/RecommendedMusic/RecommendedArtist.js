@@ -6,14 +6,14 @@ import {
 } from '../../../styled/Homepage.styled';
 
 
-const RecommendedArtist = ({ artist, album, image }) => {
+const RecommendedArtist = ({ artist, song, image }) => {
   return (
     <StyledAlbumContainer>
       <StyledAlbumCover>
-        <StyledAlbumImage src='https://i.redd.it/hwiqn9qtkt271.jpg' />
+        <StyledAlbumImage src={image} />
       </StyledAlbumCover>
       <StyledAlbumTextContainer>
-        <p>{album}</p>
+        <p>{song}</p>
         <h5>{artist}</h5>
       </StyledAlbumTextContainer>
     </StyledAlbumContainer>

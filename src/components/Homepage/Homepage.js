@@ -13,8 +13,10 @@ import { UserContext } from '../../contexts/UserContext';
 const Homepage = () => {
   const { userData } = useContext(UserContext);
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState([]);
+  const [recommendedSongs, setRecommendedSongs] = useState([]);
 
-  console.log(userData.token);
+  console.log(recentlyPlayedSongs);
+  console.log(recommendedSongs);
 
   useEffect(() => {
     if (!userData.token) return;
@@ -29,14 +31,24 @@ const Homepage = () => {
 
   useEffect(() => {
     if (!userData.token) return;
-    fetch(`https://api.spotify.com/v1/recommendations`, {
-      method: 'GET',
-      headers: { Authorization: 'Bearer ' + userData.token },
-    })
+    const seedString = recentlyPlayedSongs
+      .map((item) => item.track.id)
+      .slice(-5)
+      .join('%2C');
+
+    fetch(
+      `https://api.spotify.com/v1/recommendations?seed_tracks=${seedString}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + userData.token,
+        },
+      }
+    )
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => setRecommendedSongs(data.tracks))
       .catch((e) => console.error(e));
-  }, [userData.token]);
+  }, [userData.token,recentlyPlayedSongs]);
 
   return (
     <StyledGridWrapper>
@@ -46,16 +58,14 @@ const Homepage = () => {
       </StyledTitleRecommended>
 
       <StyledListContainer>
-        <RecommendedList />
+        <RecommendedList recommendedSongs={recommendedSongs} />
       </StyledListContainer>
 
       <StyledTitleRecent>
         <h5>Recently played</h5>
       </StyledTitleRecent>
       <StyledRecentlyPlayedContainer>
-        {recentlyPlayedSongs && (
-          <RecentlyPlayedList songlist={recentlyPlayedSongs} />
-        )}
+        <RecentlyPlayedList songlist={recentlyPlayedSongs} />
       </StyledRecentlyPlayedContainer>
     </StyledGridWrapper>
   );
