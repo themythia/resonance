@@ -15,9 +15,6 @@ const Homepage = () => {
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState([]);
   const [recommendedSongs, setRecommendedSongs] = useState([]);
 
-  console.log(recentlyPlayedSongs);
-  console.log(recommendedSongs);
-
   useEffect(() => {
     if (!userData.token) return;
     fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
@@ -48,7 +45,7 @@ const Homepage = () => {
       .then((res) => res.json())
       .then((data) => setRecommendedSongs(data.tracks))
       .catch((e) => console.error(e));
-  }, [userData.token,recentlyPlayedSongs]);
+  }, [userData.token, recentlyPlayedSongs]);
 
   return (
     <StyledGridWrapper>

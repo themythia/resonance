@@ -12,6 +12,8 @@ const RecentlyPlayedList = ({ songlist }) => {
             artist={song.track.artists[0].name}
             song={song.track.name}
             albumImage={song.track.album.images[1].url}
+            trackId={song.track.id}
+            type={song.track.type}
           />
         );
       })}

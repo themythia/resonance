@@ -5,9 +5,9 @@ import {
   StyledSongTextInfo,
 } from '../../../styled/Homepage.styled';
 
-const RecentlyPlayedSong = ({ artist, song, albumImage }) => {
+const RecentlyPlayedSong = ({ artist, song, albumImage, trackId, type }) => {
   return (
-    <StyledSongContainer onClick={() => console.log('ALO BRE!')}>
+    <StyledSongContainer onClick={() => console.log(trackId, type)}>
       <StyledSongImageContainer>
         <StyledSongAlbumImage src={albumImage} />
       </StyledSongImageContainer>
