@@ -11,7 +11,11 @@ export const StyledGridWrapper = styled.div`
 
   grid-template-columns: 16px 1fr 16px;
   grid-template-rows: 96px minmax(30px, auto) 1fr 96px;
-  background-color: var(--dt-background);
+  background-color: var(--lt-background);
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--dt-background);
+  }
 
   @media screen and (min-width: 1024px) {
     gap: 24px;
@@ -27,8 +31,13 @@ export const StyledLibraryTitle = styled.div`
   grid-row: 2 / 3;
   h5 {
     font: var(--h5-bold);
+    color: var(--lt-body-font-bold);
+  }
+
+  @media (prefers-color-scheme: dark) {
     color: var(--dt-body-font-bold);
   }
+
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
     grid-row: 2 / 3;
@@ -65,6 +74,7 @@ export const StyledPlaylistItem = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+
   &:hover {
     p {
       color: var(--cl-primary3-500);
@@ -109,13 +119,22 @@ export const StyledAlbumTextContainer = styled.div`
     transition: ease-in-out 300ms color;
   }
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small-bold);
   }
   h5 {
-    color: var(--dt-body-font-regular);
+    color: var(--lt-body-font-regular);
     font: var(--font-body-small);
   }
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-regular);
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     max-width: 90%;
     margin-left: 0;
