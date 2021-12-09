@@ -57,16 +57,7 @@ function App() {
             <Route path='/authorize' element={<Authorize />} />
             <Route path='/home' element={<Homepage />} />
             <Route exact path='/library' element={<Library />} />
-            <Route
-              path='/library/:playlistId'
-              element={
-                <PlaylistPage
-                  name='Chvrches Playlist'
-                  type='Playlist'
-                  creator='Emir'
-                />
-              }
-            />
+            <Route path='/library/:playlistId' element={<PlaylistPage />} />
             {width < 1024 && (
               <Route path='/nowplaying' element={<NowPlayingPage />} />
             )}
