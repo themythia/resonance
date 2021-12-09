@@ -177,7 +177,7 @@ export const WaveRight = styled.img.attrs(() => ({
     left: 56%;
   }
   @media (min-width: 1440px) {
-    top: 28%;
+    top: 23%;
     left: 55%;
   }
 `;
@@ -208,7 +208,7 @@ export const WaveLeft = styled.img.attrs(() => ({
     left: 28%;
   }
   @media (min-width: 1440px) {
-    top: 41%;
+    top: 36%;
     left: 31%;
   }
 `;
