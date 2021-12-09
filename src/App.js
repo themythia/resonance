@@ -11,6 +11,7 @@ import MenuBar from './components/Footer/MenuBar/MenuBar';
 import Homepage from './components/Homepage/Homepage';
 import Library from './components/LibraryPage/Library';
 import Authorize from './components/Authorize/Authorize';
+import PrivateRoute from './components/Authorize/PrivateRoute';
 
 function App() {
   const location = useLocation();
@@ -43,22 +44,42 @@ function App() {
           <Route exact path='/' element={<WelcomePage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/authorize' element={<Authorize />} />
-          <Route path='/home' element={<Homepage />} />
-          <Route exact path='/library' element={<Library />} />
+          <Route
+            path='/home'
+            element={
+              <PrivateRoute>
+                <Homepage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path='/library'
+            element={
+              <PrivateRoute>
+                <Library />
+              </PrivateRoute>
+            }
+          />
           <Route
             path='/library/:playlistId'
             element={
-              <PlaylistPage
-                name='Chvrches Playlist'
-                type='Playlist'
-                creator='Emir'
-              />
+              <PrivateRoute>
+                <PlaylistPage />
+              </PrivateRoute>
             }
           />
           {width < 1024 && (
-            <Route path='/nowplaying' element={<NowPlayingPage />} />
+            <Route
+              path='/nowplaying'
+              element={
+                <PrivateRoute>
+                  <NowPlayingPage />
+                </PrivateRoute>
+              }
+            />
           )}
-          <Route path='*' element={<p>404</p>} />
+          <Route path='*' element={<PrivateRoute />} />
         </Routes>
         {showMenuBar && width > 1023 && <NowPlayingPage />}
         {showMenuBar && <MenuBar />}
