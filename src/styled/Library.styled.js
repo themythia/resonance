@@ -35,7 +35,9 @@ export const StyledLibraryTitle = styled.div`
   }
 
   @media (prefers-color-scheme: dark) {
-    color: var(--dt-body-font-bold);
+    h5 {
+      color: var(--dt-body-font-bold);
+    }
   }
 
   @media screen and (min-width: 1024px) {
