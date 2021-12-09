@@ -13,7 +13,11 @@ export const StyledGridWrapper = styled.div`
   grid-template-rows:
     96px auto minmax(max-content, auto) auto minmax(0, 1fr)
     96px;
-  background-color: var(--dt-background);
+  background-color: var(--lt-background);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--dt-background);
+  }
 
   @media screen and (min-width: 1024px) {
     gap: 16px;
@@ -32,11 +36,22 @@ export const StyledTitleRecommended = styled.div`
   grid-row: 2 / 3;
   h5 {
     font: var(--h5-bold);
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
   }
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h5 {
+      font: var(--h5-bold);
+      color: var(--dt-body-font-bold);
+    }
+    p {
+      color: var(--dt-body-font-bold);
+      font: var(--font-body-small);
+    }
   }
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
@@ -73,19 +88,7 @@ export const StyledRecommendedList = styled.div`
   height: max-content;
 
   overflow-x: auto;
-  /* hide scrollbar but allow scrolling */
-  /* & {
-		-ms-overflow-style: none; 
-		scrollbar-width: none; 
-		overflow-x: scroll;
-	}
-
-	&::-webkit-scrollbar {
-		display: none; 
-	} */
 `;
-
-// gonna reuse this somehow ****************
 
 export const StyledAlbumContainer = styled.div`
   min-width: 120px;
@@ -133,13 +136,22 @@ export const StyledAlbumTextContainer = styled.div`
   }
 
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small-bold);
   }
 
   h5 {
-    color: var(--dt-body-font-regular);
+    color: var(--lt-body-font-regular);
     font: var(--font-body-small);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-regular);
+    }
   }
   @media screen and (min-width: 1024px) {
     p {
@@ -158,11 +170,19 @@ export const StyledTitleRecent = styled.div`
   grid-row: 4 / 5;
   h5 {
     font: var(--h5-bold);
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
   }
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small);
+  }
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-regular);
+    }
   }
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
@@ -263,13 +283,21 @@ export const StyledSongTextInfo = styled.div`
   }
 
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small-bold);
   }
 
   h5 {
-    color: var(--dt-body-font-regular);
+    color: var(--lt-body-font-regular);
     font: var(--font-body-small);
+  }
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-regular);
+    }
   }
   @media screen and (min-width: 1024px) {
     margin-left: 0;
