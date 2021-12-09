@@ -150,6 +150,9 @@ export const Circle = styled.img.attrs(() => ({
   @media (min-width: 1440px) {
     top: 12%;
   }
+  @media (min-width: 1920px) {
+    top: 18%;
+  }
 `;
 
 export const WaveRight = styled.img.attrs(() => ({
@@ -179,6 +182,10 @@ export const WaveRight = styled.img.attrs(() => ({
   @media (min-width: 1440px) {
     top: 23%;
     left: 55%;
+  }
+  @media (min-width: 1920px) {
+    top: 26%;
+    left: 54%;
   }
 `;
 
@@ -210,6 +217,9 @@ export const WaveLeft = styled.img.attrs(() => ({
   @media (min-width: 1440px) {
     top: 36%;
     left: 31%;
+  }
+  @media (min-width: 1920px) {
+    left: 36%;
   }
 `;
 
