@@ -15,6 +15,8 @@ const Homepage = () => {
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState([]);
   const [recommendedSongs, setRecommendedSongs] = useState([]);
 
+  console.log(recentlyPlayedSongs)
+
   useEffect(() => {
     if (!userData.token) return;
     fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
@@ -29,12 +31,12 @@ const Homepage = () => {
   useEffect(() => {
     if (!userData.token) return;
     const seedString = recentlyPlayedSongs
-      .map((item) => item.track.id)
+      .map((item) => item.track.album.artists[0].id)
       .slice(-5)
       .join('%2C');
 
     fetch(
-      `https://api.spotify.com/v1/recommendations?seed_tracks=${seedString}`,
+      `https://api.spotify.com/v1/recommendations?seed_artists=${seedString}`,
       {
         method: 'GET',
         headers: {

@@ -5,9 +5,9 @@ import {
   StyledAlbumTextContainer,
 } from '../../../styled/Homepage.styled';
 
-const RecommendedArtist = ({ artist, song, image ,trackId,type}) => {
+const RecommendedArtist = ({ artist, song, image ,albumId,type}) => {
   return (
-    <StyledAlbumContainer onClick={() => console.log(trackId,type)}>
+    <StyledAlbumContainer onClick={() => console.log(albumId,type)}>
       <StyledAlbumCover>
         <StyledAlbumImage src={image} />
       </StyledAlbumCover>

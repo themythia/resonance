@@ -4,6 +4,7 @@ import RecommendedArtist from './RecommendedArtist';
 const RecommendedList = ({ recommendedSongs }) => {
   if (!recommendedSongs) return null;
 
+  console.log('recommended', recommendedSongs);
   return (
     <StyledRecommendedList>
       {recommendedSongs.map((track) => {
@@ -13,8 +14,8 @@ const RecommendedList = ({ recommendedSongs }) => {
             artist={track.artists[0].name}
             song={track.name}
             image={track.album.images[1].url}
-            trackId={track.id}
-            type={track.type}
+            albumId={track.album.id}
+            type={track.album.type}
           />
         );
       })}

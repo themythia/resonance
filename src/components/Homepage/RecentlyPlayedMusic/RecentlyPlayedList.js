@@ -1,6 +1,5 @@
 import { StyledRecentlyPlayedList } from '../../../styled/Homepage.styled';
 import RecentlyPlayedSong from './RecentlyPlayedSong';
-import logo from '../../../logo.svg';
 
 const RecentlyPlayedList = ({ songlist }) => {
   return (
@@ -12,8 +11,8 @@ const RecentlyPlayedList = ({ songlist }) => {
             artist={song.track.artists[0].name}
             song={song.track.name}
             albumImage={song.track.album.images[1].url}
-            trackId={song.track.id}
-            type={song.track.type}
+            albumId={song.track.album.id}
+            type={song.track.album.type}
           />
         );
       })}
