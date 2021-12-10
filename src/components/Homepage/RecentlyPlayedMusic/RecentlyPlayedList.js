@@ -13,6 +13,7 @@ const RecentlyPlayedList = ({ songlist }) => {
             albumImage={song.track.album.images[1].url}
             albumId={song.track.album.id}
             type={song.track.album.type}
+            songTrack={song.track.id}
           />
         );
       })}

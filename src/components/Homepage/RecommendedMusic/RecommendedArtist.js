@@ -14,7 +14,6 @@ const RecommendedArtist = ({
   type,
   songTrack,
 }) => {
-  console.log('track', songTrack);
   const navigate = useNavigate();
   return (
     <StyledAlbumContainer

@@ -6,12 +6,23 @@ import {
 } from '../../../styled/Homepage.styled';
 import { useNavigate } from 'react-router-dom';
 
-const RecentlyPlayedSong = ({ artist, song, albumImage, albumId, type }) => {
+const RecentlyPlayedSong = ({
+  artist,
+  song,
+  albumImage,
+  albumId,
+  type,
+  songTrack,
+}) => {
   const navigate = useNavigate();
 
   return (
     <StyledSongContainer
-      onClick={() => { navigate(`/library/${albumId}`, { state: { type: `${type}s` } }) }}
+      onClick={() => {
+        navigate(`/library/${albumId}`, {
+          state: { type: `${type}s`, track: songTrack },
+        });
+      }}
     >
       <StyledSongImageContainer>
         <StyledSongAlbumImage src={albumImage} />
