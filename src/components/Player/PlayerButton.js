@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { StyledPlayerButton, Icon } from '../../styled/NowPlaying';
 
 import {
@@ -9,19 +9,44 @@ import {
   Pause,
 } from '@styled-icons/fluentui-system-filled';
 import { ArrowShuffle } from '@styled-icons/typicons';
+import { PlayerContext } from '../../contexts/PlayerContext';
 
 const PlayerButton = (props) => {
+  const { playerData, dispatch } = useContext(PlayerContext);
+
   const handleClick = (icon) => {
     if (icon === 'pause') {
       props.setPlaying(false);
     } else if (icon === 'play') {
       props.setPlaying(true);
+    } else if (icon === 'shuffle') {
+      dispatch({
+        type: 'TOGGLE_SHUFFLE',
+      });
+    } else if (icon === 'next') {
+      dispatch({
+        type: 'NEXT_TRACK',
+      });
+    } else if (icon === 'prev') {
+      dispatch({
+        type: 'PREV_TRACK',
+      });
+    } else if (icon === 'repeat') {
+      dispatch({
+        type: 'TOGGLE_REPEAT',
+      });
     }
   };
   return (
     <StyledPlayerButton
       size={props.size}
       onClick={() => handleClick(props.icon)}
+      disabled={props.disabled}
+      status={{
+        shuffle: playerData.current?.shuffle,
+        repeat: playerData.current?.repeat,
+      }}
+      icon={props.icon}
     >
       <Icon>
         {props.icon === 'prev' ? (
