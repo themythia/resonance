@@ -54,3 +54,14 @@ export const newAlbum = (albumId, data) => {
     },
   };
 };
+
+export const setCurrent = (track, index, playlistId, playlistLength) => {
+  return {
+    type: 'SET_CURRENT',
+    track,
+    index,
+    playlistId,
+    playlistLength,
+    shuffle: null,
+  };
+};

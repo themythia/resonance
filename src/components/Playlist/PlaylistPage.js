@@ -13,7 +13,7 @@ import { UserContext } from '../../contexts/UserContext';
 import { PlayerContext } from '../../contexts/PlayerContext';
 import { handleTime } from '../../utils/handleTime';
 import { useLocation } from 'react-router-dom';
-import { newAlbum, newPlaylist } from '../../utils/dispatch';
+import { newAlbum, newPlaylist, setCurrent } from '../../utils/dispatch';
 
 const PlaylistPage = (props) => {
   const { playlistId } = useParams();
@@ -70,16 +70,11 @@ const PlaylistPage = (props) => {
               <Link
                 key={index}
                 to='/nowplaying'
-                onClick={() =>
-                  dispatch({
-                    type: 'SET_CURRENT',
-                    track,
-                    index,
-                    playlistId,
-                    playlistLength: playlist.tracks.length,
-                    shuffle: null,
-                  })
-                }
+                onClick={() => {
+                  dispatch(
+                    setCurrent(track, index, playlistId, playlist.tracks.length)
+                  );
+                }}
               >
                 <PlaylistItem
                   name={track.name}
@@ -93,14 +88,9 @@ const PlaylistPage = (props) => {
               <div
                 key={index}
                 onClick={() =>
-                  dispatch({
-                    type: 'SET_CURRENT',
-                    track,
-                    index,
-                    playlistId,
-                    playlistLength: playlist.tracks.length,
-                    shuffle: null,
-                  })
+                  dispatch(
+                    setCurrent(track, index, playlistId, playlist.tracks.length)
+                  )
                 }
               >
                 <PlaylistItem
