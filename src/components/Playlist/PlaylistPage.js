@@ -8,11 +8,10 @@ import {
   PlayListInfoContainer,
 } from '../../styled/Playlist';
 import PlaylistItem from './PlaylistItem';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { PlayerContext } from '../../contexts/PlayerContext';
 import { handleTime } from '../../utils/handleTime';
-import { useLocation } from 'react-router-dom';
 import { newAlbum, newPlaylist, setCurrent } from '../../utils/dispatch';
 
 const PlaylistPage = (props) => {
@@ -23,7 +22,7 @@ const PlaylistPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [playlist, setPlaylist] = useState(null);
   const { state } = useLocation();
-  console.log('playerData', playerData);
+  const [navigate, setNavigate] = useState(false);
 
   useEffect(() => {
     const apiEndpoint = `https://api.spotify.com/v1/${state.type}/${playlistId}?market=${userData.data.country}`;
@@ -47,10 +46,32 @@ const PlaylistPage = (props) => {
     if (fetchStatus) {
       setPlaylist(playerData.playlists[playlistId]);
       setLoading(false);
+      // handles the case if a trackId passed to state from pages
+      // sets the track on state as current
+      if (state.track) {
+        let tracks = playerData.playlists[playlistId].tracks;
+        let track = tracks.find((track) => track.id === state.track);
+        let index = tracks.indexOf(track);
+        dispatch(setCurrent(track, index, playlistId, tracks.length));
+        if (playerData.device === 'mobile') {
+          setNavigate(true);
+          setLoading(true);
+        }
+      }
     }
-  }, [playerData, playlistId, fetchStatus]);
+  }, [
+    playerData.playlists,
+    playlistId,
+    fetchStatus,
+    state.track,
+    dispatch,
+    playerData.device,
+  ]);
 
   if (loading) {
+    if (navigate && playerData.current) {
+      return <Navigate to='/nowplaying' />;
+    }
     return null;
   }
 
