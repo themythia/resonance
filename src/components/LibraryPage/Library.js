@@ -6,13 +6,15 @@ import {
   StyledAlbumThumbnail,
   StyledAlbumTextContainer,
 } from '../../styled/Library.styled';
-import logo from '../../logo.svg';
+
 import { UserContext } from '../../contexts/UserContext';
 import { useEffect, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Library = () => {
   const { userData } = useContext(UserContext);
   const [albums, setAlbums] = useState([]);
+  const navigate = useNavigate();
 
   console.log(albums);
 
@@ -38,7 +40,14 @@ const Library = () => {
       <StyledAlbumSection>
         {albums.map((item) => {
           return (
-            <StyledPlaylistItem key={item.album.id}>
+            <StyledPlaylistItem
+              key={item.album.id}
+              onClick={() =>
+                navigate(`/library/${item.album.id}`, {
+                  state: { type: `${item.album.type}s` },
+                })
+              }
+            >
               <StyledAlbumThumbnail src={item.album.images[1].url} />
               <StyledAlbumTextContainer>
                 <p>{item.album.name}</p>
