@@ -4,10 +4,26 @@ import {
   StyledAlbumImage,
   StyledAlbumTextContainer,
 } from '../../../styled/Homepage.styled';
+import { useNavigate } from 'react-router-dom';
 
-const RecommendedArtist = ({ artist, song, image ,albumId,type}) => {
+const RecommendedArtist = ({
+  artist,
+  song,
+  image,
+  albumId,
+  type,
+  songTrack,
+}) => {
+  console.log('track', songTrack);
+  const navigate = useNavigate();
   return (
-    <StyledAlbumContainer onClick={() => console.log(albumId,type)}>
+    <StyledAlbumContainer
+      onClick={() =>
+        navigate(`/library/${albumId}`, {
+          state: { type: `${type}s`, track: songTrack },
+        })
+      }
+    >
       <StyledAlbumCover>
         <StyledAlbumImage src={image} />
       </StyledAlbumCover>

@@ -16,6 +16,7 @@ const RecommendedList = ({ recommendedSongs }) => {
             image={track.album.images[1].url}
             albumId={track.album.id}
             type={track.album.type}
+            songTrack={track.id}
           />
         );
       })}

@@ -11,7 +11,7 @@ const RecentlyPlayedSong = ({ artist, song, albumImage, albumId, type }) => {
 
   return (
     <StyledSongContainer
-      onClick={() => { navigate(`/library/${albumId}`, { state: { type: type } }) }}
+      onClick={() => { navigate(`/library/${albumId}`, { state: { type: `${type}s` } }) }}
     >
       <StyledSongImageContainer>
         <StyledSongAlbumImage src={albumImage} />
