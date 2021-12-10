@@ -26,7 +26,7 @@ function App() {
   console.log('userData', userData);
 
   const showMenuBar =
-    location.pathname !== '/' && location.pathname !== '/login';
+    location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/authorize';
 
   useLayoutEffect(() => {
     window.addEventListener('resize', () => setWidth(window.innerWidth));

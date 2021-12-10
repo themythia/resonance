@@ -2,11 +2,28 @@ import { useEffect, useContext } from 'react';
 import request from 'request';
 import { UserContext } from '../../contexts/UserContext';
 import { Navigate} from 'react-router-dom';
+import Loading from './Loading/Loading';
+const style = {
+  background: "white",
+  gridColumn: "1 / -1",
+  gridRow: "1 / -1",
+  display: "grid",
+  gridTemplateColumns: "repeat(6, 1fr)",
+  gridTemplateRows: "repeat(6, 1fr)"
+}
+
 
 const Authorize = () => {
   const { userData, setUserData } = useContext(UserContext);
 
   useEffect(() => {
+    if(!window.location.hash){
+      return setUserData({
+        ...userData,
+        isLoggedIn: "error",
+        data: {}
+      })
+    }
     let access_token = window.location.hash
       .substring(1)
       .split('access_token=')[1]
@@ -14,6 +31,7 @@ const Authorize = () => {
     let state = window.location.hash
       .substring(1)
       .split('state=')[1];
+
     if(state === localStorage.getItem("stateValue")){
      var options = {
         url: 'https://api.spotify.com/v1/me',
@@ -50,12 +68,13 @@ const Authorize = () => {
   }, []);
 
   return (
-    <div>
-      {userData.isLoggedIn === true ? 
+    <div style={style}>
+         {
+           userData.isLoggedIn === true ? 
         <Navigate to='/home' />  :
         userData.isLoggedIn === "error"  ?
         <Navigate to="/login" /> :
-        <h1>Hello</h1>
+        <Loading />
       }
     </div>
   );
