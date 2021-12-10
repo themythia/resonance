@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const equalize = keyframes`
   0% {
@@ -87,39 +87,43 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--lt-background);
+  @media (prefers-color-scheme: dark) {
+    background: var(--dt-background);
+  }
 `;
 
 export const Bar = styled.div`
   width: 10px;
   height: 36px;
-  background: black;
+  background: var(--lt-active-color);
   margin: 0 3px;
   animation: ${equalize} 1.25s steps(25, end) 0s infinite;
-  
-  &:nth-child(1){
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--dt-active-color);
+  }
+
+  &:nth-child(1) {
     animation-duration: 1.9s;
   }
 
-  &:nth-child(2){
+  &:nth-child(2) {
     animation-duration: 2s;
   }
 
-  &:nth-child(3){
+  &:nth-child(3) {
     animation-duration: 2.3s;
   }
 
-  &:nth-child(4){
+  &:nth-child(4) {
     animation-duration: 2.4s;
   }
-  &:nth-child(5){
+  &:nth-child(5) {
     animation-duration: 3s;
   }
 
-  &:nth-child(6){
+  &:nth-child(6) {
     animation-duration: 3.1s;
   }
-
 `;
-
-
-
