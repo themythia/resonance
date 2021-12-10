@@ -4,10 +4,15 @@ import {
   StyledSongImageContainer,
   StyledSongTextInfo,
 } from '../../../styled/Homepage.styled';
+import { useNavigate } from 'react-router-dom';
 
 const RecentlyPlayedSong = ({ artist, song, albumImage, albumId, type }) => {
+  const navigate = useNavigate();
+
   return (
-    <StyledSongContainer onClick={() => console.log(albumId, type)}>
+    <StyledSongContainer
+      onClick={() => { navigate(`/library/${albumId}`, { state: { type: type } }) }}
+    >
       <StyledSongImageContainer>
         <StyledSongAlbumImage src={albumImage} />
       </StyledSongImageContainer>
