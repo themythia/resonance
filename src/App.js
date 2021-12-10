@@ -67,10 +67,6 @@ function App() {
           {showMenuBar && <MenuBar />}
         </PlayerContext.Provider>
       </UserContext.Provider>
-      {/* TO DO:
-      - create a private route
-      - create a route for now playing
-      */}
     </div>
   );
 }
