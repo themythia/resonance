@@ -21,7 +21,7 @@ export const StyledGridWrapper = styled.div`
 
   @media screen and (min-width: 1024px) {
     gap: 16px;
-    grid-template-columns: 320px 3fr;
+    grid-template-columns: calc(100vw / 6) 3fr;
     grid-template-rows:
       minmax(100px, max-content) minmax(min-content, max-content) minmax(
         max-content,
