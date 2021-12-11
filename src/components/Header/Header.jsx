@@ -18,7 +18,8 @@ const Header = () => {
       </SearchBarContainer>
       <ProfilePic
         src={
-          userData.data.images?.[0].url || 'https://puu.sh/IsNdG/069cf308d1.png'
+          userData.data.images?.[0]?.url ||
+          'https://puu.sh/IsNdG/069cf308d1.png'
         }
         alt='user avatar'
       />

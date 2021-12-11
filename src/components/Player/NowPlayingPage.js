@@ -1,28 +1,37 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Player from './Player';
 import {
   AlbumCover,
   NowPlayingContainer,
-  PlayingFrom,
   SongInfoTextContainer,
-  VolumeControl,
 } from '../../styled/NowPlaying';
 import VolumeBar from './VolumeBar';
+import { PlayerContext } from '../../contexts/PlayerContext';
 
 const NowPlayingPage = () => {
-  const songName = 'Asking For A Friend';
-  const artistName = 'CHVRCHES';
-  const playlistName = 'CHVRCHES Playlist';
+  const [volume, setVolume] = useState(50);
+  const [muted, setMuted] = useState(false);
+  const { playerData } = useContext(PlayerContext);
+  const { current } = playerData;
+
   return (
     <NowPlayingContainer>
-      <PlayingFrom>{`Playing from the playlist: ${playlistName}`} </PlayingFrom>
-      <AlbumCover src='https://i.redd.it/hwiqn9qtkt271.jpg' />
+      {current && <AlbumCover src={current.track.album.image} />}
       <SongInfoTextContainer>
-        <h5>{songName}</h5>
-        <p>{artistName}</p>
+        {current && <h5>{current.track.name}</h5>}
+        {current && <p>{current.track.artists[0]}</p>}
       </SongInfoTextContainer>
-      <Player max={304} />
-      <VolumeBar />
+      <Player
+        max={30}
+        src={current?.track.src}
+        volume={{ volume, setVolume }}
+        muted={muted}
+      />
+      <VolumeBar
+        volume={{ volume, setVolume }}
+        setMuted={setMuted}
+        muted={muted}
+      />
     </NowPlayingContainer>
   );
 };
