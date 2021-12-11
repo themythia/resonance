@@ -21,14 +21,17 @@ const Library = () => {
   useEffect(() => {
     if (!userData.token) return;
 
+    let controller = new AbortController();
     const fetchAlbums = async () => {
       try {
         const response = await fetch(`https://api.spotify.com/v1/me/albums`, {
           method: 'GET',
           headers: { Authorization: 'Bearer ' + userData.token },
+          signal: controller.signal,
         });
         const { items } = await response.json();
         setAlbums(items);
+        controller = null;
       } catch (e) {
         console.error(e);
       }
@@ -36,16 +39,7 @@ const Library = () => {
 
     fetchAlbums();
 
-    // fetch(`https://api.spotify.com/v1/me/albums`, {
-    //   method: 'GET',
-    //   headers: { Authorization: 'Bearer ' + userData.token },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setAlbums(data.items);
-    //     console.log('albumdata', data);
-    //   })
-    //   .catch((e) => console.error(e));
+    return () => controller?.abort();
   }, [userData.token]);
 
   return (
