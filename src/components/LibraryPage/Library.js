@@ -20,16 +20,32 @@ const Library = () => {
 
   useEffect(() => {
     if (!userData.token) return;
-    fetch(`https://api.spotify.com/v1/me/albums`, {
-      method: 'GET',
-      headers: { Authorization: 'Bearer ' + userData.token },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAlbums(data.items);
-        console.log('albumdata', data);
-      })
-      .catch((e) => console.error(e));
+
+    const fetchAlbums = async () => {
+      try {
+        const response = await fetch(`https://api.spotify.com/v1/me/albums`, {
+          method: 'GET',
+          headers: { Authorization: 'Bearer ' + userData.token },
+        });
+        const { items } = await response.json();
+        setAlbums(items);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    fetchAlbums();
+
+    // fetch(`https://api.spotify.com/v1/me/albums`, {
+    //   method: 'GET',
+    //   headers: { Authorization: 'Bearer ' + userData.token },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setAlbums(data.items);
+    //     console.log('albumdata', data);
+    //   })
+    //   .catch((e) => console.error(e));
   }, [userData.token]);
 
   return (
