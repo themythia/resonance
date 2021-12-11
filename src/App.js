@@ -22,10 +22,9 @@ function App() {
   // can change to useReducer if needed
   const [userData, setUserData] = useState({
     isLoggedIn: false,
-    data: {}
+    data: {},
+    token: null,
   });
-  
-
 
   const [playerData, dispatch] = useReducer(playerReducer, {
     device: 'mobile',
@@ -33,9 +32,10 @@ function App() {
     playlists: null,
   });
 
-
   const showMenuBar =
-    location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/authorize';
+    location.pathname !== '/' &&
+    location.pathname !== '/login' &&
+    location.pathname !== '/authorize';
 
   useLayoutEffect(() => {
     window.addEventListener('resize', () => setWidth(window.innerWidth));
@@ -50,30 +50,24 @@ function App() {
 
   return (
     <div className='wrapper'>
-      <UserContext.Provider value={{userData, setUserData}}>
-        <Routes>
-          <Route exact path='/' element={<WelcomePage />} />
-          <Route path='/login' element={<Login  />} />
-          <Route path='/authorize' element={<Authorize />} />
-          <Route path='/home' element={<Homepage />} />
-          <Route exact path='/library' element={<Library />} />
-          <Route
-            path='/library/:playlistId'
-            element={
-              <PlaylistPage
-                name='Chvrches Playlist'
-                type='Playlist'
-                creator='Emir'
-              />
-            }
-          />
-          {width < 1024 && (
-            <Route path='/nowplaying' element={<NowPlayingPage />} />
-          )}
-          <Route path='*' element={<p>404</p>} />
-        </Routes>
-        {showMenuBar && width > 1023 && <NowPlayingPage />}
-        {showMenuBar && <MenuBar />}
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <PlayerContext.Provider value={{ playerData, dispatch }}>
+          {showMenuBar && <Header />}
+          <Routes>
+            <Route exact path='/' element={<WelcomePage />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/authorize' element={<Authorize />} />
+            <Route path='/home' element={<Homepage />} />
+            <Route exact path='/library' element={<Library />} />
+            <Route path='/library/:playlistId' element={<PlaylistPage />} />
+            {width < 1024 && (
+              <Route path='/nowplaying' element={<NowPlayingPage />} />
+            )}
+            <Route path='*' element={<p>404</p>} />
+          </Routes>
+          {showMenuBar && width > 1023 && <NowPlayingPage />}
+          {showMenuBar && <MenuBar />}
+        </PlayerContext.Provider>
       </UserContext.Provider>
     </div>
   );
