@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { StyledPlayerButton, Icon } from '../../styled/NowPlaying';
 
 import {
@@ -16,9 +16,15 @@ const PlayerButton = (props) => {
 
   const handleClick = (icon) => {
     if (icon === 'pause') {
-      props.setPlaying(false);
+      dispatch({
+        type: 'TOGGLE_PLAY',
+        play: false,
+      });
     } else if (icon === 'play') {
-      props.setPlaying(true);
+      dispatch({
+        type: 'TOGGLE_PLAY',
+        play: true,
+      });
     } else if (icon === 'shuffle') {
       dispatch({
         type: 'TOGGLE_SHUFFLE',
