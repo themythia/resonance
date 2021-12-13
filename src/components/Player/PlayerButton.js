@@ -49,8 +49,8 @@ const PlayerButton = (props) => {
       onClick={() => handleClick(props.icon)}
       disabled={props.disabled}
       status={{
-        shuffle: playerData.current?.shuffle,
-        repeat: playerData.current?.repeat,
+        shuffle: playerData.controls.shuffle,
+        repeat: playerData.controls.repeat,
       }}
       icon={props.icon}
     >
