@@ -28,9 +28,35 @@ function App() {
 
   const [playerData, dispatch] = useReducer(playerReducer, {
     device: 'mobile',
-    current: null,
-    playlists: null,
+    current: {
+      index: null,
+      played: [],
+      playlistId: null,
+      playlistLength: null,
+      track: {
+        album: {
+          albumId: null,
+          image: null,
+          name: null,
+        },
+        artists: [],
+        duration: null,
+        id: null,
+        name: null,
+        src: null,
+      },
+    },
+    playlists: {},
+    controls: {
+      play: false,
+      shuffle: false,
+      repeat: false,
+      mute: false,
+      volume: 50,
+    },
   });
+
+  console.log('playerData', playerData);
 
   const showMenuBar =
     location.pathname !== '/' &&
