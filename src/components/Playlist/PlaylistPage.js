@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   ListContainer,
   PlaylistCover,
@@ -8,7 +9,7 @@ import {
   PlayListInfoContainer,
 } from '../../styled/Playlist';
 import PlaylistItem from './PlaylistItem';
-import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
+import Loading from '../Authorize/Loading/Loading';
 import { UserContext } from '../../contexts/UserContext';
 import { PlayerContext } from '../../contexts/PlayerContext';
 import { handleTime } from '../../utils/handleTime';
@@ -16,13 +17,18 @@ import { newAlbum, newPlaylist, setCurrent } from '../../utils/dispatch';
 
 const PlaylistPage = (props) => {
   const { playlistId } = useParams();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const { userData } = useContext(UserContext);
   const { playerData, dispatch } = useContext(PlayerContext);
-  const [fetchStatus, setFetchStatus] = useState(false);
+  const { playlists } = playerData;
   const [loading, setLoading] = useState(true);
-  const [playlist, setPlaylist] = useState(null);
-  const { state } = useLocation();
-  const [navigate, setNavigate] = useState(false);
+
+  // sets the current playlist to variable
+  let playlist;
+  if (playlists?.[playlistId]) {
+    playlist = playlists[playlistId];
+  }
 
   useEffect(() => {
     const apiEndpoint = `https://api.spotify.com/v1/${state.type}/${playlistId}?market=${userData.data.country}`;
@@ -38,41 +44,42 @@ const PlaylistPage = (props) => {
           dispatch(newAlbum(playlistId, data));
         }
       })
-      .then(() => setFetchStatus(true))
-      .catch((error) => console.warn(error));
-  }, [playlistId, dispatch, userData, state.type]);
+      .catch((error) => {
+        console.warn(
+          'An error occurred while fetching playlist/album data',
+          error
+        );
+        navigate('/home');
+      });
+  }, [playlistId, dispatch, userData, state.type, navigate]);
 
   useEffect(() => {
-    if (fetchStatus) {
-      setPlaylist(playerData.playlists[playlistId]);
-      setLoading(false);
+    // if fetch is successful and playlist dispatched to context
+    if (playlist) {
       // handles the case if a trackId passed to state from pages
       // sets the track on state as current
       if (state.track) {
-        let tracks = playerData.playlists[playlistId].tracks;
+        let { tracks } = playlist;
         let track = tracks.find((track) => track.id === state.track);
         let index = tracks.indexOf(track);
         dispatch(setCurrent(track, index, playlistId, tracks.length));
         if (playerData.device === 'mobile') {
-          setNavigate(true);
-          setLoading(true);
+          navigate('/nowplaying');
         }
       }
+      setLoading(false);
     }
   }, [
-    playerData.playlists,
+    playlist,
     playlistId,
-    fetchStatus,
     state.track,
     dispatch,
     playerData.device,
+    navigate,
   ]);
 
   if (loading) {
-    if (navigate && playerData.current) {
-      return <Navigate to='/nowplaying' />;
-    }
-    return null;
+    return <Loading />;
   }
 
   return (
