@@ -15,39 +15,36 @@ const Homepage = () => {
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState([]);
   const [recommendedSongs, setRecommendedSongs] = useState([]);
 
-  console.log(recentlyPlayedSongs)
-
   useEffect(() => {
     if (!userData.token) return;
-    fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
-      method: 'GET',
-      headers: { Authorization: 'Bearer ' + userData.token },
-    })
-      .then((res) => res.json())
-      .then((data) => setRecentlyPlayedSongs(data.items))
-      .catch((e) => console.error(e));
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://api.spotify.com/v1/me/player/recently-played`,
+        {
+          method: 'GET',
+          headers: { Authorization: 'Bearer ' + userData.token },
+        }
+      );
+      const albumData = await response.json();
+      const seedString = albumData.items
+        .map((item) => item.track.album.artists[0].id)
+        .slice(-5)
+        .join('%2C');
+      const seedResponse = await fetch(
+        `https://api.spotify.com/v1/recommendations?seed_artists=${seedString}`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: 'Bearer ' + userData.token,
+          },
+        }
+      );
+      const seedData = await seedResponse.json();
+      setRecentlyPlayedSongs(albumData.items);
+      setRecommendedSongs(seedData.tracks);
+    };
+    fetchData();
   }, [userData.token]);
-
-  useEffect(() => {
-    if (!userData.token) return;
-    const seedString = recentlyPlayedSongs
-      .map((item) => item.track.album.artists[0].id)
-      .slice(-5)
-      .join('%2C');
-
-    fetch(
-      `https://api.spotify.com/v1/recommendations?seed_artists=${seedString}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: 'Bearer ' + userData.token,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => setRecommendedSongs(data.tracks))
-      .catch((e) => console.error(e));
-  }, [userData.token, recentlyPlayedSongs]);
 
   return (
     <StyledGridWrapper>
