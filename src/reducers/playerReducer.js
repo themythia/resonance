@@ -125,6 +125,15 @@ export const playerReducer = (state, action) => {
         },
       };
 
+    case 'TOGGLE_PLAY':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          play: action.play,
+        },
+      };
+
     default:
       return state;
   }
