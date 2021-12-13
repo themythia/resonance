@@ -1,12 +1,6 @@
 import './App.css';
-import { useLayoutEffect, useState, useReducer } from 'react';
-import {
-  Routes,
-  Route,
-  useLocation,
-  Navigate,
-  useNavigate,
-} from 'react-router-dom';
+import { useLayoutEffect, useState, useReducer, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 import { PlayerContext } from './contexts/PlayerContext';
 import Header from './components/Header/Header';
@@ -20,7 +14,6 @@ import Library from './components/LibraryPage/Library';
 import Authorize from './components/Authorize/Authorize';
 import PrivateRoute from './components/Authorize/PrivateRoute';
 import { playerReducer } from './reducers/playerReducer';
-import { useEffect } from 'react/cjs/react.development';
 
 function App() {
   const location = useLocation();
