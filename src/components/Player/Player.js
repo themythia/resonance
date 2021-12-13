@@ -86,12 +86,12 @@ const Player = (props) => {
   }, [playing]);
 
   useEffect(() => {
-    songRef.current.volume = props.volume.volume / 100;
-  }, [props.volume.volume]);
+    songRef.current.volume = playerData.controls.volume / 100;
+  }, [playerData.controls.volume]);
 
   useEffect(() => {
-    songRef.current.muted = props.muted;
-  }, [props.muted]);
+    songRef.current.muted = playerData.controls.mute;
+  }, [playerData.controls.mute]);
 
   // triggers on track change, resets the play/pause button
   useEffect(() => {

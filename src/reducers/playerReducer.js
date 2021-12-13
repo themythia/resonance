@@ -122,6 +122,30 @@ export const playerReducer = (state, action) => {
         },
       };
 
+    case 'SET_VOLUME':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          volume: action.volume,
+        },
+      };
+    case 'TOGGLE_MUTE':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          mute: !state.controls.mute,
+        },
+      };
+    case 'SET_MUTE':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          mute: action.mute,
+        },
+      };
     default:
       return state;
   }
