@@ -14,10 +14,10 @@ const NowPlayingPage = () => {
 
   return (
     <NowPlayingContainer>
-      {current && <AlbumCover src={current.track.album.image} />}
+      {current.playlistId && <AlbumCover src={current.track.album.image} />}
       <SongInfoTextContainer>
-        {current && <h5>{current.track.name}</h5>}
-        {current && <p>{current.track.artists[0]}</p>}
+        <h5>{current.track.name}</h5>
+        <p>{current.track.artists[0]}</p>
       </SongInfoTextContainer>
       <Player max={30} src={current?.track.src} />
       <VolumeBar />
