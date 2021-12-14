@@ -15,15 +15,12 @@ import {
 import { PlayerContext } from '../../contexts/PlayerContext';
 
 const VolumeBar = (props) => {
-  const [volumeLevel, setVolumeLevel] = useState(50);
   const { playerData, dispatch } = useContext(PlayerContext);
   const { volume, mute } = playerData.controls;
-  // console.log('volume:', volume);
-  console.log('mute', mute);
+  const [volumeLevel, setVolumeLevel] = useState(volume);
 
   // handles click event on speaker button
   const toggleMute = () => {
-    console.log('****************trigger!');
     // props.setMuted(!props.muted);
     dispatch({ type: 'TOGGLE_MUTE' });
     // sets volume level to 0.3 if muted via the volume bar

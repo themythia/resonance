@@ -85,6 +85,7 @@ const Player = (props) => {
     } else songRef.current.pause();
   }, [playing]);
 
+  // sets volume & mute state to html5 player
   useEffect(() => {
     songRef.current.volume = playerData.controls.volume / 100;
   }, [playerData.controls.volume]);

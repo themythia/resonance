@@ -52,7 +52,7 @@ function App() {
       shuffle: false,
       repeat: false,
       mute: false,
-      volume: 50,
+      volume: 20,
     },
   });
 

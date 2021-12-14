@@ -21,17 +21,8 @@ const NowPlayingPage = () => {
         {current && <h5>{current.track.name}</h5>}
         {current && <p>{current.track.artists[0]}</p>}
       </SongInfoTextContainer>
-      <Player
-        max={30}
-        src={current?.track.src}
-        volume={{ volume, setVolume }}
-        muted={muted}
-      />
-      <VolumeBar
-        volume={{ volume, setVolume }}
-        setMuted={setMuted}
-        muted={muted}
-      />
+      <Player max={30} src={current?.track.src} />
+      <VolumeBar />
     </NowPlayingContainer>
   );
 };
