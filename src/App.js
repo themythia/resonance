@@ -68,16 +68,15 @@ function App() {
       dispatch({ type: 'SET_DEVICE', device: 'desktop' });
     } else dispatch({ type: 'SET_DEVICE', device: 'mobile' });
 
-    return window.removeEventListener('resize', () =>
-      setWidth(window.innerWidth)
-    );
+    return () =>
+      window.removeEventListener('resize', () => setWidth(window.innerWidth));
   }, [width]);
 
   return (
     <div className='wrapper'>
       <UserContext.Provider value={{ userData, setUserData }}>
         <PlayerContext.Provider value={{ playerData, dispatch }}>
-          {showMenuBar && <Header />}
+          {showMenuBar && location.pathname !== '/nowplaying' && <Header />}
           <Routes>
             <Route exact path='/' element={<WelcomePage />} />
             <Route path='/login' element={<Login />} />
