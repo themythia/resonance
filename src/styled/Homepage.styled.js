@@ -78,16 +78,30 @@ export const StyledListContainer = styled.section`
   }
 `;
 
-export const StyledInnerWrapper = styled.div``;
-
 export const StyledRecommendedList = styled.div`
   display: flex;
 
   justify-content: space-between;
+  border: 1px solid red;
 
   height: max-content;
 
   overflow-x: auto;
+
+  @media screen and (min-width: 1024px) {
+    ::-webkit-scrollbar {
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: red;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: yellow;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: blue;
+    }
+  }
 `;
 
 export const StyledAlbumContainer = styled.div`
@@ -181,7 +195,7 @@ export const StyledTitleRecent = styled.div`
       color: var(--dt-body-font-bold);
     }
     h5 {
-      color: var(--dt-body-font-regular);
+      color: var(--dt-body-font-bold);
     }
   }
   @media screen and (min-width: 1024px) {
