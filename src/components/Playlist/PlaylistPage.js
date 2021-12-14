@@ -127,6 +127,7 @@ const PlaylistPage = (props) => {
                   duration={handleTime(track.duration)}
                   cover={track.album.image}
                   album={track.album.name}
+                  selected={playerData.current.index === index ? true : false}
                 />
               </div>
             );
