@@ -3,8 +3,8 @@ import styled from 'styled-components/macro';
 export const PlaylistPageContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
-  max-height: calc(100vh - 194px);
-  height: calc(100vh - 194px);
+  max-height: calc(100vh - 144px);
+  height: calc(100vh - 144px);
   margin-top: 96px;
   background: var(--lt-background);
   display: flex;
@@ -23,6 +23,8 @@ export const PlaylistPageContainer = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
+    max-height: calc(100vh - 194px);
+    height: calc(100vh - 194px);
     grid-column: 2/7;
     margin-top: 104px;
     font: var(--font-body);
