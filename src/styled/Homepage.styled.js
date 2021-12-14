@@ -82,7 +82,6 @@ export const StyledRecommendedList = styled.div`
   display: flex;
 
   justify-content: space-between;
-  border: 1px solid red;
 
   height: max-content;
 
@@ -90,16 +89,19 @@ export const StyledRecommendedList = styled.div`
 
   @media screen and (min-width: 1024px) {
     ::-webkit-scrollbar {
-      height: 8px;
+      height: 10px;
     }
     ::-webkit-scrollbar-track {
-      background: red;
+      background: rgba(245, 182, 66, 0.2);
+      border-radius: 100vw;
+      margin-inline: 8px;
     }
     ::-webkit-scrollbar-thumb {
-      background: yellow;
+      background: var(--dt-radial-gradient);
+
+      border-radius: 100vw;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: blue;
     }
   }
 `;
@@ -220,6 +222,22 @@ export const StyledRecentlyPlayedContainer = styled.section`
     grid-row: 5 / 6;
     overflow-x: auto;
     overflow-y: hidden;
+
+    ::-webkit-scrollbar {
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(245, 182, 66, 0.2);
+      border-radius: 100vw;
+      margin-inline: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--dt-radial-gradient);
+
+      border-radius: 100vw;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    }
   }
 `;
 

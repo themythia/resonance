@@ -78,6 +78,15 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   /* light theme colors */
 }
 
+@supports (scrollbar-color: orangered rgba(245, 182, 66, 0.2)) {
+  @media screen and (min-width: 1024px) {
+    * {
+      scrollbar-color: orangered rgba(245, 182, 66, 0.2);
+      scrollbar-width: thin;
+    }
+  }
+}
+
 *::after,
 *::before,
 * {
