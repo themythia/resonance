@@ -5,6 +5,8 @@ import { Navigate } from 'react-router-dom';
 
 const Authorize = () => {
   const { userData, setUserData } = useContext(UserContext);
+  
+  
 
   useEffect(() => {
     let access_token = window.location.hash
@@ -23,6 +25,7 @@ const Authorize = () => {
       setUserData({
         isLoggedIn: true,
         data: body,
+        
       });
     });
   }, []);
