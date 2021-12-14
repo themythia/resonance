@@ -64,15 +64,13 @@ const Player = (props) => {
   useEffect(() => {
     if (songRef.current.ended) {
       clear();
-      // setProgress(0);
-      // setPlaying(false);
       dispatch({ type: 'NEXT_TRACK' });
       dispatch({
         type: 'TOGGLE_PLAY',
         play: false,
       });
     }
-  }, [progress]);
+  }, [progress, dispatch]);
 
   // controls the play/pause functions
   useEffect(() => {
@@ -83,13 +81,15 @@ const Player = (props) => {
         index: playerData.current.index,
       });
     } else songRef.current.pause();
-  }, [playing]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, dispatch]);
 
-  // sets volume & mute state to html5 player
+  // sets volume state to html5 player
   useEffect(() => {
     songRef.current.volume = playerData.controls.volume / 100;
   }, [playerData.controls.volume]);
 
+  // sets mute state to html5 player
   useEffect(() => {
     songRef.current.muted = playerData.controls.mute;
   }, [playerData.controls.mute]);
@@ -99,8 +99,6 @@ const Player = (props) => {
     if (source) {
       clear();
       setProgress(0);
-      // setPlaying(false);
-      // setTimeout(() => setPlaying(true), 500);
       dispatch({
         type: 'TOGGLE_PLAY',
         play: false,
@@ -114,7 +112,7 @@ const Player = (props) => {
         500
       );
     }
-  }, [source]);
+  }, [source, dispatch]);
 
   return (
     <PlayerContainer>

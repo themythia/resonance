@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Player from './Player';
 import {
   AlbumCover,
@@ -9,8 +9,6 @@ import VolumeBar from './VolumeBar';
 import { PlayerContext } from '../../contexts/PlayerContext';
 
 const NowPlayingPage = () => {
-  const [volume, setVolume] = useState(50);
-  const [muted, setMuted] = useState(false);
   const { playerData } = useContext(PlayerContext);
   const { current } = playerData;
 

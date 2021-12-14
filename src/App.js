@@ -26,6 +26,7 @@ function App() {
     token: null,
   });
 
+  // stores everything about playlist & player
   const [playerData, dispatch] = useReducer(playerReducer, {
     device: 'mobile',
     current: {
@@ -55,8 +56,6 @@ function App() {
       volume: 20,
     },
   });
-
-  console.log('playerData', playerData);
 
   const showMenuBar =
     location.pathname !== '/' &&
