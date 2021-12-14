@@ -1,16 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   Input,
   HeaderContainer,
   SearchBarContainer,
-  ProfilePic,
 } from '../../styled/SearchBar';
 import { Search } from '@styled-icons/fluentui-system-filled';
-import { UserContext } from '../../contexts/UserContext';
 import Signout from './Signout';
 
 const Header = () => {
-  const { userData } = useContext(UserContext);
   return (
     <HeaderContainer>
       <SearchBarContainer>

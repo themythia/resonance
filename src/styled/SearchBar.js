@@ -71,6 +71,14 @@ export const ProfilePic = styled.img`
   border-radius: 100%;
 `;
 
+export const ProfileContainer = styled.div`
+  @media screen and (min-width: 1024px) {
+    margin-right: 24px;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+  }
+`;
 export const UserName = styled.div`
   height: 56px;
   max-width: 200px;
@@ -79,7 +87,8 @@ export const UserName = styled.div`
   border-top-left-radius: 100px;
   border-bottom-left-radius: 100px;
   padding-right: 34px;
-  background: var(--lt-active-color);
+  background: ${(props) =>
+    props.active ? 'var(--cl-primary3-500)' : 'var(--lt-active-color)'};
   font: var(--font-body);
   color: var(--cl-primary1-50);
   display: flex;
@@ -87,14 +96,19 @@ export const UserName = styled.div`
   position: relative;
   left: 28px;
   z-index: -100;
-`;
+  transition: 0.2s all;
 
-export const ProfileContainer = styled.div`
-  @media screen and (min-width: 1024px) {
-    margin-right: 24px;
-    display: flex;
-    cursor: pointer;
-    user-select: none;
+  @media (prefers-color-scheme: dark) {
+    background: ${(props) =>
+      props.active ? 'var(--cl-primary3-700)' : 'var(--dt-active-color)'};
+  }
+
+  ${ProfileContainer}:hover & {
+    background: var(--cl-primary3-500);
+
+    @media (prefers-color-scheme: dark) {
+      background: var(--cl-primary3-700);
+    }
   }
 `;
 
@@ -113,6 +127,7 @@ export const Menu = styled.div`
 
   @media (prefers-color-scheme: dark) {
     background: var(--dt-navbar-background);
+    box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.7);
   }
 `;
 

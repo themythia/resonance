@@ -28,7 +28,10 @@ const Signout = () => {
   return (
     <ProfileContainer onClick={() => setShow(!show)}>
       {playerData.device === 'desktop' && (
-        <UserName>{userData.data.display_name}</UserName>
+        <UserName active={show}>
+          {show ? '▲ ' : '▼ '}
+          {userData.data.display_name}
+        </UserName>
       )}
       <ProfilePic
         src={
