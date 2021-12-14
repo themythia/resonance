@@ -17,7 +17,6 @@ import { playerReducer } from './reducers/playerReducer';
 
 function App() {
   const location = useLocation();
-  console.log('location', location);
   const [width, setWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
 

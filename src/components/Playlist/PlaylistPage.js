@@ -51,7 +51,7 @@ const PlaylistPage = (props) => {
         );
         navigate('/home');
       });
-  }, [playlistId, dispatch, userData, state.type, navigate]);
+  }, [playlistId, dispatch, userData, state?.type, navigate]);
 
   useEffect(() => {
     // if fetch is successful and playlist dispatched to context
@@ -72,7 +72,7 @@ const PlaylistPage = (props) => {
   }, [
     playlist,
     playlistId,
-    state.track,
+    state?.track,
     dispatch,
     playerData.device,
     navigate,

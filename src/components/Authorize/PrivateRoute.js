@@ -4,6 +4,9 @@ import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
   const { userData } = useContext(UserContext);
-  return userData.isLoggedIn ? children : <Navigate to='/login' />;
+  if (userData.isLoggedIn) {
+    if (children) return children;
+    else return <Navigate to='/home' />;
+  } else return <Navigate to='/login' />;
 };
 export default PrivateRoute;
