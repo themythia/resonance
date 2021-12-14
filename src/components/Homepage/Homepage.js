@@ -17,33 +17,44 @@ const Homepage = () => {
 
   useEffect(() => {
     if (!userData.token) return;
+
+    let controller = new AbortController();
+
     const fetchData = async () => {
-      const response = await fetch(
-        `https://api.spotify.com/v1/me/player/recently-played`,
-        {
-          method: 'GET',
-          headers: { Authorization: 'Bearer ' + userData.token },
-        }
-      );
-      const albumData = await response.json();
-      const seedString = albumData.items
-        .map((item) => item.track.album.artists[0].id)
-        .slice(-5)
-        .join('%2C');
-      const seedResponse = await fetch(
-        `https://api.spotify.com/v1/recommendations?seed_artists=${seedString}`,
-        {
-          method: 'GET',
-          headers: {
-            Authorization: 'Bearer ' + userData.token,
-          },
-        }
-      );
-      const seedData = await seedResponse.json();
-      setRecentlyPlayedSongs(albumData.items);
-      setRecommendedSongs(seedData.tracks);
+      try {
+        const response = await fetch(
+          `https://api.spotify.com/v1/me/player/recently-played`,
+          {
+            method: 'GET',
+            headers: { Authorization: 'Bearer ' + userData.token },
+            signal: controller.signal,
+          }
+        );
+        const albumData = await response.json();
+        const seedString = albumData.items
+          .map((item) => item.track.album.artists[0].id)
+          .slice(-5)
+          .join('%2C');
+        const seedResponse = await fetch(
+          `https://api.spotify.com/v1/recommendations?seed_artists=${seedString}`,
+          {
+            method: 'GET',
+            headers: {
+              Authorization: 'Bearer ' + userData.token,
+            },
+          }
+        );
+        const seedData = await seedResponse.json();
+        setRecentlyPlayedSongs(albumData.items);
+        setRecommendedSongs(seedData.tracks);
+        controller = null;
+      } catch (e) {
+        console.error(e);
+      }
     };
     fetchData();
+
+    return () => controller?.abort();
   }, [userData.token]);
 
   return (
