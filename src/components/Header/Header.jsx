@@ -7,6 +7,7 @@ import {
 } from '../../styled/SearchBar';
 import { Search } from '@styled-icons/fluentui-system-filled';
 import { UserContext } from '../../contexts/UserContext';
+import Signout from './Signout';
 
 const Header = () => {
   const { userData } = useContext(UserContext);
@@ -16,13 +17,7 @@ const Header = () => {
         <Input />
         <Search size={24} />
       </SearchBarContainer>
-      <ProfilePic
-        src={
-          userData.data.images?.[0]?.url ||
-          'https://puu.sh/IsNdG/069cf308d1.png'
-        }
-        alt='user avatar'
-      />
+      <Signout />
     </HeaderContainer>
   );
 };
