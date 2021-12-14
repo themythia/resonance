@@ -8,7 +8,13 @@ import {
   PlayListInfoContainer,
 } from '../../styled/Playlist';
 import PlaylistItem from './PlaylistItem';
-import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
+import {
+  useParams,
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { PlayerContext } from '../../contexts/PlayerContext';
 import { handleTime } from '../../utils/handleTime';
@@ -22,10 +28,11 @@ const PlaylistPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [playlist, setPlaylist] = useState(null);
   const { state } = useLocation();
-  const [navigate, setNavigate] = useState(false);
+  const [navigateStatus, setNavigateStatus] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const apiEndpoint = `https://api.spotify.com/v1/${state.type}/${playlistId}?market=${userData.data.country}`;
+    const apiEndpoint = `https://api.spotify.com/v1/${state?.type}/${playlistId}?market=${userData.data.country}`;
     fetch(apiEndpoint, {
       method: 'GET',
       headers: { Authorization: 'Bearer ' + userData.token },
@@ -39,8 +46,11 @@ const PlaylistPage = (props) => {
         }
       })
       .then(() => setFetchStatus(true))
-      .catch((error) => console.warn(error));
-  }, [playlistId, dispatch, userData, state.type]);
+      .catch((error) => {
+        console.warn(error);
+        navigate('/home');
+      });
+  }, [playlistId, dispatch, userData, state?.type, navigate]);
 
   useEffect(() => {
     if (fetchStatus) {
@@ -54,7 +64,7 @@ const PlaylistPage = (props) => {
         let index = tracks.indexOf(track);
         dispatch(setCurrent(track, index, playlistId, tracks.length));
         if (playerData.device === 'mobile') {
-          setNavigate(true);
+          setNavigateStatus(true);
           setLoading(true);
         }
       }
@@ -63,13 +73,13 @@ const PlaylistPage = (props) => {
     playerData.playlists,
     playlistId,
     fetchStatus,
-    state.track,
+    state?.track,
     dispatch,
     playerData.device,
   ]);
 
   if (loading) {
-    if (navigate && playerData.current) {
+    if (navigateStatus && playerData.current) {
       return <Navigate to='/nowplaying' />;
     }
     return null;
