@@ -4,7 +4,9 @@ import {
   HeaderContainer,
   SearchBarContainer,
   ProfilePic,
+  SearchResultContainer
 } from '../../styled/SearchBar';
+import TrackSearchResult from './TrackSearchResult';
 import { Search } from '@styled-icons/fluentui-system-filled';
 import { UserContext } from '../../contexts/UserContext';
 import SpotifyWebApi from 'spotify-web-api-node';
@@ -20,19 +22,20 @@ const Header = () => {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const { userData } = useContext(UserContext);
-  console.log(searchResults)
+  const {token} = userData;
+ 
+
   
-  const access_token=userData.options.headers.Authorization.split(" ")[1];
   
   useEffect (()=> {
-    if (!access_token) return
-    SpotifyApi.setAccessToken(access_token)
-  }, [access_token]);
+    if (!token) return
+    SpotifyApi.setAccessToken(token)
+  }, [token]);
 
   useEffect(() => {
     if (!search)
      return setSearchResults([])
-    if (!access_token) return
+    if (!token) return
 
 
     let cancel = false;
@@ -59,11 +62,12 @@ const Header = () => {
     )
   })
   return ()=>cancel=true;
-  }, [search, access_token ])
+  }, [search, token])
 
  
   
   return (
+    
     <HeaderContainer>
       <SearchBarContainer>
         <Input 
@@ -73,13 +77,20 @@ const Header = () => {
           onChange={(e)=>setSearch(e.target.value)}/>
         <Search size={24} />
       </SearchBarContainer>
-      {/*<ProfilePic
+      {/* <ProfilePic
         src={
-          userData.data.images?.[0].url || 'https://puu.sh/IsNdG/069cf308d1.png'
+          userData.data.images?.[0].uri || 'https://puu.sh/IsNdG/069cf308d1.png'
         }
         alt='user avatar'
-      />*/}
+      /> */}
+      <SearchResultContainer>
+      {searchResults.map((track)=>(
+        <TrackSearchResult track={track} key={track.url}/>
+      ))}
+    </SearchResultContainer>
     </HeaderContainer>
+    
+    
   );
 };
 

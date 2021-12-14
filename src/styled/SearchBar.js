@@ -69,3 +69,7 @@ export const ProfilePic = styled.img`
     margin-right: 24px;
   }
 `;
+
+export const SearchResultContainer = styled.div`
+  
+`

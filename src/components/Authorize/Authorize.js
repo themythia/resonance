@@ -22,9 +22,11 @@ const Authorize = () => {
     // use the access token to access the Spotify Web API
     request.get(options, function (error, response, body) {
       console.log(body);
+      const accessToken=options.headers.Authorization.split(" ")[1];
       setUserData({
         isLoggedIn: true,
         data: body,
+        token: accessToken
         
       });
     });
