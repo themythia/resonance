@@ -48,7 +48,11 @@ const Authorize = () => {
             token: null,
           });
         }
+
         localStorage.setItem('token', access_token);
+        localStorage.setItem('userdata', JSON.stringify(body));
+        localStorage.setItem('timeOfLogin', Date.now());
+
         setUserData({
           ...userData,
           isLoggedIn: true,

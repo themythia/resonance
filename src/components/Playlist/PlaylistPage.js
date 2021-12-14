@@ -31,7 +31,7 @@ const PlaylistPage = (props) => {
   }
 
   useEffect(() => {
-    const apiEndpoint = `https://api.spotify.com/v1/${state.type}/${playlistId}?market=${userData.data.country}`;
+    const apiEndpoint = `https://api.spotify.com/v1/${state?.type}/${playlistId}?market=${userData.data.country}`;
     fetch(apiEndpoint, {
       method: 'GET',
       headers: { Authorization: 'Bearer ' + userData.token },
