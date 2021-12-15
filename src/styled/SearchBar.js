@@ -86,6 +86,11 @@ export const SearchResultContainer = styled.div`
   box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
   padding: 16px 16px 8px 16px;
   border-radius: 10px;
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--dt-navbar-background);
+    box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.7);
+  }
 `;
 
 export const TrackSearchResultContainer = styled.div`
