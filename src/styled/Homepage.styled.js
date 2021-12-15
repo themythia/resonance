@@ -93,6 +93,9 @@ export const StyledAlbumContainer = styled.div`
   max-width: 144px;
   margin-inline: 8px;
   cursor: pointer;
+
+  height: max-content;
+
   &:hover {
     p {
       color: var(--cl-primary3-500);
