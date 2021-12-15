@@ -66,14 +66,21 @@ export const PlayerControlContainer = styled.div`
 export const StyledPlayerButton = styled.button`
   height: ${(props) => props.size || '36px'};
   width: ${(props) => props.size || '36px'};
+  background: ${(props) => {
+    return props.size ||
+      (props?.status?.shuffle && props.icon === 'shuffle') ||
+      (props?.status?.repeat && props.icon === 'repeat')
+      ? 'var(--dt-radial-gradient)'
+      : 'transparent';
+  }};
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(props) =>
-    props.size ? 'var(--dt-radial-gradient)' : 'transparent'};
   border-radius: 100%;
   border: none;
   transition: transform 0.1s;
+  cursor: ${(props) => props.disabled && 'not-allowed'};
   &:hover {
     transform: ${(props) => props.size && 'scale(1.05)'};
   }
@@ -89,6 +96,7 @@ export const Icon = styled.div`
     color: var(--lt-body-font-bold);
     height: 36px;
     width: 36px;
+
     ${StyledPlayerButton}:hover & {
       color: var(--cl-primary1-800);
     }
@@ -154,6 +162,7 @@ export const SongInfoTextContainer = styled.div`
   @media screen and (min-width: 1024px) {
     text-align: left;
     margin-bottom: 0;
+    width: calc(100vw / 3);
   }
 `;
 
@@ -314,10 +323,10 @@ export const VolumeControlContainer = styled.div`
   display: none;
 
   @media screen and (min-width: 1024px) {
-    width: calc(100vw / 12 + 32px);
+    width: calc(100vw / 3);
     height: 24px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
   }
 `;

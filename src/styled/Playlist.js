@@ -3,16 +3,20 @@ import styled from 'styled-components/macro';
 export const PlaylistPageContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
-  max-height: calc(100vh - 196px);
-  height: calc(100vh - 196px);
+  max-height: calc(100vh - 194px);
+  height: calc(100vh - 194px);
   margin-top: 96px;
   background: var(--lt-background);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   color: var(--lt-body-font-regular);
   font: var(--font-body-small);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
   h5 {
     font: var(--h5-bold);
@@ -20,6 +24,7 @@ export const PlaylistPageContainer = styled.div`
 
   @media screen and (min-width: 1024px) {
     grid-column: 2/7;
+    margin-top: 104px;
     font: var(--font-body);
     h5 {
       font: var(--h1-bold);
