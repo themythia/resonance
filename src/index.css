@@ -87,6 +87,23 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   }
 }
 
+@media screen and (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(245, 182, 66, 0.2);
+    border-radius: 100vw;
+    margin-inline: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--dt-radial-gradient);
+
+    border-radius: 100vw;
+  }
+}
+
 *::after,
 *::before,
 * {

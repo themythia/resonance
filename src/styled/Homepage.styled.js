@@ -12,7 +12,7 @@ export const StyledGridWrapper = styled.div`
   grid-template-columns: 16px 1fr 16px;
   grid-template-rows:
     96px auto minmax(max-content, auto) auto minmax(0, 1fr)
-    96px;
+    48px;
   background-color: var(--lt-background);
 
   @media (prefers-color-scheme: dark) {
@@ -83,27 +83,9 @@ export const StyledRecommendedList = styled.div`
 
   justify-content: space-between;
 
-  height: max-content;
+  height: 100%;
 
   overflow-x: auto;
-
-  @media screen and (min-width: 1024px) {
-    ::-webkit-scrollbar {
-      height: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(245, 182, 66, 0.2);
-      border-radius: 100vw;
-      margin-inline: 8px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--dt-radial-gradient);
-
-      border-radius: 100vw;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-    }
-  }
 `;
 
 export const StyledAlbumContainer = styled.div`
@@ -222,22 +204,6 @@ export const StyledRecentlyPlayedContainer = styled.section`
     grid-row: 5 / 6;
     overflow-x: auto;
     overflow-y: hidden;
-
-    ::-webkit-scrollbar {
-      height: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(245, 182, 66, 0.2);
-      border-radius: 100vw;
-      margin-inline: 8px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--dt-radial-gradient);
-
-      border-radius: 100vw;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-    }
   }
 `;
 
