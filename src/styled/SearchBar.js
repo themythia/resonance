@@ -78,7 +78,8 @@ export const SearchResultContainer = styled.div`
   margin: 0 16px;
   left: 0;
   width: calc(100vw - 32px);
-  height: 344px;
+  height: auto;
+  max-height: 338px;
   overflow: hidden;
   top: 75px;
   background: var(--lt-navbar-background);
@@ -91,6 +92,14 @@ export const SearchResultContainer = styled.div`
     background: var(--dt-navbar-background);
     box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.7);
   }
+  @media screen and (min-width: 1024px) {
+    width: calc(100vw * 5 / 6 - 48px);
+    margin: 0 24px;
+    top: 94px;
+    padding: 24px 24px 0 24px;
+    height: auto;
+    max-height: 424px;
+  }
 `;
 
 export const TrackSearchResultContainer = styled.div`
@@ -98,6 +107,9 @@ export const TrackSearchResultContainer = styled.div`
   align-items: center;
   cursor: pointer;
   margin-bottom: 8px;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const TrackCover = styled.img`
@@ -126,21 +138,28 @@ export const Title = styled.h5`
       color: var(--dt-active-color);
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    font: var(--font-body-bold);
+  }
 `;
 
 export const Artists = styled.p`
   font: var(--font-body-small);
   color: var(--lt-body-font-regular);
   transition: 0.2s all;
-
   ${TrackSearchResultContainer}:hover & {
     color: var(--lt-active-color);
   }
+
   @media (prefers-color-scheme: dark) {
     color: var(--dt-body-font-regular);
-
     ${TrackSearchResultContainer}:hover & {
       color: var(--dt-active-color);
     }
+  }
+
+  @media screen and (min-width: 1024px) {
+    font: var(--font-body);
   }
 `;
