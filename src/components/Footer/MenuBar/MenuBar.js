@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Home } from '@styled-icons/fluentui-system-filled';
 import { Library } from '@styled-icons/fluentui-system-filled';
 import { MenuContainer, StyledNavLink, NavLogo } from '../../../styled/Menubar';
+import { PlayerContext } from '../../../contexts/PlayerContext';
+import PlaylistList from './PlaylistList';
 
 const MenuBar = () => {
+  const { playerData } = useContext(PlayerContext);
+
   return (
     <MenuContainer>
       <NavLogo />
@@ -15,6 +19,7 @@ const MenuBar = () => {
         <Library size='24' cursor='pointer' />
         <p>Library</p>
       </StyledNavLink>
+      {playerData.device === 'desktop' && <PlaylistList />}
     </MenuContainer>
   );
 };

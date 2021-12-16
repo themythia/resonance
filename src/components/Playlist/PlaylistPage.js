@@ -19,6 +19,7 @@ import { UserContext } from '../../contexts/UserContext';
 import { PlayerContext } from '../../contexts/PlayerContext';
 import { handleTime } from '../../utils/handleTime';
 import { newAlbum, newPlaylist, setCurrent } from '../../utils/dispatch';
+import Loading from '../Authorize/Loading/Loading';
 
 const PlaylistPage = (props) => {
   const { playlistId } = useParams();
@@ -31,6 +32,8 @@ const PlaylistPage = (props) => {
   const [navigateStatus, setNavigateStatus] = useState(false);
   const navigate = useNavigate();
 
+  console.log('loading:', loading);
+
   useEffect(() => {
     const apiEndpoint = `https://api.spotify.com/v1/${state?.type}/${playlistId}?market=${userData.data.country}`;
     fetch(apiEndpoint, {
@@ -39,6 +42,7 @@ const PlaylistPage = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log('data:', data);
         if (state.type === 'playlists') {
           dispatch(newPlaylist(playlistId, data));
         } else if (state.type === 'albums') {
@@ -78,6 +82,9 @@ const PlaylistPage = (props) => {
     playerData.device,
   ]);
 
+  if (!playlist) {
+    return <Loading />;
+  }
   if (loading) {
     if (navigateStatus && playerData.current) {
       return <Navigate to='/nowplaying' />;
