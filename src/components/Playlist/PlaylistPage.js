@@ -31,6 +31,9 @@ const PlaylistPage = (props) => {
   const [navigateStatus, setNavigateStatus] = useState(false);
   const navigate = useNavigate();
 
+  console.log('playerData', playerData);
+  console.log('state:', state);
+
   useEffect(() => {
     const apiEndpoint = `https://api.spotify.com/v1/${state?.type}/${playlistId}?market=${userData.data.country}`;
     fetch(apiEndpoint, {
