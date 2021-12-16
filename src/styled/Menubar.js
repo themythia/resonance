@@ -16,6 +16,7 @@ export const MenuContainer = styled.div`
   position: fixed;
   bottom: 0;
   color: var(--lt-body-font-bold);
+  box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.3);
 
   @media (prefers-color-scheme: dark) {
     background: var(--dt-footer-background);
@@ -31,6 +32,7 @@ export const MenuContainer = styled.div`
     justify-content: flex-start;
     position: fixed;
     top: 0;
+    box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.3);
   }
 `;
 
