@@ -108,9 +108,10 @@ export const PlaylistContainer = styled.div`
   flex-direction: column;
   overflow-y: auto;
   margin-top: 24px;
-  margin-bottom: calc(100vw / 6);
+  margin-bottom: calc(100vw / 6 + 90px);
   border-top: 1px solid var(--lt-body-font-bold);
   padding: 24px 0 0 0;
+  width: 100%;
 
   a {
     text-decoration: none;
@@ -123,21 +124,41 @@ export const PlaylistContainer = styled.div`
 
 export const PlaylistItem = styled.div`
   font: var(--font-body);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   margin-right: 18px;
+  padding: 6px;
+  border-radius: 5px;
   width: calc(100% - 18px);
+  max-width: calc(100% - 18px);
   transition: 0.2s all;
   cursor: pointer;
-  color: var(--lt-body-font-regular);
+  color: ${(props) =>
+    props.selected
+      ? 'var(--dt-body-font-bold)'
+      : 'var(--lt-body-font-regular)'};
+  background: ${(props) =>
+    props.selected ? 'var(--lt-active-color)' : 'inherit'};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
   &:hover {
-    color: var(--lt-active-color);
+    color: ${(props) =>
+      props.selected ? 'var(--dt-body-font-bold)' : 'var(--lt-active-color)'};
   }
 
   @media (prefers-color-scheme: dark) {
-    color: var(--dt-body-font-regular);
+    color: ${(props) =>
+      props.selected
+        ? 'var(--dt-body-font-bold)'
+        : 'var(--dt-body-font-regular)'};
+
+    background: ${(props) =>
+      props.selected ? 'var(--dt-active-color)' : 'inherit'};
+
     &:hover {
-      color: var(--dt-active-color);
+      color: ${(props) =>
+        props.selected ? 'var(--dt-body-font-bold)' : 'var(--dt-active-color)'};
     }
   }
 `;
