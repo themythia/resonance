@@ -111,6 +111,7 @@ export const StyledAlbumCover = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 30px;
   margin-bottom: 8px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
 `;
 export const StyledAlbumImage = styled.img`
   max-width: 100%;
@@ -249,6 +250,7 @@ export const StyledSongImageContainer = styled.div`
   min-width: 60px;
   max-width: 60px;
   overflow: hidden;
+  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
 
   border-radius: 15%;
   @media screen and (min-width: 1024px) {
