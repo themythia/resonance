@@ -10,7 +10,6 @@ import PlayerButton from './PlayerButton';
 import { handleTime } from '../../utils/handleTime';
 
 const Player = (props) => {
-  const API_KEY = process.env.REACT_APP_SCRAPE_API_KEY;
   const { playerData, dispatch } = useContext(PlayerContext);
 
   // const [playing, setPlaying] = useState(false);
@@ -33,43 +32,15 @@ const Player = (props) => {
       // gets the preview_url through scraping
       // sets it as source
       const spotifyUrl = `https://open.spotify.com/embed/track/${playerData.current.track.id}`;
+      const corsHerokuProxy = 'https://pacific-caverns-96128.herokuapp.com/';
 
-      const scrapingApiUrl = `https://api.webscrapingapi.com/v1?api_key=${API_KEY}&url=${spotifyUrl}&method=GET&device=desktop&proxy_type=datacenter`;
-      // fetch(scrapingApiUrl)
-      //   .then((res) => res.text())
-      //   .then((data) => {
-      //     const scrapedURL = data
-      //       .split('preview_url%22%3A%22')[1]
-      //       .split('%22%2C%22track_number')[0];
-      //     setSource(decodeURIComponent(scrapedURL)); // decodes html entities to string
-      //   })
-      //   .catch((error) =>
-      //     console.error('An error occurred while scraping', error)
-      //   );
-
-      // scrapeIt(`https://cors-anywhere.herokuapp.com/${spotifyUrl}`, {
-      //   resource: 'script',
-      // })
-      //   .then(({ data, response }) => {
-      //     console.log(`Status Code: ${response.statusCode}`);
-      //     console.log('type', typeof data);
-      //     console.log('data:', data);
-      //     const testSplit = data.resource
-      //       .split('preview_url%22%3A%22')[1]
-      //       .split('%22%2C%22track_number')[0];
-
-      //     console.log('testSplit', decodeURIComponent(testSplit));
-      //   })
-      //   .catch((e) => console.warn('An error occurred while scrapeIt', e));
-      fetch(`https://cors-anywhere.herokuapp.com/${spotifyUrl}`)
+      fetch(corsHerokuProxy + spotifyUrl)
         .then((res) => res.text())
         .then((data) => {
-          console.log('fetch data', data);
-          const testSplit = data
+          const scrapedURL = data
             .split('preview_url%22%3A%22')[1]
             .split('%22%2C%22track_number')[0];
-
-          console.log('test', decodeURIComponent(testSplit));
+          setSource(decodeURIComponent(scrapedURL));
         })
         .catch((e) => console.warn('error:', e));
     }
