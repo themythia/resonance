@@ -29,8 +29,7 @@ const Login = () => {
     let responsetype = 'token';
     let scope =
       'user-read-private user-read-email user-read-recently-played playlist-read-private playlist-modify-private playlist-modify-private';
-    let redirect_uri =
-      'https://v35-geckos-team-06-qswe7y4e7-mythia.vercel.app/authorize';
+    let redirect_uri = 'https://v35-geckos-team-06.vercel.app/authorize';
     let url = `https://accounts.spotify.com/authorize?`;
     url += querystring.stringify({
       response_type: responsetype,
