@@ -9,12 +9,14 @@ export const HeaderContainer = styled.div`
   background: var(--lt-navbar-background);
   position: fixed;
   top: 0;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
 
   @media (prefers-color-scheme: dark) {
     background: var(--dt-navbar-background);
   }
 
   @media screen and (min-width: 1024px) {
+    box-shadow: none;
     height: 104px;
     width: calc(100vw - calc(100vw / 6));
     right: 0;

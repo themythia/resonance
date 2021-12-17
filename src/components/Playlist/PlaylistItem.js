@@ -11,7 +11,7 @@ import {
 
 const PlaylistItem = (props) => {
   return (
-    <SongContainer>
+    <SongContainer selected={props.selected}>
       <SongContainerLeft>
         <SongCover src={props.cover} />
         <SongInfo>
