@@ -10,7 +10,7 @@ export const StyledGridWrapper = styled.div`
   height: 100vh;
 
   grid-template-columns: 16px 1fr 16px;
-  grid-template-rows: 96px minmax(30px, auto) 1fr 96px;
+  grid-template-rows: 96px minmax(30px, auto) 1fr 48px;
   background-color: var(--lt-background);
 
   @media (prefers-color-scheme: dark) {
@@ -19,7 +19,7 @@ export const StyledGridWrapper = styled.div`
 
   @media screen and (min-width: 1024px) {
     gap: 24px;
-    grid-template-columns: 320px 3fr;
+    grid-template-columns: calc(100vw / 6) 3fr;
     grid-template-rows:
       minmax(100px, max-content) minmax(96px, auto) minmax(auto, 1fr)
       90px;
