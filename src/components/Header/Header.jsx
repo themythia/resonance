@@ -22,8 +22,6 @@ const Header = () => {
   const { userData } = useContext(UserContext);
   const { token } = userData;
 
-  console.log('search', search);
-
   useEffect(() => {
     if (!token) return;
     SpotifyApi.setAccessToken(token);

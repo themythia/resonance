@@ -10,7 +10,6 @@ import PlayerButton from './PlayerButton';
 import { handleTime } from '../../utils/handleTime';
 
 const Player = (props) => {
-  const API_KEY = process.env.REACT_APP_SCRAPE_API_KEY;
   const { playerData, dispatch } = useContext(PlayerContext);
 
   // const [playing, setPlaying] = useState(false);
@@ -33,19 +32,17 @@ const Player = (props) => {
       // gets the preview_url through scraping
       // sets it as source
       const spotifyUrl = `https://open.spotify.com/embed/track/${playerData.current.track.id}`;
+      const corsHerokuProxy = 'https://pacific-caverns-96128.herokuapp.com/';
 
-      const scrapingApiUrl = `https://api.webscrapingapi.com/v1?api_key=${API_KEY}&url=${spotifyUrl}&method=GET&device=desktop&proxy_type=datacenter`;
-      fetch(scrapingApiUrl)
+      fetch(corsHerokuProxy + spotifyUrl)
         .then((res) => res.text())
         .then((data) => {
           const scrapedURL = data
             .split('preview_url%22%3A%22')[1]
             .split('%22%2C%22track_number')[0];
-          setSource(decodeURIComponent(scrapedURL)); // decodes html entities to string
+          setSource(decodeURIComponent(scrapedURL));
         })
-        .catch((error) =>
-          console.error('An error occurred while scraping', error)
-        );
+        .catch((e) => console.warn('error:', e));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.src, playerData.current.track]);

@@ -29,9 +29,6 @@ const PlaylistPage = (props) => {
     playlist = playlists[playlistId];
   }
 
-  console.log('playerData', playerData);
-  console.log('state:', state);
-
   useEffect(() => {
     const apiEndpoint = `https://api.spotify.com/v1/${state?.type}/${playlistId}?market=${userData.data.country}`;
     fetch(apiEndpoint, {
@@ -40,12 +37,81 @@ const PlaylistPage = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (state.type === 'playlists') {
-          dispatch(newPlaylist(playlistId, data));
-        } else if (state.type === 'albums') {
-          dispatch(newAlbum(playlistId, data));
+        let dataObj = { ...data };
+
+        // checks if result is paginated
+        if (data.tracks.next) {
+          // sets the repeat amount needed for fetch
+          let repeat = Math.floor(data.tracks.total / data.tracks.limit);
+
+          // handles the loop for multiple fetches required for paginated results
+          const paginatedFetch = (repeat, limit) => {
+            // array to store fetch results
+            const tracks = [];
+
+            for (let i = 0; i < repeat; i++) {
+              // limit is different between albums and playlists
+              // spotify enforces limit of 50 to albums and 100 to playlists
+              let url = `https://api.spotify.com/v1/${state.type}/${playlistId}/`;
+              let offsetUrl = `tracks?offset=${(i + 1) * limit}&limit=${limit}`;
+              let market = `&market=${userData.data.country}`;
+              let urlToFetch = url + offsetUrl + market;
+
+              let page = fetch(urlToFetch, {
+                method: 'GET',
+                headers: { Authorization: 'Bearer ' + userData.token },
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  urlToFetch = data.next; // url for next fetch
+                  return data.items; // fetch results
+                })
+                .catch((e) => {
+                  console.error(
+                    `An error occurred while fetching page ${i + 1}`,
+                    e
+                  );
+                  navigate('/home');
+                });
+
+              tracks.push(page);
+            }
+            return tracks;
+          };
+
+          Promise.all(paginatedFetch(repeat, data.tracks.limit))
+            .then((pages) =>
+              // reduces looped fetch responses into a single array
+              pages.reduce((page, next) => page.concat(next), [])
+            )
+            .then((data) => {
+              dataObj = {
+                ...dataObj,
+                tracks: {
+                  ...dataObj.tracks,
+                  items: [...dataObj.tracks.items, ...data],
+                },
+              };
+              if (state.type === 'playlists') {
+                dispatch(newPlaylist(playlistId, dataObj));
+              } else if (state.type === 'albums') {
+                dispatch(newAlbum(playlistId, dataObj));
+              }
+            })
+            .catch((e) => {
+              console.error('Looped fetch failed!', e);
+              navigate('/home');
+            });
+        } else {
+          // this runs if the result is not paginated
+          if (state.type === 'playlists') {
+            dispatch(newPlaylist(playlistId, dataObj));
+          } else if (state.type === 'albums') {
+            dispatch(newAlbum(playlistId, dataObj));
+          }
         }
       })
+
       .catch((error) => {
         console.warn(
           'An error occurred while fetching playlist/album data',
