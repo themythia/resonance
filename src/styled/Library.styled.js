@@ -87,8 +87,8 @@ export const StyledPlaylistItem = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    max-width: 220px;
-    min-width: 220px;
+    max-width: 208px;
+    min-width: 208px;
     flex-direction: column;
     text-align: center;
   }
@@ -99,6 +99,7 @@ export const StyledAlbumThumbnail = styled.img`
   max-width: 56px;
   object-fit: cover;
   aspect-ratio: 1;
+  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
 
   border-radius: 14px;
   @media screen and (min-width: 1024px) {
