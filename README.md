@@ -12,7 +12,9 @@ This is Music streaming app with sleek and smooth app-like animations.
 - [x] Users can increase/decrease the volume of the music.
 - [x] Users can listen preview of thier favorite Music
 
-Tech stack: React, Styled Components, Spotify Web API, Heroku
+# Tech stack:
+
+React.js (React-Hooks, React-Router), Styled Components, Spotify Web API, Heroku
 
 # Setup Instructions
 
