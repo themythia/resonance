@@ -14,6 +14,8 @@ const style = {
 
 const Authorize = () => {
   const { userData, setUserData } = useContext(UserContext);
+  
+  
 
   useEffect(() => {
     if (!window.location.hash) {

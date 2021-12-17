@@ -29,6 +29,9 @@ const PlaylistPage = (props) => {
     playlist = playlists[playlistId];
   }
 
+  console.log('playerData', playerData);
+  console.log('state:', state);
+
   useEffect(() => {
     const apiEndpoint = `https://api.spotify.com/v1/${state?.type}/${playlistId}?market=${userData.data.country}`;
     fetch(apiEndpoint, {

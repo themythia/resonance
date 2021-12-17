@@ -38,7 +38,7 @@ export const NowPlayingContainer = styled.div`
     position: fixed;
     bottom: 0;
     margin-bottom: 0;
-    z-index: 9999;
+    z-index: 100;
     background: var(--lt-navbar-background);
     @media (prefers-color-scheme: dark) {
       background: var(--dt-navbar-background);
@@ -133,7 +133,7 @@ export const AlbumCover = styled.img`
     height: calc(100vw / 6);
     left: 0;
     bottom: 90px;
-    z-index: 9999;
+    z-index: 100;
   }
 `;
 
@@ -216,7 +216,7 @@ export const ProgressBar = styled.input`
   @media screen and (min-width: 1024px) {
     max-width: 100%;
     position: relative;
-    z-index: 9999;
+    z-index: 100;
   }
 
   &:focus {
