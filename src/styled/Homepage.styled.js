@@ -95,6 +95,9 @@ export const StyledAlbumContainer = styled.div`
   cursor: pointer;
 
   height: max-content;
+  @media screen and (min-width: 1440px) {
+    min-width: 208px;
+  }
 
   &:hover {
     p {
@@ -243,6 +246,9 @@ export const StyledSongContainer = styled.div`
     margin-inline: 8px;
     min-width: 120px;
     max-width: 144px;
+  }
+  @media screen and (min-width: 1440px) {
+    min-width: 208px;
   }
 `;
 
