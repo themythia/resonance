@@ -35,17 +35,43 @@ const Player = (props) => {
       const spotifyUrl = `https://open.spotify.com/embed/track/${playerData.current.track.id}`;
 
       const scrapingApiUrl = `https://api.webscrapingapi.com/v1?api_key=${API_KEY}&url=${spotifyUrl}&method=GET&device=desktop&proxy_type=datacenter`;
-      fetch(scrapingApiUrl)
+      // fetch(scrapingApiUrl)
+      //   .then((res) => res.text())
+      //   .then((data) => {
+      //     const scrapedURL = data
+      //       .split('preview_url%22%3A%22')[1]
+      //       .split('%22%2C%22track_number')[0];
+      //     setSource(decodeURIComponent(scrapedURL)); // decodes html entities to string
+      //   })
+      //   .catch((error) =>
+      //     console.error('An error occurred while scraping', error)
+      //   );
+
+      // scrapeIt(`https://cors-anywhere.herokuapp.com/${spotifyUrl}`, {
+      //   resource: 'script',
+      // })
+      //   .then(({ data, response }) => {
+      //     console.log(`Status Code: ${response.statusCode}`);
+      //     console.log('type', typeof data);
+      //     console.log('data:', data);
+      //     const testSplit = data.resource
+      //       .split('preview_url%22%3A%22')[1]
+      //       .split('%22%2C%22track_number')[0];
+
+      //     console.log('testSplit', decodeURIComponent(testSplit));
+      //   })
+      //   .catch((e) => console.warn('An error occurred while scrapeIt', e));
+      fetch(`https://cors-anywhere.herokuapp.com/${spotifyUrl}`)
         .then((res) => res.text())
         .then((data) => {
-          const scrapedURL = data
+          console.log('fetch data', data);
+          const testSplit = data
             .split('preview_url%22%3A%22')[1]
             .split('%22%2C%22track_number')[0];
-          setSource(decodeURIComponent(scrapedURL)); // decodes html entities to string
+
+          console.log('test', decodeURIComponent(testSplit));
         })
-        .catch((error) =>
-          console.error('An error occurred while scraping', error)
-        );
+        .catch((e) => console.warn('error:', e));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.src, playerData.current.track]);
