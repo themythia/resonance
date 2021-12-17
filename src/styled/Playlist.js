@@ -3,8 +3,8 @@ import styled from 'styled-components/macro';
 export const PlaylistPageContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
-  max-height: calc(100vh - 194px);
-  height: calc(100vh - 194px);
+  max-height: calc(100vh - 144px);
+  height: calc(100vh - 144px);
   margin-top: 96px;
   background: var(--lt-background);
   display: flex;
@@ -23,6 +23,8 @@ export const PlaylistPageContainer = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
+    max-height: calc(100vh - 194px);
+    height: calc(100vh - 194px);
     grid-column: 2/7;
     margin-top: 104px;
     font: var(--font-body);
@@ -73,6 +75,7 @@ export const PlaylistInfoText = styled.div`
   margin-top: 24px;
   margin-bottom: 36px;
   text-align: center;
+  text-transform: capitalize;
   h5 {
     color: var(--lt-body-font-bold);
     @media (prefers-color-scheme: dark) {
@@ -94,12 +97,25 @@ export const ListContainer = styled.div`
 
 export const SongContainer = styled.div`
   margin: 16px;
-  background: transparent;
+  background: ${(props) =>
+    props.selected ? 'var(--lt-navbar-background)' : 'transparent'};
+  border-radius: 14px;
+  box-shadow: ${(props) =>
+    props.selected ? 'inset 0px 2px 4px 0px var(--lt-background) ' : 'none'};
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: all 0.2s;
+
+  @media (prefers-color-scheme: dark) {
+    background: ${(props) =>
+      props.selected ? 'var(--dt-navbar-background)' : 'transparent'};
+
+    box-shadow: ${(props) =>
+      props.selected ? 'inset 0px 2px 4px 0px var(--dt-background) ' : 'none'};
+  }
+
   &:hover {
     color: var(--lt-active-color);
     @media (prefers-color-scheme: dark) {
@@ -156,7 +172,9 @@ export const SongInfoText = styled.p`
 
 export const SongDuration = styled.p`
   @media screen and (min-width: 1024px) {
+    text-align: right;
     width: 10%;
+    padding-right: 24px;
   }
 `;
 export const SongAlbum = styled.p`

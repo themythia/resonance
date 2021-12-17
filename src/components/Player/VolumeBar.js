@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   VolumeControl,
   VolumeControlContainer,
@@ -12,33 +12,35 @@ import {
   Speaker1,
   Speaker2,
 } from '@styled-icons/fluentui-system-filled';
-import { useEffect } from 'react';
+import { PlayerContext } from '../../contexts/PlayerContext';
 
 const VolumeBar = (props) => {
-  const [volumeLevel, setVolumeLevel] = useState(50);
+  const { playerData, dispatch } = useContext(PlayerContext);
+  const { volume, mute } = playerData.controls;
+  const [volumeLevel, setVolumeLevel] = useState(volume);
 
   // handles click event on speaker button
   const toggleMute = () => {
-    props.setMuted(!props.muted);
+    // props.setMuted(!props.muted);
+    dispatch({ type: 'TOGGLE_MUTE' });
     // sets volume level to 0.3 if muted via the volume bar
-    if (volumeLevel === 0) {
+    if (volume === 0) {
       setVolumeLevel(30);
     }
   };
 
   // handles volume levels
   useEffect(() => {
-    props.volume.setVolume(volumeLevel);
-    if (volumeLevel === 0) props.setMuted(true);
-    else props.setMuted(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [volumeLevel]);
+    dispatch({ type: 'SET_VOLUME', volume: volumeLevel });
+    if (volume === 0) dispatch({ type: 'TOGGLE_MUTE' });
+    else dispatch({ type: 'SET_MUTE', mute: false });
+  }, [dispatch, volume, volumeLevel]);
 
   return (
     <VolumeControlContainer>
       <StyledPlayerButton onClick={toggleMute}>
         <Icon type='volume'>
-          {volumeLevel === 0 || props.muted ? (
+          {volumeLevel === 0 || mute ? (
             <SpeakerMute />
           ) : volumeLevel > 66 ? (
             <Speaker2 />

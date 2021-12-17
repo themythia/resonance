@@ -13,6 +13,7 @@ export const NowPlayingContainer = styled.div`
   justify-content: center;
   color: var(--lt-body-font-regular);
   font: var(--font-body);
+  box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, 0.3);
 
   h5 {
     font: var(--h5-bold);

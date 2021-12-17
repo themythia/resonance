@@ -10,6 +10,7 @@ import TrackSearchResult from './TrackSearchResult';
 import { Search } from '@styled-icons/fluentui-system-filled';
 import { UserContext } from '../../contexts/UserContext';
 import SpotifyWebApi from 'spotify-web-api-node';
+import Signout from './Signout';
 
 const SpotifyApi = new SpotifyWebApi({
   clientId: 'f573531847c5435e80f1ba528eceed98',
@@ -70,25 +71,19 @@ const Header = () => {
         />
         <Search size={24} />
       </SearchBarContainer>
-      <ProfilePic
-        src={
-          userData.data.images?.[0]?.url ||
-          'https://puu.sh/IsNdG/069cf308d1.png'
-        }
-        alt='user avatar'
-      />
       {search.length > 0 && (
         <SearchResultContainer>
-          {searchResults.map((track) => (
+          {searchResults.map((track, index) => (
             <TrackSearchResult
               track={track}
-              key={track.url}
+              key={index}
               setSearch={setSearch}
               setSearchResults={setSearchResults}
             />
           ))}
         </SearchResultContainer>
       )}
+      <Signout />
     </HeaderContainer>
   );
 };
