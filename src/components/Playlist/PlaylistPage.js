@@ -23,7 +23,6 @@ const PlaylistPage = (props) => {
   const { playerData, dispatch } = useContext(PlayerContext);
   const { playlists } = playerData;
   const [loading, setLoading] = useState(true);
-
   // sets the current playlist to variable
   let playlist;
   if (playlists?.[playlistId]) {
@@ -78,7 +77,10 @@ const PlaylistPage = (props) => {
     navigate,
   ]);
 
-  if (loading) {
+  // if (!playlist) {
+  //   return <Loading />;
+  // }
+  if (loading || !playlist) {
     return <Loading />;
   }
 
