@@ -8,21 +8,23 @@ export const newPlaylist = (playlistId, data) => {
       image: images[0].url,
       owner: owner.display_name,
       type: type,
-      tracks: tracks.items.map((track) => {
-        let { track: t } = track;
-        return {
-          name: t.name,
-          duration: t.duration_ms,
-          id: t.id,
-          src: t.preview_url,
-          artists: t.artists.map((artist) => artist.name),
-          album: {
-            albumId: t.album.id,
-            image: t.album.images[1].url,
-            name: t.album.name,
-          },
-        };
-      }),
+      tracks: tracks.items
+        .filter((track) => track.track !== null)
+        .map((track, index) => {
+          let { track: t } = track;
+          return {
+            name: t.name,
+            duration: t.duration_ms,
+            id: t.id,
+            src: t.preview_url,
+            artists: t.artists.map((artist) => artist.name),
+            album: {
+              albumId: t.album.id,
+              image: t.album.images[1].url,
+              name: t.album.name,
+            },
+          };
+        }),
     },
   };
 };
@@ -37,20 +39,22 @@ export const newAlbum = (albumId, data) => {
       image: images[0].url,
       owner: artists[0].name,
       type,
-      tracks: tracks.items.map((track) => {
-        return {
-          name: track.name,
-          duration: track.duration_ms,
-          id: track.id,
-          src: track.preview_url,
-          artists: track.artists.map((artist) => artist.name),
-          album: {
-            albumId,
-            image: images[0].url,
-            name,
-          },
-        };
-      }),
+      tracks: tracks.items
+        .filter((track) => track.track !== null)
+        .map((track) => {
+          return {
+            name: track.name,
+            duration: track.duration_ms,
+            id: track.id,
+            src: track.preview_url,
+            artists: track.artists.map((artist) => artist.name),
+            album: {
+              albumId,
+              image: images[0].url,
+              name,
+            },
+          };
+        }),
     },
   };
 };

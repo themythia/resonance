@@ -1,11 +1,6 @@
 import './App.css';
-import { useLayoutEffect, useState, useReducer } from 'react';
-import {
-  Routes,
-  Route,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { useLayoutEffect, useState, useReducer, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 import { PlayerContext } from './contexts/PlayerContext';
 import Header from './components/Header/Header';
@@ -19,7 +14,6 @@ import Library from './components/LibraryPage/Library';
 import Authorize from './components/Authorize/Authorize';
 import PrivateRoute from './components/Authorize/PrivateRoute';
 import { playerReducer } from './reducers/playerReducer';
-import { useEffect } from 'react/cjs/react.development';
 
 function App() {
   const location = useLocation();
@@ -34,10 +28,35 @@ function App() {
     token: null,
   });
 
+  // stores everything about playlist & player
   const [playerData, dispatch] = useReducer(playerReducer, {
     device: 'mobile',
-    current: null,
-    playlists: null,
+    current: {
+      index: null,
+      played: [],
+      playlistId: null,
+      playlistLength: null,
+      track: {
+        album: {
+          albumId: null,
+          image: null,
+          name: null,
+        },
+        artists: [],
+        duration: null,
+        id: null,
+        name: null,
+        src: null,
+      },
+    },
+    playlists: {},
+    controls: {
+      play: false,
+      shuffle: false,
+      repeat: false,
+      mute: false,
+      volume: 20,
+    },
   });
 
   const showMenuBar =
@@ -71,16 +90,15 @@ function App() {
       dispatch({ type: 'SET_DEVICE', device: 'desktop' });
     } else dispatch({ type: 'SET_DEVICE', device: 'mobile' });
 
-    return window.removeEventListener('resize', () =>
-      setWidth(window.innerWidth)
-    );
+    return () =>
+      window.removeEventListener('resize', () => setWidth(window.innerWidth));
   }, [width]);
 
   return (
     <div className='wrapper'>
       <UserContext.Provider value={{ userData, setUserData }}>
         <PlayerContext.Provider value={{ playerData, dispatch }}>
-          {showMenuBar && <Header />}
+          {showMenuBar && location.pathname !== '/nowplaying' && <Header />}
           <Routes>
             <Route exact path='/' element={<WelcomePage />} />
             <Route path='/login' element={<Login />} />

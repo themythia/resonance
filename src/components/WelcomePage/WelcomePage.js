@@ -11,8 +11,12 @@ import {
   WaveRight,
   WaveLeft,
 } from '../../styled/Utils';
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 
 const WelcomePage = () => {
+  const { userData } = useContext(UserContext);
+
   return (
     <StyledWrapper>
       <TopContainer>
@@ -25,7 +29,7 @@ const WelcomePage = () => {
         <Circle />
         <WaveLeft />
         <WaveRight />
-        <Link to='/login'>
+        <Link to={userData.isLoggedIn ? '/home' : 'login'}>
           <ButtonContainer>
             <PlayDiv />
           </ButtonContainer>

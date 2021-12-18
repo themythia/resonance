@@ -13,6 +13,7 @@ export const NowPlayingContainer = styled.div`
   justify-content: center;
   color: var(--lt-body-font-regular);
   font: var(--font-body);
+  box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, 0.3);
 
   h5 {
     font: var(--h5-bold);
@@ -37,7 +38,7 @@ export const NowPlayingContainer = styled.div`
     position: fixed;
     bottom: 0;
     margin-bottom: 0;
-    z-index: 9999;
+    z-index: 100;
     background: var(--lt-navbar-background);
     @media (prefers-color-scheme: dark) {
       background: var(--dt-navbar-background);
@@ -132,7 +133,7 @@ export const AlbumCover = styled.img`
     height: calc(100vw / 6);
     left: 0;
     bottom: 90px;
-    z-index: 9999;
+    z-index: 100;
   }
 `;
 
@@ -215,7 +216,7 @@ export const ProgressBar = styled.input`
   @media screen and (min-width: 1024px) {
     max-width: 100%;
     position: relative;
-    z-index: 9999;
+    z-index: 100;
   }
 
   &:focus {

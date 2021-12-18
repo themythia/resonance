@@ -4,7 +4,7 @@ import { UserContext } from '../../contexts/UserContext';
 import { Navigate } from 'react-router-dom';
 import Loading from './Loading/Loading';
 const style = {
-  background: 'white',
+  background: 'inherit',
   gridColumn: '1 / -1',
   gridRow: '1 / -1',
   display: 'grid',
@@ -14,6 +14,8 @@ const style = {
 
 const Authorize = () => {
   const { userData, setUserData } = useContext(UserContext);
+  
+  
 
   useEffect(() => {
     if (!window.location.hash) {
