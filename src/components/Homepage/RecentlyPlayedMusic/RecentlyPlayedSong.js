@@ -4,15 +4,31 @@ import {
   StyledSongImageContainer,
   StyledSongTextInfo,
 } from '../../../styled/Homepage.styled';
+import { useNavigate } from 'react-router-dom';
 
-const RecentlyPlayedSong = ({ artist, album, albumImage }) => {
+const RecentlyPlayedSong = ({
+  artist,
+  song,
+  albumImage,
+  albumId,
+  type,
+  songTrack,
+}) => {
+  const navigate = useNavigate();
+
   return (
-    <StyledSongContainer>
+    <StyledSongContainer
+      onClick={() => {
+        navigate(`/library/${albumId}`, {
+          state: { type: `${type}s`, track: songTrack },
+        });
+      }}
+    >
       <StyledSongImageContainer>
-        <StyledSongAlbumImage src='https://e.snmc.io/i/1200/s/0348449c729ad8e7082de82f30f90caf/3992350' />
+        <StyledSongAlbumImage src={albumImage} />
       </StyledSongImageContainer>
       <StyledSongTextInfo>
-        <p>{album}</p>
+        <p>{song}</p>
         <h5>{artist}</h5>
       </StyledSongTextInfo>
     </StyledSongContainer>
