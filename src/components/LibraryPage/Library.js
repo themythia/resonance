@@ -57,8 +57,6 @@ const Library = () => {
         );
         const playlistPayload = await response.json();
 
-        console.log(playlistPayload.items)
-
         const playlistShape = playlistPayload.items.map((playlist) => {
           return {
             album: {
