@@ -29,7 +29,7 @@ const Login = () => {
     let responsetype = 'token';
     let scope =
       'user-read-private user-read-email user-read-recently-played playlist-read-private playlist-modify-private user-library-read playlist-read-collaborative';
-    let redirect_uri = 'http://localhost:3000/authorize';
+    let redirect_uri = 'https://resonance-murex.vercel.app/authorize';
     let url = `https://accounts.spotify.com/authorize?`;
     url += querystring.stringify({
       response_type: responsetype,
