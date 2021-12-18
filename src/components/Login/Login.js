@@ -25,7 +25,7 @@ const Login = () => {
   const goToLogin = () => {
     let state = generateState(16);
     localStorage.setItem('stateValue', state);
-    let clientID = 'f573531847c5435e80f1ba528eceed98';
+    let clientID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
     let responsetype = 'token';
     let scope =
       'user-read-private user-read-email user-read-recently-played playlist-read-private playlist-modify-private user-library-read playlist-read-collaborative';

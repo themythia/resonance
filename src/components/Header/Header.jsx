@@ -3,7 +3,6 @@ import {
   Input,
   HeaderContainer,
   SearchBarContainer,
-  ProfilePic,
   SearchResultContainer,
 } from '../../styled/SearchBar';
 import TrackSearchResult from './TrackSearchResult';
@@ -13,7 +12,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 import Signout from './Signout';
 
 const SpotifyApi = new SpotifyWebApi({
-  clientId: 'f573531847c5435e80f1ba528eceed98',
+  clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
 });
 
 const Header = () => {

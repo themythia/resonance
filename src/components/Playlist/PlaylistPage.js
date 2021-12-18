@@ -28,7 +28,6 @@ const PlaylistPage = (props) => {
   if (playlists?.[playlistId]) {
     playlist = playlists[playlistId];
   }
-
   useEffect(() => {
     const apiEndpoint = `https://api.spotify.com/v1/${state?.type}/${playlistId}?market=${userData.data.country}`;
     fetch(apiEndpoint, {
@@ -198,7 +197,12 @@ const PlaylistPage = (props) => {
                   duration={handleTime(track.duration)}
                   cover={track.album.image}
                   album={track.album.name}
-                  selected={playerData.current.index === index ? true : false}
+                  selected={
+                    playerData.current.index === index &&
+                    playerData.current.playlistId === playlistId
+                      ? true
+                      : false
+                  }
                 />
               </div>
             );
