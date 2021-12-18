@@ -2,6 +2,13 @@
 
 This is Music streaming app with sleek and smooth app-like animations.
 
+#### Demo Link: https://resonance-murex.vercel.app/
+
+#### Demo Account
+Mail: resonance_spotify@gmail.com
+
+Password: Resonance
+
 ## Features
 
 - [x] The app is responsive depending on device size and screen theme.
