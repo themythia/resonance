@@ -55,9 +55,9 @@ const Library = () => {
             signal: controller.signal,
           }
         );
-        const { items } = await response.json();
+        const playlistPayload = await response.json();
 
-        const playlistShape = items.map((playlist) => {
+        const playlistShape = playlistPayload.items.map((playlist) => {
           return {
             album: {
               artists: [{ name: playlist.name }],
