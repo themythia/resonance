@@ -16,6 +16,7 @@ export const MenuContainer = styled.div`
   position: fixed;
   bottom: 0;
   color: var(--lt-body-font-bold);
+  box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.3);
 
   @media (prefers-color-scheme: dark) {
     background: var(--dt-footer-background);
@@ -23,12 +24,15 @@ export const MenuContainer = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    padding: 0 18px;
+    padding-left: 18px;
     grid-column: 1/2;
     width: calc(100vw / 6);
     height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -48,7 +52,8 @@ export const StyledNavLink = styled(NavLink)`
     margin-bottom: 8px;
     padding: 6px;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 18px);
+    margin-right: 18px;
 
     p {
       margin-left: 8px;
@@ -93,7 +98,67 @@ export const NavLogo = styled(Logo)`
   display: none;
   @media screen and (min-width: 1024px) {
     display: block;
-    width: 100%;
-    margin: 24px 0 48px;
+    width: calc(100% - 18px);
+    margin: 24px 18px 48px 0;
+  }
+`;
+
+export const PlaylistContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-top: 24px;
+  margin-bottom: calc(100vw / 6 + 90px);
+  border-top: 1px solid var(--lt-body-font-bold);
+  padding: 24px 0 0 0;
+  width: 100%;
+
+  a {
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    border-top: 1px solid var(--dt-background);
+  }
+`;
+
+export const PlaylistItem = styled.div`
+  font: var(--font-body);
+  margin-bottom: 8px;
+  margin-right: 18px;
+  padding: 6px;
+  border-radius: 5px;
+  width: calc(100% - 18px);
+  max-width: calc(100% - 18px);
+  transition: 0.2s all;
+  cursor: pointer;
+  color: ${(props) =>
+    props.selected
+      ? 'var(--dt-body-font-bold)'
+      : 'var(--lt-body-font-regular)'};
+  background: ${(props) =>
+    props.selected ? 'var(--lt-active-color)' : 'inherit'};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:hover {
+    color: ${(props) =>
+      props.selected ? 'var(--dt-body-font-bold)' : 'var(--lt-active-color)'};
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: ${(props) =>
+      props.selected
+        ? 'var(--dt-body-font-bold)'
+        : 'var(--dt-body-font-regular)'};
+
+    background: ${(props) =>
+      props.selected ? 'var(--dt-active-color)' : 'inherit'};
+
+    &:hover {
+      color: ${(props) =>
+        props.selected ? 'var(--dt-body-font-bold)' : 'var(--dt-active-color)'};
+    }
   }
 `;

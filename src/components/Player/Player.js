@@ -10,40 +10,42 @@ import PlayerButton from './PlayerButton';
 import { handleTime } from '../../utils/handleTime';
 
 const Player = (props) => {
-  const [playing, setPlaying] = useState(false);
+  const { playerData, dispatch } = useContext(PlayerContext);
+
+  // const [playing, setPlaying] = useState(false);
+  const { play: playing } = playerData.controls;
   const [progress, setProgress] = useState(0);
+  const [source, setSource] = useState();
+
   const time = useRef(null);
   const songRef = useRef(null);
+
   const clear = () => window.clearInterval(time.current);
-  const { playerData, dispatch } = useContext(PlayerContext);
-  const [source, setSource] = useState();
-  const API_KEY = process.env.REACT_APP_SCRAPE_API_KEY;
 
   useEffect(() => {
     if (props.src) {
       // if API returns a valid preview_url uses it as source
       setSource(props.src);
-    } else if (props.src === null) {
+    } else if (props.src === null && playerData.current.track.id) {
       // if API returns preview_url as null
       // scrapes song page from open.spoyify.com
       // gets the preview_url through scraping
       // sets it as source
-      const spotifyUrl = `https://open.spotify.com/embed/track/${playerData?.current?.track?.id}`;
+      const spotifyUrl = `https://open.spotify.com/embed/track/${playerData.current.track.id}`;
+      const corsHerokuProxy = 'https://pacific-caverns-96128.herokuapp.com/';
 
-      const scrapingApiUrl = `https://api.webscrapingapi.com/v1?api_key=${API_KEY}&url=${spotifyUrl}&method=GET&device=desktop&proxy_type=datacenter`;
-      fetch(scrapingApiUrl)
+      fetch(corsHerokuProxy + spotifyUrl)
         .then((res) => res.text())
         .then((data) => {
           const scrapedURL = data
             .split('preview_url%22%3A%22')[1]
             .split('%22%2C%22track_number')[0];
-          setSource(decodeURIComponent(scrapedURL)); // decodes html entities to string
+          setSource(decodeURIComponent(scrapedURL));
         })
-        .catch((error) =>
-          console.error('An error occurred while scraping', error)
-        );
+        .catch((e) => console.warn('error:', e));
     }
-  }, [props.src, playerData?.current?.track]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.src, playerData.current.track]);
 
   // handles the bar progress
   useEffect(() => {
@@ -59,29 +61,13 @@ const Player = (props) => {
   useEffect(() => {
     if (songRef.current.ended) {
       clear();
-      setProgress(0);
-      setPlaying(false);
-      if (!playerData.current.shuffle) {
-        if (
-          playerData.current.index !==
-          playerData.current.playlistLength - 1
-        ) {
-          // if not on shuffle
-          // and not on the last track of the playlist
-          // play next track
-          dispatch({
-            type: 'NEXT_TRACK',
-          });
-        }
-      } else {
-        // if on shuffle
-        // play next track
-        dispatch({
-          type: 'NEXT_TRACK',
-        });
-      }
+      dispatch({ type: 'NEXT_TRACK' });
+      dispatch({
+        type: 'TOGGLE_PLAY',
+        play: false,
+      });
     }
-  }, [progress]);
+  }, [progress, dispatch]);
 
   // controls the play/pause functions
   useEffect(() => {
@@ -92,31 +78,38 @@ const Player = (props) => {
         index: playerData.current.index,
       });
     } else songRef.current.pause();
-  }, [playing]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, dispatch]);
 
+  // sets volume state to html5 player
   useEffect(() => {
-    songRef.current.volume = props.volume.volume / 100;
-  }, [props.volume.volume]);
+    songRef.current.volume = playerData.controls.volume / 100;
+  }, [playerData.controls.volume]);
 
+  // sets mute state to html5 player
   useEffect(() => {
-    songRef.current.muted = props.muted;
-  }, [props.muted]);
+    songRef.current.muted = playerData.controls.mute;
+  }, [playerData.controls.mute]);
 
   // triggers on track change, resets the play/pause button
   useEffect(() => {
-    // setPlaying(playing && false);
-
     if (source) {
       clear();
       setProgress(0);
-      setPlaying(false);
-      setTimeout(() => setPlaying(true), 500);
+      dispatch({
+        type: 'TOGGLE_PLAY',
+        play: false,
+      });
+      setTimeout(
+        () =>
+          dispatch({
+            type: 'TOGGLE_PLAY',
+            play: true,
+          }),
+        500
+      );
     }
-    //plays the next track
-    // if (!playing && playerData.current) {
-    //   setPlaying(true);
-    // }
-  }, [source]);
+  }, [source, dispatch]);
 
   return (
     <PlayerContainer>
@@ -140,20 +133,31 @@ const Player = (props) => {
         <p>{handleTime(props.max * 1000)}</p>
       </ProgressTextContainer>
       <PlayerControlContainer>
-        <PlayerButton icon='shuffle' disabled={!playerData.current && true} />
-        <PlayerButton icon='prev' disabled={!playerData.current && true} />
+        <PlayerButton
+          icon='shuffle'
+          disabled={!playerData.current.playlistId && true}
+        />
+        <PlayerButton
+          icon='prev'
+          disabled={!playerData.current.playlistId && true}
+        />
         {playing ? (
-          <PlayerButton icon='pause' size='73px' setPlaying={setPlaying} />
+          <PlayerButton icon='pause' size='73px' />
         ) : (
           <PlayerButton
             icon='play'
-            disabled={!playerData.current && true}
+            disabled={!playerData.current.playlistId && true}
             size='73px'
-            setPlaying={setPlaying}
           />
         )}
-        <PlayerButton icon='next' disabled={!playerData.current && true} />
-        <PlayerButton icon='repeat' disabled={!playerData.current && true} />
+        <PlayerButton
+          icon='next'
+          disabled={!playerData.current.playlistId && true}
+        />
+        <PlayerButton
+          icon='repeat'
+          disabled={!playerData.current.playlistId && true}
+        />
       </PlayerControlContainer>
     </PlayerContainer>
   );

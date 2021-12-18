@@ -38,6 +38,7 @@ export const TopContainer = styled.div`
       color: #ffffff;
     }
   }
+
 `;
 export const Logo = styled.img.attrs(() => ({
   src:
@@ -47,6 +48,9 @@ export const Logo = styled.img.attrs(() => ({
       : resonanceLight,
 }))`
   object-fit: cover;
+  @media (max-width: 320px) {
+    width: 280px;
+  }
 `;
 
 export const CenterContainer = styled.div`
@@ -112,23 +116,42 @@ export const Circle = styled.img.attrs(() => ({
       : circleLight,
 }))`
   position: absolute;
-  top: 12.5px;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
-  @media (min-width: 380px) and (max-width: 428px) {
-    top: 20.5px;
+  @media (max-width: 320px) {
+    top: 1.5%;
   }
-  @media (min-width: 788px) {
-    top: 17px;
+
+  @media (min-width: 375px){
+    top: 4.5%;
+  }
+
+  @media (min-width: 414px ){
+    top: 6.5%;
+  }
+
+  @media (min-width: 768px){
+    top: 3.5%;
+  }
+  @media (min-width: 785px) {
+    top: 4%;
   }
   @media (min-width: 1024px) {
-    top: 30px;
+    top:7%;
   }
   @media (min-width: 1280px) {
-    top: 27px;
+    top: 10%;
+  }
+
+  @media (min-width: 128px) and (min-height: 950px){
+    top: 8.5%;
   }
   @media (min-width: 1440px) {
-    top: 36px;
+    top: 12%;
+  }
+  @media (min-width: 1920px) {
+    top: 18%;
   }
 `;
 
@@ -138,7 +161,12 @@ export const WaveRight = styled.img.attrs(() => ({
   top: 15%;
   left: 70%;
   position: absolute;
-
+  
+  @media (max-width: 320px) {
+    width: 110px;
+    top: 25%;
+    left: 75%;
+  }
   @media (min-width: 768px) {
     top: 11%;
     left: 60%;
@@ -152,8 +180,12 @@ export const WaveRight = styled.img.attrs(() => ({
     left: 56%;
   }
   @media (min-width: 1440px) {
-    top: 28%;
+    top: 23%;
     left: 55%;
+  }
+  @media (min-width: 1920px) {
+    top: 26%;
+    left: 54%;
   }
 `;
 
@@ -164,6 +196,13 @@ export const WaveLeft = styled.img.attrs(() => ({
   top: 30%;
   left: -23%;
   transform: rotate(180deg);
+  
+  @media (max-width: 320px) {
+    left: -29%;
+    top: 40%;
+    width: 110px;
+  }
+  
   @media (min-width: 768px) {
     top: 22%;
     left: 14%;
@@ -176,8 +215,11 @@ export const WaveLeft = styled.img.attrs(() => ({
     left: 28%;
   }
   @media (min-width: 1440px) {
-    top: 41%;
+    top: 36%;
     left: 31%;
+  }
+  @media (min-width: 1920px) {
+    left: 36%;
   }
 `;
 

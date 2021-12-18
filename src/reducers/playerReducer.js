@@ -17,18 +17,6 @@ export const playerReducer = (state, action) => {
           track: action.track,
           playlistId: action.playlistId,
           playlistLength: action.playlistLength,
-          shuffle:
-            state.current?.shuffle === undefined
-              ? false
-              : state.current.shuffle === true
-              ? true
-              : state.current.shuffle === false && false,
-          repeat:
-            state.current?.repeat === undefined
-              ? false
-              : state.current.repeat === true
-              ? true
-              : state.current.repeat === false && false,
         },
       };
     case 'SET_DEVICE':
@@ -40,22 +28,22 @@ export const playerReducer = (state, action) => {
     case 'TOGGLE_SHUFFLE':
       return {
         ...state,
-        current: {
-          ...state.current,
-          shuffle: !state.current.shuffle,
+        controls: {
+          ...state.controls,
+          shuffle: !state.controls.shuffle,
         },
       };
 
     case 'NEXT_TRACK':
       const nextTrack = () => {
-        if (state.current.shuffle) {
+        if (state.controls.shuffle) {
           return Math.floor(Math.random() * state.current.playlistLength);
         } else {
-          if (state.current.repeat) {
+          if (state.controls.repeat) {
             if (state.current.index === state.current.playlistLength - 1) {
               return 0;
             } else return state.current.index + 1;
-          } else if (!state.current.repeat) {
+          } else if (!state.controls.repeat) {
             if (state.current.index === state.current.playlistLength - 1) {
               return state.current.index;
             } else return state.current.index + 1;
@@ -110,9 +98,9 @@ export const playerReducer = (state, action) => {
     case 'TOGGLE_REPEAT':
       return {
         ...state,
-        current: {
-          ...state.current,
-          repeat: !state.current.repeat,
+        controls: {
+          ...state.controls,
+          repeat: !state.controls.repeat,
         },
       };
 
@@ -125,6 +113,39 @@ export const playerReducer = (state, action) => {
         },
       };
 
+    case 'TOGGLE_PLAY':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          play: action.play,
+        },
+      };
+
+    case 'SET_VOLUME':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          volume: action.volume,
+        },
+      };
+    case 'TOGGLE_MUTE':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          mute: !state.controls.mute,
+        },
+      };
+    case 'SET_MUTE':
+      return {
+        ...state,
+        controls: {
+          ...state.controls,
+          mute: action.mute,
+        },
+      };
     default:
       return state;
   }

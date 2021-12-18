@@ -11,12 +11,24 @@ import {
 import querystring from 'querystring';
 
 const Login = () => {
+  const generateState = (lenState) => {
+    let text = '';
+    let element =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < lenState; i++) {
+      text += element.charAt(Math.floor(Math.random() * element.length));
+    }
+
+    return text;
+  };
+
   const goToLogin = () => {
-    let state = 'some-state-of-my-choice';
+    let state = generateState(16);
+    localStorage.setItem('stateValue', state);
     let clientID = 'f573531847c5435e80f1ba528eceed98';
     let responsetype = 'token';
     let scope =
-      'user-read-private user-read-email user-read-recently-played playlist-read-private user-library-read playlist-read-collaborative';
+      'user-read-private user-read-email user-read-recently-played playlist-read-private playlist-modify-private user-library-read playlist-read-collaborative';
     let redirect_uri = 'http://localhost:3000/authorize';
     let url = `https://accounts.spotify.com/authorize?`;
     url += querystring.stringify({
