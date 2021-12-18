@@ -1,22 +1,26 @@
-import { StyledRecommendedList } from "../../../styled/Homepage.styled";
-import RecommendedArtist from "./RecommendedArtist";
+import { StyledRecommendedList } from '../../../styled/Homepage.styled';
+import RecommendedArtist from './RecommendedArtist';
 
-const RecommendedList = () => {
-	const artistList = [
-		{ artist: "Evergrey", album: "Glorious Collision" },
-		{ artist: "Dream Theater", album: "Images and Words" },
-		{ artist: "Eminem", album: "Infinite" },
-		{ artist: "Monuments", album: "The Amanuensis" },
-		{ artist: "Novelists FR", album: "C`est La Vie" },
-	];
+const RecommendedList = ({ recommendedSongs }) => {
+  if (!recommendedSongs) return null;
 
-	return (
-		<StyledRecommendedList>
-			{artistList.map(({ artist, album }, index) => {
-				return <RecommendedArtist key={index} artist={artist} album={album} />;
-			})}
-		</StyledRecommendedList>
-	);
+  return (
+    <StyledRecommendedList>
+      {recommendedSongs.map((track) => {
+        return (
+          <RecommendedArtist
+            key={track.id}
+            artist={track.artists[0].name}
+            song={track.name}
+            image={track.album.images[1].url}
+            albumId={track.album.id}
+            type={track.album.type}
+            songTrack={track.id}
+          />
+        );
+      })}
+    </StyledRecommendedList>
+  );
 };
 
 export default RecommendedList;

@@ -203,6 +203,9 @@ export const TrackCover = styled.img`
   border-radius: 14px;
   box-shadow: 0px 0px 8px 2px rgba(0, 14, 51, 0.2);
   margin-right: 8px;
+  @media screen and (min-width: 1024px) {
+    border-radius: 5px;
+  }
 `;
 export const TrackInfo = styled.div`
   margin-left: 3;

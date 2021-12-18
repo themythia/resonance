@@ -28,7 +28,7 @@ const Login = () => {
     let clientID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
     let responsetype = 'token';
     let scope =
-      'user-read-private user-read-email user-read-recently-played playlist-read-private playlist-modify-private playlist-modify-private';
+      'user-read-private user-read-email user-read-recently-played playlist-read-private playlist-modify-private user-library-read playlist-read-collaborative';
     let redirect_uri = 'http://localhost:3000/authorize';
     let url = `https://accounts.spotify.com/authorize?`;
     url += querystring.stringify({

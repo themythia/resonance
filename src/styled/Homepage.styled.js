@@ -12,8 +12,12 @@ export const StyledGridWrapper = styled.div`
   grid-template-columns: 16px 1fr 16px;
   grid-template-rows:
     96px auto minmax(max-content, auto) auto minmax(0, 1fr)
-    96px;
-  background-color: var(--dt-background);
+    48px;
+  background-color: var(--lt-background);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--dt-background);
+  }
 
   @media screen and (min-width: 1024px) {
     gap: 16px;
@@ -32,11 +36,22 @@ export const StyledTitleRecommended = styled.div`
   grid-row: 2 / 3;
   h5 {
     font: var(--h5-bold);
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
   }
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h5 {
+      font: var(--h5-bold);
+      color: var(--dt-body-font-bold);
+    }
+    p {
+      color: var(--dt-body-font-bold);
+      font: var(--font-body-small);
+    }
   }
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
@@ -63,35 +78,27 @@ export const StyledListContainer = styled.section`
   }
 `;
 
-export const StyledInnerWrapper = styled.div``;
-
 export const StyledRecommendedList = styled.div`
   display: flex;
 
   justify-content: space-between;
 
-  height: max-content;
+  height: 100%;
 
   overflow-x: auto;
-  /* hide scrollbar but allow scrolling */
-  /* & {
-		-ms-overflow-style: none; 
-		scrollbar-width: none; 
-		overflow-x: scroll;
-	}
-
-	&::-webkit-scrollbar {
-		display: none; 
-	} */
 `;
-
-// gonna reuse this somehow ****************
 
 export const StyledAlbumContainer = styled.div`
   min-width: 120px;
   max-width: 144px;
   margin-inline: 8px;
   cursor: pointer;
+
+  height: max-content;
+  @media screen and (min-width: 1440px) {
+    min-width: 208px;
+  }
+
   &:hover {
     p {
       color: var(--cl-primary3-500);
@@ -102,12 +109,12 @@ export const StyledAlbumContainer = styled.div`
   }
 `;
 export const StyledAlbumCover = styled.div`
-  border: 1px solid white;
   width: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
   border-radius: 30px;
   margin-bottom: 8px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
 `;
 export const StyledAlbumImage = styled.img`
   max-width: 100%;
@@ -134,13 +141,22 @@ export const StyledAlbumTextContainer = styled.div`
   }
 
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small-bold);
   }
 
   h5 {
-    color: var(--dt-body-font-regular);
+    color: var(--lt-body-font-regular);
     font: var(--font-body-small);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-regular);
+    }
   }
   @media screen and (min-width: 1024px) {
     p {
@@ -159,11 +175,19 @@ export const StyledTitleRecent = styled.div`
   grid-row: 4 / 5;
   h5 {
     font: var(--h5-bold);
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
   }
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small);
+  }
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-bold);
+    }
   }
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
@@ -223,13 +247,16 @@ export const StyledSongContainer = styled.div`
     min-width: 120px;
     max-width: 144px;
   }
+  @media screen and (min-width: 1440px) {
+    min-width: 208px;
+  }
 `;
 
 export const StyledSongImageContainer = styled.div`
-  border: 1px solid white;
   min-width: 60px;
   max-width: 60px;
   overflow: hidden;
+  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
 
   border-radius: 15%;
   @media screen and (min-width: 1024px) {
@@ -265,13 +292,21 @@ export const StyledSongTextInfo = styled.div`
   }
 
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small-bold);
   }
 
   h5 {
-    color: var(--dt-body-font-regular);
+    color: var(--lt-body-font-regular);
     font: var(--font-body-small);
+  }
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-regular);
+    }
   }
   @media screen and (min-width: 1024px) {
     margin-left: 0;
