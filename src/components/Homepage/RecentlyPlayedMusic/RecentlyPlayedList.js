@@ -4,10 +4,10 @@ import RecentlyPlayedSong from './RecentlyPlayedSong';
 const RecentlyPlayedList = ({ songlist }) => {
   return (
     <StyledRecentlyPlayedList>
-      {songlist.map((song) => {
+      {songlist.map((song, index) => {
         return (
           <RecentlyPlayedSong
-            key={song.track.id}
+            key={index}
             artist={song.track.artists[0].name}
             song={song.track.name}
             albumImage={song.track.album.images[1].url}
