@@ -3,7 +3,6 @@ import {
   Input,
   HeaderContainer,
   SearchBarContainer,
-  ProfilePic,
   SearchResultContainer,
 } from '../../styled/SearchBar';
 import TrackSearchResult from './TrackSearchResult';

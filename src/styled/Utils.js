@@ -148,7 +148,7 @@ export const Circle = styled.img.attrs(() => ({
     top: 8.5%;
   }
   @media (min-width: 1440px) {
-    top: 12%;
+    top: 14%;
   }
   @media (min-width: 1920px) {
     top: 18%;

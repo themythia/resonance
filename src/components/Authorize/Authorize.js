@@ -70,7 +70,7 @@ const Authorize = () => {
       });
       localStorage.removeItem('stateValue');
     }
-  }, []);
+  }, [setUserData, userData]);
 
   return (
     <div style={style}>
