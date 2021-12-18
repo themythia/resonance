@@ -6,10 +6,10 @@ const RecommendedList = ({ recommendedSongs }) => {
 
   return (
     <StyledRecommendedList>
-      {recommendedSongs.map((track) => {
+      {recommendedSongs.map((track, index) => {
         return (
           <RecommendedArtist
-            key={track.id}
+            key={index}
             artist={track.artists[0].name}
             song={track.name}
             image={track.album.images[1].url}

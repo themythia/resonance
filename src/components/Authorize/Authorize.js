@@ -14,8 +14,6 @@ const style = {
 
 const Authorize = () => {
   const { userData, setUserData } = useContext(UserContext);
-  
-  
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -70,6 +68,7 @@ const Authorize = () => {
       });
       localStorage.removeItem('stateValue');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -183,7 +183,6 @@ export const PlayingFrom = styled.p`
 // https://codesandbox.io/s/input-range-custom-styled-components-x149y?file=/src/index.js
 const upperColor = 'rgb(124, 26, 4)';
 const lowerColor = 'var(--cl-primary3-500)';
-const thumbColor = 'var(--cl-primary3-700)';
 const thumbHoverColor = 'var(--cl-primary3-900)';
 const trackHeight = '4px';
 const height = '32px';
