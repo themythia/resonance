@@ -57,10 +57,12 @@ const Library = () => {
         );
         const playlistPayload = await response.json();
 
+        console.log(playlistPayload.items)
+
         const playlistShape = playlistPayload.items.map((playlist) => {
           return {
             album: {
-              artists: [{ name: playlist.name }],
+              artists: [{ name: playlist.owner.display_name }],
               images: [{ url: playlist.images[0].url }],
               id: playlist.id,
               type: playlist.type,
