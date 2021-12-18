@@ -58,6 +58,7 @@ export const PlaylistCover = styled.img`
   align-self: center;
   box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
   @media screen and (min-width: 1024px) {
+    border-radius: 14px;
     margin-top: 0;
     margin-right: 24px;
   }
@@ -189,4 +190,7 @@ export const SongCover = styled(PlaylistCover)`
   height: 56px;
   width: 56px;
   margin: 0;
+  @media screen and (min-width: 1024px) {
+    border-radius: 5px;
+  }
 `;
