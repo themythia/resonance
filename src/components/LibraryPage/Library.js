@@ -13,10 +13,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Library = () => {
   const { userData } = useContext(UserContext);
+
   const [albums, setAlbums] = useState([]);
   const navigate = useNavigate();
-
-  console.log(albums);
 
   useEffect(() => {
     if (!userData.token) return;
@@ -30,7 +29,8 @@ const Library = () => {
           signal: controller.signal,
         });
         const { items } = await response.json();
-        setAlbums(items);
+
+        setAlbums((prevState) => [...prevState, ...items]);
         controller = null;
       } catch (e) {
         console.error(e);
@@ -41,6 +41,46 @@ const Library = () => {
 
     return () => controller?.abort();
   }, [userData.token]);
+
+  useEffect(() => {
+    if (!userData.data.id) return;
+    let controller = new AbortController();
+    const fetchPlaylists = async () => {
+      try {
+        const response = await fetch(
+          `https://api.spotify.com/v1/users/${userData.data.id}/playlists`,
+          {
+            method: 'GET',
+            headers: { Authorization: 'Bearer ' + userData.token },
+            signal: controller.signal,
+          }
+        );
+        const { items } = await response.json();
+
+        const playlistShape = items.map((playlist) => {
+          return {
+            album: {
+              artists: [{ name: playlist.name }],
+              images: [{ url: playlist.images[0].url }],
+              id: playlist.id,
+              type: playlist.type,
+              name: playlist.name,
+            },
+          };
+        });
+
+        setAlbums((prevState) => [...prevState, ...playlistShape]);
+
+        controller = null;
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    fetchPlaylists();
+
+    return () => controller?.abort();
+  }, [userData.data.id]);
 
   return (
     <StyledGridWrapper>
@@ -58,7 +98,7 @@ const Library = () => {
                 })
               }
             >
-              <StyledAlbumThumbnail src={item.album.images[1].url} />
+              <StyledAlbumThumbnail src={item.album.images[0].url} />
               <StyledAlbumTextContainer>
                 <p>{item.album.name}</p>
                 <h5>{item.album.artists[0].name}</h5>
