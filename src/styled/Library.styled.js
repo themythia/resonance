@@ -10,12 +10,16 @@ export const StyledGridWrapper = styled.div`
   height: 100vh;
 
   grid-template-columns: 16px 1fr 16px;
-  grid-template-rows: 96px minmax(30px, auto) 1fr 96px;
-  background-color: var(--dt-background);
+  grid-template-rows: 96px minmax(30px, auto) 1fr 48px;
+  background-color: var(--lt-background);
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--dt-background);
+  }
 
   @media screen and (min-width: 1024px) {
     gap: 24px;
-    grid-template-columns: 320px 3fr;
+    grid-template-columns: calc(100vw / 6) 3fr;
     grid-template-rows:
       minmax(100px, max-content) minmax(96px, auto) minmax(auto, 1fr)
       90px;
@@ -27,8 +31,15 @@ export const StyledLibraryTitle = styled.div`
   grid-row: 2 / 3;
   h5 {
     font: var(--h5-bold);
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
   }
+
+  @media (prefers-color-scheme: dark) {
+    h5 {
+      color: var(--dt-body-font-bold);
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
     grid-row: 2 / 3;
@@ -65,6 +76,7 @@ export const StyledPlaylistItem = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+
   &:hover {
     p {
       color: var(--cl-primary3-500);
@@ -75,8 +87,8 @@ export const StyledPlaylistItem = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    max-width: 220px;
-    min-width: 220px;
+    max-width: 208px;
+    min-width: 208px;
     flex-direction: column;
     text-align: center;
   }
@@ -87,7 +99,8 @@ export const StyledAlbumThumbnail = styled.img`
   max-width: 56px;
   object-fit: cover;
   aspect-ratio: 1;
-  border: 1px solid white;
+  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
+
   border-radius: 14px;
   @media screen and (min-width: 1024px) {
     max-width: 100%;
@@ -109,13 +122,22 @@ export const StyledAlbumTextContainer = styled.div`
     transition: ease-in-out 300ms color;
   }
   p {
-    color: var(--dt-body-font-bold);
+    color: var(--lt-body-font-bold);
     font: var(--font-body-small-bold);
   }
   h5 {
-    color: var(--dt-body-font-regular);
+    color: var(--lt-body-font-regular);
     font: var(--font-body-small);
   }
+  @media (prefers-color-scheme: dark) {
+    p {
+      color: var(--dt-body-font-bold);
+    }
+    h5 {
+      color: var(--dt-body-font-regular);
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     max-width: 90%;
     margin-left: 0;

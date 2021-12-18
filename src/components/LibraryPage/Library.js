@@ -6,105 +6,104 @@ import {
   StyledAlbumThumbnail,
   StyledAlbumTextContainer,
 } from '../../styled/Library.styled';
-import logo from '../../logo.svg';
-import { Link } from 'react-router-dom';
 
-const playlistAlbums = [
-  {
-    name: 'Track',
-    description: 'headbanging metal',
-    picture: logo,
-    type: 'albums',
-    id: '1oDHd8X6KrmLW3jFNsSfMu',
-    track: '39LUihkJzZGVAOCEAZayJb',
-  },
-  {
-    name: 'Playlist',
-    description: 'punk rock for retards',
-    picture: logo,
-    type: 'playlists',
-    id: '2KqLYZ1ky6MR9VZb06bbb7',
-  },
-  {
-    name: 'Single',
-    description: 'nice bedroom playlist',
-    picture: logo,
-    type: 'albums',
-    id: '4OaKtwwLxQKHJTByixvKdF',
-  },
-  {
-    name: 'Instrumentals',
-    description: 'Guitar music',
-    picture: logo,
-    type: 'albums',
-    id: '1oDHd8X6KrmLW3jFNsSfMu',
-  },
-  {
-    name: 'OST1',
-    description: 'favorite soundtracks',
-    picture: logo,
-    type: 'playlists',
-    id: '2KqLYZ1ky6MR9VZb06bbb7',
-  },
-  {
-    name: 'OST2',
-    description: 'favorite soundtracks',
-    picture: logo,
-    type: 'albums',
-    id: '1oDHd8X6KrmLW3jFNsSfMu',
-  },
-  {
-    name: 'OST3',
-    description: 'favorite soundtracks',
-    picture: logo,
-    type: 'playlists',
-    id: '2KqLYZ1ky6MR9VZb06bbb7',
-  },
-  {
-    name: 'OST4',
-    description: 'favorite soundtracks',
-    picture: logo,
-    type: 'albums',
-    id: '1oDHd8X6KrmLW3jFNsSfMu',
-  },
-  {
-    name: 'ProgMetal',
-    description: 'Evergrey and Symphony X for life!',
-    picture: logo,
-    type: 'playlists',
-    id: '2KqLYZ1ky6MR9VZb06bbb7',
-  },
-  {
-    name: 'Adriano Celentano',
-    description: 'CAZZO!',
-    picture: logo,
-    type: 'albums',
-    id: '1oDHd8X6KrmLW3jFNsSfMu',
-  },
-];
+import { UserContext } from '../../contexts/UserContext';
+import { useEffect, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Library = () => {
+  const { userData } = useContext(UserContext);
+
+  const [albums, setAlbums] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userData.token) return;
+
+    let controller = new AbortController();
+    const fetchAlbums = async () => {
+      try {
+        const response = await fetch(`https://api.spotify.com/v1/me/albums`, {
+          method: 'GET',
+          headers: { Authorization: 'Bearer ' + userData.token },
+          signal: controller.signal,
+        });
+        const { items } = await response.json();
+
+        setAlbums((prevState) => [...prevState, ...items]);
+        controller = null;
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    fetchAlbums();
+
+    return () => controller?.abort();
+  }, [userData.token]);
+
+  useEffect(() => {
+    if (!userData.data.id) return;
+    let controller = new AbortController();
+    const fetchPlaylists = async () => {
+      try {
+        const response = await fetch(
+          `https://api.spotify.com/v1/users/${userData.data.id}/playlists`,
+          {
+            method: 'GET',
+            headers: { Authorization: 'Bearer ' + userData.token },
+            signal: controller.signal,
+          }
+        );
+        const playlistPayload = await response.json();
+
+        const playlistShape = playlistPayload.items.map((playlist) => {
+          return {
+            album: {
+              artists: [{ name: playlist.owner.display_name }],
+              images: [{ url: playlist.images[0].url }],
+              id: playlist.id,
+              type: playlist.type,
+              name: playlist.name,
+            },
+          };
+        });
+
+        setAlbums((prevState) => [...prevState, ...playlistShape]);
+
+        controller = null;
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    fetchPlaylists();
+
+    return () => controller?.abort();
+  }, [userData.data.id]);
+
   return (
     <StyledGridWrapper>
       <StyledLibraryTitle>
         <h5>Your Library</h5>
       </StyledLibraryTitle>
       <StyledAlbumSection>
-        {playlistAlbums.map((item, index) => {
+        {albums.map((item) => {
           return (
-            <Link
-              key={index}
-              to={`/library/${item.id}`}
-              state={{ type: item.type, track: item?.track }}
+            <StyledPlaylistItem
+              key={item.album.id}
+              onClick={() =>
+                navigate(`/library/${item.album.id}`, {
+                  state: { type: `${item.album.type}s` },
+                })
+              }
             >
-              <StyledPlaylistItem>
-                <StyledAlbumThumbnail src='https://e.snmc.io/i/1200/s/0348449c729ad8e7082de82f30f90caf/3992350' />
-                <StyledAlbumTextContainer>
-                  <p>{item.name}</p>
-                  <h5>{item.description}</h5>
-                </StyledAlbumTextContainer>
-              </StyledPlaylistItem>
-            </Link>
+              <StyledAlbumThumbnail src={item.album.images[0].url} />
+              <StyledAlbumTextContainer>
+                <p>{item.album.name}</p>
+                <h5>{item.album.artists[0].name}</h5>
+              </StyledAlbumTextContainer>
+            </StyledPlaylistItem>
           );
         })}
       </StyledAlbumSection>
