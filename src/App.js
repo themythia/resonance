@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
   useLocation,
-  Navigate,
   useNavigate,
 } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
@@ -24,7 +23,6 @@ import { useEffect } from 'react/cjs/react.development';
 
 function App() {
   const location = useLocation();
-  console.log('location', location);
   const [width, setWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
 
