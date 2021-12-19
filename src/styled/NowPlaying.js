@@ -52,7 +52,7 @@ export const NowPlayingContainer = styled.div`
 
   @media screen and (orientation: landscape) and (max-width: 1023px) {
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 48px;
   } ;
 `;
@@ -132,6 +132,7 @@ export const AlbumCover = styled.img`
 
   @media screen and (orientation: landscape) and (max-width: 1023px) {
     max-height: 50%;
+    margin-right: 24px;
   }
 
   @media screen and (min-width: 1024px) {
