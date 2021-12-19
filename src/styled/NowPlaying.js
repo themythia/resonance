@@ -53,7 +53,7 @@ export const NowPlayingContainer = styled.div`
   @media screen and (orientation: landscape) and (max-width: 1023px) {
     flex-direction: row;
     justify-content: center;
-    margin-top: 48px;
+    padding-top: 48px;
   } ;
 `;
 
