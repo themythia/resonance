@@ -49,6 +49,12 @@ export const NowPlayingContainer = styled.div`
       font: var(--font-body-bold);
     }
   }
+
+  @media screen and (orientation: landscape) and (max-width: 1023px) {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 48px;
+  } ;
 `;
 
 export const PlayerControlContainer = styled.div`
@@ -124,6 +130,10 @@ export const AlbumCover = styled.img`
   border-radius: 25%;
   aspect-ratio: 1;
 
+  @media screen and (orientation: landscape) and (max-width: 1023px) {
+    max-height: 50%;
+  }
+
   @media screen and (min-width: 1024px) {
     border-radius: 0;
     position: absolute;
@@ -164,6 +174,11 @@ export const SongInfoTextContainer = styled.div`
     text-align: left;
     margin-bottom: 0;
     width: calc(100vw / 3);
+  }
+
+  @media screen and (orientation: landscape) and (max-width: 1023px) {
+    position: absolute;
+    top: 24px;
   }
 `;
 
