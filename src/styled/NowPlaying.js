@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { StyledIconBase } from '@styled-icons/styled-icon';
 
 export const NowPlayingContainer = styled.div`
