@@ -8,15 +8,19 @@ export const StyledGridWrapper = styled.div`
   row-gap: 16px;
   width: 100vw;
   height: 100vh;
-
+  overflow-y: auto;
   grid-template-columns: 16px 1fr 16px;
   grid-template-rows:
-    96px auto minmax(max-content, auto) auto minmax(0, 1fr)
+    96px auto minmax(max-content, auto) auto minmax(160px, 1fr)
     48px;
   background-color: var(--lt-background);
 
   @media (prefers-color-scheme: dark) {
     background-color: var(--dt-background);
+  }
+
+  @media only screen and (max-height: 414px) and (orientation: landscape) {
+    row-gap: 4px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -95,6 +99,10 @@ export const StyledAlbumContainer = styled.div`
   cursor: pointer;
 
   height: max-content;
+  @media only screen and (max-height: 414px) and (orientation: landscape) {
+    min-width: 60px;
+    max-width: 60px;
+  }
   @media screen and (min-width: 1440px) {
     min-width: 208px;
   }
@@ -115,6 +123,9 @@ export const StyledAlbumCover = styled.div`
   border-radius: 30px;
   margin-bottom: 8px;
   box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
+  @media only screen and (max-height: 414px) and (orientation: landscape) {
+    border-radius: 18px;
+  }
 `;
 export const StyledAlbumImage = styled.img`
   max-width: 100%;
