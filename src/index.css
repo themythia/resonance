@@ -78,11 +78,16 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   /* light theme colors */
 }
 
-@supports (scrollbar-color: orangered rgba(245, 182, 66, 0.2)) {
+@supports (scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2)) {
   @media screen and (min-width: 1024px) {
     * {
-      scrollbar-color: orangered rgba(245, 182, 66, 0.2);
+      scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2);
       scrollbar-width: thin;
+    }
+    @media (prefers-color-scheme: dark) {
+      * {
+        scrollbar-color: var(--dt-active-color) rgba(245, 182, 66, 0.2);
+      }
     }
   }
 }
@@ -98,9 +103,13 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
     margin-inline: 8px;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--dt-radial-gradient);
-
+    background: var(--lt-active-color);
     border-radius: 100vw;
+  }
+  @media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-thumb {
+      background: var(--dt-active-color);
+    }
   }
 }
 
