@@ -7,7 +7,7 @@ import {
   SearchBarContainer,
   SearchResultContainer,
 } from '../../styled/SearchBar';
-import TrackSearchResult from '../Header/TrackSearchResult';
+import TrackSearchResult from './TrackSearchResult';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
