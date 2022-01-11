@@ -165,7 +165,7 @@ export const SearchResultContainer = styled.div`
   width: calc(100vw - 32px);
   height: auto;
   max-height: 338px;
-  overflow: hidden;
+  overflow-y: auto;
   top: 75px;
   background: var(--lt-navbar-background);
   z-index: 9999;
@@ -249,5 +249,12 @@ export const Artists = styled.p`
 
   @media screen and (min-width: 1024px) {
     font: var(--font-body);
+  }
+`;
+
+export const NotFound = styled(Title)`
+  margin-bottom: 8px;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 24px;
   }
 `;
