@@ -3,6 +3,7 @@ import { Search } from 'styled-icons/fluentui-system-filled';
 import { UserContext } from '../../contexts/UserContext';
 import {
   Input,
+  NotFound,
   SearchBarContainer,
   SearchResultContainer,
 } from '../../styled/SearchBar';
@@ -26,19 +27,18 @@ const SearchBar = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          // console.log('data:', data);
           const albums = data.albums.items.map((album) => ({
             type: 'albums',
             artists: album.artists.map((artist) => artist.name),
             albumId: album.id,
-            image: album.images[0].url,
+            image: album.images?.[0]?.url || null,
             name: album.name,
           }));
           const songs = data.tracks.items.map((track) => ({
             type: 'tracks',
             artists: track.album.artists.map((artist) => artist.name),
             id: track.id,
-            image: track.album.images[0].url,
+            image: track.album.images?.[0]?.url || null,
             name: track.name,
             albumId: track.album.id,
           }));
@@ -61,14 +61,18 @@ const SearchBar = () => {
       </SearchBarContainer>
       {search.length > 0 && (
         <SearchResultContainer>
-          {searchResults.map((track, index) => (
-            <TrackSearchResult
-              track={track}
-              key={index}
-              setSearch={setSearch}
-              setSearchResults={setSearchResults}
-            />
-          ))}
+          {searchResults.length === 0 ? (
+            <NotFound>No results found for "${search}"</NotFound>
+          ) : (
+            searchResults.map((track, index) => (
+              <TrackSearchResult
+                track={track}
+                key={index}
+                setSearch={setSearch}
+                setSearchResults={setSearchResults}
+              />
+            ))
+          )}
         </SearchResultContainer>
       )}
     </React.Fragment>
