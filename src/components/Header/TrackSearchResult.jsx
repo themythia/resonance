@@ -9,27 +9,27 @@ import {
 
 import { useNavigate } from 'react-router-dom';
 
-const TrackSearchResult = ({
-  track,
-  chooseTrack,
-  setSearch,
-  setSearchResults,
-}) => {
+const TrackSearchResult = ({ track, setSearch, setSearchResults }) => {
   const navigate = useNavigate();
+
   return (
     <TrackSearchResultContainer
       onClick={() => {
-        navigate(`/library/${track.albumId}`, {
-          state: { type: 'albums', track: track.id },
-        });
+        if (track.type === 'albums') {
+          navigate(`library/${track.albumId}`, { state: { type: 'albums' } });
+        } else if (track.type === 'tracks') {
+          navigate(`library/${track.albumId}`, {
+            state: { type: 'albums', track: track.id },
+          });
+        }
         setSearch('');
         setSearchResults([]);
       }}
     >
-      <TrackCover src={track.albumUrl} alt='track album cover' />
+      <TrackCover src={track.image} alt='track album cover' />
       <TrackInfo>
-        <Title>{track.title}</Title>
-        <Artists>{track.artists}</Artists>
+        <Title>{track.name}</Title>
+        <Artists>{track.artists[0]}</Artists>
       </TrackInfo>
     </TrackSearchResultContainer>
   );

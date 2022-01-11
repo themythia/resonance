@@ -30,7 +30,7 @@ const SearchBar = () => {
           const albums = data.albums.items.map((album) => ({
             type: 'albums',
             artists: album.artists.map((artist) => artist.name),
-            id: album.id,
+            albumId: album.id,
             image: album.images[0].url,
             name: album.name,
           }));
@@ -42,8 +42,6 @@ const SearchBar = () => {
             name: track.name,
             albumId: track.album.id,
           }));
-          console.log('albums:', albums);
-          console.log('songs:', songs);
           setSearchResults([...albums, ...songs]);
         })
         .catch((e) => console.warn('Fetching search results failed!', e));
