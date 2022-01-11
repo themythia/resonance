@@ -62,7 +62,7 @@ const Header = () => {
       <SearchBarContainer>
         <Input
           type='search'
-          placeholder='search Songs/Artists'
+          placeholder='Artists, songs, or albums'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
