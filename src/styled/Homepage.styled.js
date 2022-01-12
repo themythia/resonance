@@ -26,6 +26,7 @@ export const StyledGridWrapper = styled.div`
   @media screen and (min-width: 1024px) {
     height: calc(100vh - 194px);
     margin: 104px 0 90px;
+    padding-right: 16px;
     gap: 16px;
     grid-template-columns: calc(100vw / 6) 3fr;
     grid-template-rows:
@@ -72,7 +73,6 @@ export const StyledTitleRecommended = styled.div`
 export const StyledListContainer = styled.section`
   grid-column: 2 / 3;
   grid-row: 2 / 3;
-
   overflow-x: hidden;
 
   @media screen and (min-width: 1024px) {
@@ -84,7 +84,7 @@ export const StyledListContainer = styled.section`
 export const StyledRecommendedList = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  /* height: 100%; */
   overflow-x: auto;
   padding-bottom: 8px;
 `;
@@ -100,7 +100,7 @@ export const StyledAlbumContainer = styled.div`
     min-width: 60px;
     max-width: 60px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-height: 940px) {
     min-width: 208px;
   }
 
@@ -216,6 +216,7 @@ export const StyledRecentlyPlayedContainer = styled.section`
     grid-row: 4 / 5;
     overflow-x: auto;
     overflow-y: hidden;
+    height: min-content;
   }
 `;
 
@@ -224,6 +225,7 @@ export const StyledRecentlyPlayedList = styled.div`
   row-gap: 16px;
   padding-bottom: 16px;
   flex-direction: column;
+
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
@@ -251,7 +253,7 @@ export const StyledSongContainer = styled.div`
     min-width: 120px;
     max-width: 144px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-height: 940px) {
     min-width: 208px;
   }
 `;
