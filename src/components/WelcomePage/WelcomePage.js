@@ -1,21 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   StyledWrapper,
   TopContainer,
   Logo,
-  CenterContainer,
-  ButtonContainer,
-  PlayDiv,
   SpotifyLogo,
-  Circle,
-  WaveRight,
-  WaveLeft,
+  WelcomeSVG,
 } from '../../styled/Utils';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
 const WelcomePage = () => {
   const { userData } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <StyledWrapper>
@@ -25,16 +21,9 @@ const WelcomePage = () => {
           Powered By <SpotifyLogo />
         </p>
       </TopContainer>
-      <CenterContainer>
-        <Circle />
-        <WaveLeft />
-        <WaveRight />
-        <Link to={userData.isLoggedIn ? '/home' : 'login'}>
-          <ButtonContainer>
-            <PlayDiv />
-          </ButtonContainer>
-        </Link>
-      </CenterContainer>
+      <WelcomeSVG
+        onClick={() => navigate(userData.loggedIn ? '/home' : '/login')}
+      />
     </StyledWrapper>
   );
 };
