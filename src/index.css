@@ -79,37 +79,33 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
 }
 
 @supports (scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2)) {
-  @media screen and (min-width: 768px) {
+  * {
+    scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2);
+    scrollbar-width: thin;
+  }
+  @media (prefers-color-scheme: dark) {
     * {
-      scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2);
-      scrollbar-width: thin;
-    }
-    @media (prefers-color-scheme: dark) {
-      * {
-        scrollbar-color: var(--dt-active-color) rgba(245, 182, 66, 0.2);
-      }
+      scrollbar-color: var(--dt-active-color) rgba(245, 182, 66, 0.2);
     }
   }
 }
 
-@media screen and (min-width: 1024px) {
-  ::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgba(245, 182, 66, 0.2);
-    border-radius: 100vw;
-    margin-inline: 8px;
-  }
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(245, 182, 66, 0.2);
+  border-radius: 100vw;
+  margin-inline: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--lt-active-color);
+  border-radius: 100vw;
+}
+@media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-thumb {
-    background: var(--lt-active-color);
-    border-radius: 100vw;
-  }
-  @media (prefers-color-scheme: dark) {
-    ::-webkit-scrollbar-thumb {
-      background: var(--dt-active-color);
-    }
+    background: var(--dt-active-color);
   }
 }
 

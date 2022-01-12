@@ -83,12 +83,10 @@ export const StyledListContainer = styled.section`
 
 export const StyledRecommendedList = styled.div`
   display: flex;
-
   justify-content: space-between;
-
   height: 100%;
-
   overflow-x: auto;
+  padding-bottom: 8px;
 `;
 
 export const StyledAlbumContainer = styled.div`
