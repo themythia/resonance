@@ -7,12 +7,13 @@ export const StyledGridWrapper = styled.div`
   display: grid;
   row-gap: 16px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 144px);
+  margin-top: 96px;
+  margin-bottom: 48px;
+  padding-top: 16px;
   overflow-y: auto;
   grid-template-columns: 16px 1fr 16px;
-  grid-template-rows:
-    96px auto minmax(max-content, auto) auto minmax(160px, 1fr)
-    48px;
+  grid-template-rows: auto minmax(max-content, auto) auto minmax(160px, 1fr);
   background-color: var(--lt-background);
 
   @media (prefers-color-scheme: dark) {
@@ -24,20 +25,18 @@ export const StyledGridWrapper = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
+    height: calc(100vh - 194px);
     gap: 16px;
     grid-template-columns: calc(100vw / 6) 3fr;
     grid-template-rows:
-      minmax(100px, max-content) minmax(min-content, max-content) minmax(
-        max-content,
-        1fr
-      )
-      auto minmax(max-content, 1fr) minmax(90px, max-content);
+      minmax(min-content, max-content) minmax(max-content, 1fr)
+      auto minmax(max-content, 1fr);
   }
 `;
 
 export const StyledTitleRecommended = styled.div`
   grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
   h5 {
     font: var(--h5-bold);
     color: var(--lt-body-font-bold);
@@ -59,7 +58,7 @@ export const StyledTitleRecommended = styled.div`
   }
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
-    grid-row: 2 / 3;
+    grid-row: 1 / 2;
 
     h5 {
       font: var(--h4-bold);
@@ -72,13 +71,13 @@ export const StyledTitleRecommended = styled.div`
 
 export const StyledListContainer = styled.section`
   grid-column: 2 / 3;
-  grid-row: 3 / 4;
+  grid-row: 2 / 3;
 
   overflow-x: hidden;
 
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
   }
 `;
 
@@ -183,7 +182,7 @@ export const StyledAlbumTextContainer = styled.div`
 
 export const StyledTitleRecent = styled.div`
   grid-column: 2 / 3;
-  grid-row: 4 / 5;
+  grid-row: 3 / 4;
   h5 {
     font: var(--h5-bold);
     color: var(--lt-body-font-bold);
@@ -202,7 +201,7 @@ export const StyledTitleRecent = styled.div`
   }
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
-    grid-row: 4 / 5;
+    grid-row: 3 / 4;
 
     h5 {
       font: var(--h4-bold);
@@ -212,14 +211,13 @@ export const StyledTitleRecent = styled.div`
 
 export const StyledRecentlyPlayedContainer = styled.section`
   grid-column: 2 / 3;
-  grid-row: 5 / 6;
+  grid-row: 4 / 5;
 
-  margin-bottom: -16px;
-  overflow: auto;
+  /* overflow: auto; */
 
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
-    grid-row: 5 / 6;
+    grid-row: 4 / 5;
     overflow-x: auto;
     overflow-y: hidden;
   }
