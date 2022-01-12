@@ -10,7 +10,7 @@ export const StyledGridWrapper = styled.div`
   height: calc(100vh - 144px);
   margin-top: 96px;
   margin-bottom: 48px;
-  padding-top: 16px;
+  padding: 16px 0;
   overflow-y: auto;
   grid-template-columns: 16px 1fr 16px;
   grid-template-rows: auto minmax(max-content, auto) auto minmax(160px, 1fr);
@@ -213,8 +213,6 @@ export const StyledRecentlyPlayedContainer = styled.section`
   grid-column: 2 / 3;
   grid-row: 4 / 5;
 
-  /* overflow: auto; */
-
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
     grid-row: 4 / 5;
@@ -225,7 +223,8 @@ export const StyledRecentlyPlayedContainer = styled.section`
 
 export const StyledRecentlyPlayedList = styled.div`
   display: flex;
-
+  row-gap: 16px;
+  padding-bottom: 16px;
   flex-direction: column;
   @media screen and (min-width: 1024px) {
     flex-direction: row;
@@ -236,8 +235,6 @@ export const StyledRecentlyPlayedList = styled.div`
 export const StyledSongContainer = styled.div`
   display: flex;
   align-items: center;
-
-  margin-block: 16px;
   cursor: pointer;
 
   &:hover {
