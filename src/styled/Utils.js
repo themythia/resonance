@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import resonanceDark from '../resonance-dark.svg';
 import resonanceLight from '../resonance-light-welcome.svg';
 import { Spotify } from '@styled-icons/boxicons-logos';
@@ -38,7 +38,6 @@ export const TopContainer = styled.div`
       color: #ffffff;
     }
   }
-
 `;
 export const Logo = styled.img.attrs(() => ({
   src:
@@ -123,28 +122,28 @@ export const Circle = styled.img.attrs(() => ({
     top: 1.5%;
   }
 
-  @media (min-width: 375px){
+  @media (min-width: 375px) {
     top: 4.5%;
   }
 
-  @media (min-width: 414px ){
+  @media (min-width: 414px) {
     top: 6.5%;
   }
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     top: 3.5%;
   }
   @media (min-width: 785px) {
     top: 4%;
   }
   @media (min-width: 1024px) {
-    top:7%;
+    top: 7%;
   }
   @media (min-width: 1280px) {
     top: 10%;
   }
 
-  @media (min-width: 128px) and (min-height: 950px){
+  @media (min-width: 128px) and (min-height: 950px) {
     top: 8.5%;
   }
   @media (min-width: 1440px) {
@@ -161,7 +160,7 @@ export const WaveRight = styled.img.attrs(() => ({
   top: 15%;
   left: 70%;
   position: absolute;
-  
+
   @media (max-width: 320px) {
     width: 110px;
     top: 25%;
@@ -196,13 +195,13 @@ export const WaveLeft = styled.img.attrs(() => ({
   top: 30%;
   left: -23%;
   transform: rotate(180deg);
-  
+
   @media (max-width: 320px) {
     left: -29%;
     top: 40%;
     width: 110px;
   }
-  
+
   @media (min-width: 768px) {
     top: 22%;
     left: 14%;
