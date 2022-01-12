@@ -7,8 +7,8 @@ export const StyledGridWrapper = styled.div`
   display: grid;
   row-gap: 16px;
   width: 100vw;
-  height: calc(100vh - 144px);
-  margin: 96px 0 48px;
+  height: calc(100vh - 104px);
+  margin: 56px 0 48px;
   padding: 16px 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -22,10 +22,9 @@ export const StyledGridWrapper = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    margin: 104px 0 90px;
-
+    margin: 56px 0 90px;
     gap: 24px;
-    height: calc(100vh - 194px);
+    height: calc(100vh - 146px);
     grid-template-columns: calc(100vw / 6) 3fr;
     grid-template-rows: auto minmax(auto, 1fr);
   }

@@ -169,7 +169,7 @@ export const SearchResultContainer = styled.div`
   height: auto;
   max-height: 338px;
   overflow-y: auto;
-  top: 75px;
+  top: 60px;
   background: var(--lt-navbar-background);
   z-index: 9999;
   box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
@@ -183,7 +183,7 @@ export const SearchResultContainer = styled.div`
   @media screen and (min-width: 1024px) {
     width: calc(100vw * 5 / 6 - 48px);
     margin: 0 24px;
-    top: 94px;
+    top: 60px;
     padding: 24px 24px 0 24px;
     height: auto;
     max-height: 424px;
