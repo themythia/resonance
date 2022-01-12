@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 export const PlaylistPageContainer = styled.div`
   grid-row: 1/7;
