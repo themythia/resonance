@@ -79,7 +79,7 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
 }
 
 @supports (scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2)) {
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     * {
       scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2);
       scrollbar-width: thin;
