@@ -7,10 +7,14 @@ export const StyledGridWrapper = styled.div`
   display: grid;
   row-gap: 16px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 104px);
+  margin: 56px 0 48px;
+  padding: 16px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   grid-template-columns: 16px 1fr 16px;
-  grid-template-rows: 96px minmax(30px, auto) 1fr 48px;
+  grid-template-rows: minmax(30px, auto) 1fr;
   background-color: var(--lt-background);
 
   @media (prefers-color-scheme: dark) {
@@ -18,17 +22,17 @@ export const StyledGridWrapper = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
+    margin: 56px 0 90px;
     gap: 24px;
+    height: calc(100vh - 146px);
     grid-template-columns: calc(100vw / 6) 3fr;
-    grid-template-rows:
-      minmax(100px, max-content) minmax(96px, auto) minmax(auto, 1fr)
-      90px;
+    grid-template-rows: auto minmax(auto, 1fr);
   }
 `;
 
 export const StyledLibraryTitle = styled.div`
   grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
   h5 {
     font: var(--h5-bold);
     color: var(--lt-body-font-bold);
@@ -42,7 +46,7 @@ export const StyledLibraryTitle = styled.div`
 
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
-    grid-row: 2 / 3;
+    grid-row: 1 / 2;
     h5 {
       font: var(--h4-bold);
     }
@@ -51,13 +55,11 @@ export const StyledLibraryTitle = styled.div`
 
 export const StyledAlbumSection = styled.section`
   grid-column: 2 / 3;
-  grid-row: 3 / 4;
+  grid-row: 2 / 3;
 
   display: grid;
   grid-auto-rows: max-content;
   row-gap: 16px;
-  margin-bottom: -16px;
-  overflow: auto;
 
   @media screen and (min-width: 1024px) {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -66,7 +68,7 @@ export const StyledAlbumSection = styled.section`
     justify-items: center;
 
     grid-column: 2 / -1;
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
     margin-bottom: -24px;
   }
 `;
