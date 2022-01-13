@@ -7,13 +7,16 @@ import {
 } from '../../styled/Homepage.styled';
 import RecommendedList from './RecommendedMusic/RecommendedList';
 import RecentlyPlayedList from './RecentlyPlayedMusic/RecentlyPlayedList';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
 const Homepage = () => {
   const { userData } = useContext(UserContext);
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState([]);
   const [recommendedSongs, setRecommendedSongs] = useState([]);
+  const ref = useRef();
+  const size = useWindowSize();
 
   useEffect(() => {
     if (!userData.token) return;
@@ -57,6 +60,22 @@ const Homepage = () => {
     return () => controller?.abort();
   }, [userData.token]);
 
+  useEffect(() => {
+    const el = ref.current;
+
+    if (el && size.width >= 1024) {
+      const onWheel = (e) => {
+        e.preventDefault();
+        el.scrollTo({
+          left: el.scrollLeft + e.deltaY * 5,
+          behavior: 'smooth',
+        });
+      };
+      el.addEventListener('wheel', onWheel);
+      return () => el.removeEventListener('wheel', onWheel);
+    }
+  }, [size.width]);
+
   return (
     <StyledGridWrapper>
       <StyledTitleRecommended>
@@ -71,7 +90,7 @@ const Homepage = () => {
       <StyledTitleRecent>
         <h5>Recently played</h5>
       </StyledTitleRecent>
-      <StyledRecentlyPlayedContainer>
+      <StyledRecentlyPlayedContainer ref={ref}>
         <RecentlyPlayedList songlist={recentlyPlayedSongs} />
       </StyledRecentlyPlayedContainer>
     </StyledGridWrapper>

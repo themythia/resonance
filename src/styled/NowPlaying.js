@@ -197,14 +197,18 @@ export const PlayingFrom = styled.p`
 `;
 
 // https://codesandbox.io/s/input-range-custom-styled-components-x149y?file=/src/index.js
-const upperColor = 'rgb(124, 26, 4)';
-const lowerColor = 'var(--cl-primary3-500)';
+const upperColorDark = '#4E4B47';
+const upperColor = '#d1cdbf';
+const lowerColorDark = 'var(--cl-primary3-500)';
+const lowerColor = 'var(--cl-primary3-800)';
 const thumbHoverColor = 'var(--cl-primary3-900)';
 const trackHeight = '4px';
 const height = '32px';
 const thumbHeight = 0;
 const upperBackground = `linear-gradient(to bottom, ${upperColor}, ${upperColor}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
 const lowerBackground = `linear-gradient(to bottom, ${lowerColor}, ${lowerColor}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
+const upperBackgroundDark = `linear-gradient(to bottom, ${upperColorDark}, ${upperColorDark}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
+const lowerBackgroundDark = `linear-gradient(to bottom, ${lowerColorDark}, ${lowerColorDark}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
 
 const makeLongShadow = (color, size) => {
   let i = 1;
@@ -242,6 +246,9 @@ export const ProgressBar = styled.input`
     width: 100%;
     height: ${height};
     background: ${lowerBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${lowerBackgroundDark};
+    }
   }
 
   &::-webkit-slider-thumb {
@@ -256,6 +263,9 @@ export const ProgressBar = styled.input`
     transform: translateY(-50%);
     box-shadow: ${makeLongShadow(upperColor, '2px')};
     transition: background-color 150ms;
+    @media (prefers-color-scheme: dark) {
+      box-shadow: ${makeLongShadow(upperColorDark, '2px')};
+    }
   }
 
   &::-moz-range-track,
@@ -263,10 +273,16 @@ export const ProgressBar = styled.input`
     width: 100%;
     height: ${height};
     background: ${upperBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${upperBackgroundDark};
+    }
   }
 
   &::-moz-range-progress {
     background: ${lowerBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${lowerBackgroundDark};
+    }
   }
 
   &::-moz-range-thumb {
@@ -291,10 +307,16 @@ export const ProgressBar = styled.input`
 
   &::-ms-fill-lower {
     background: ${lowerBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${lowerBackgroundDark};
+    }
   }
 
   &::-ms-fill-upper {
     background: ${upperBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${upperBackgroundDark};
+    }
   }
 
   &::-ms-thumb {
