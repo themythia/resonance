@@ -76,6 +76,39 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   --lt-footer-background: var(--cl-primary1-100);
 
   /* light theme colors */
+
+  /* Shadows */
+
+  /* Light theme shadows */
+  --lt-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3),
+    0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --lt-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3),
+    0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --lt-shadow-lg-top: 10px 0 15px -3px rgb(0 0 0 / 0.7),
+    4px 0 6px -4px rgb(0 0 0 / 0.7);
+  --lt-shadow-lg-bottom: -10px 0 15px -3px rgb(0 0 0 / 0.7),
+    -4px 0 6px -4px rgb(0 0 0 / 0.7);
+  --lt-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3),
+    0 8px 10px -6px rgb(0 0 0 / 0.3);
+  --lt-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --lt-drop-shadow-md: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  /* Light theme shadows */
+
+  /* Dark theme shadows */
+  --dt-shadow-md: 0 4px 6px -1px rgb(0 0 0), 0 2px 4px -2px rgb(0 0 0);
+  --dt-shadow-lg: 0 10px 15px -3px rgb(0 0 0), 0 4px 6px -4px rgb(0 0 0);
+  --dt-shadow-lg-top: 10px 0 15px -3px rgb(0 0 0), 4px 0 6px -4px rgb(0 0 0);
+  --dt-shadow-lg-bottom: -10px 0 15px -3px rgb(0 0 0),
+    -4px 0 6px -4px rgb(0 0 0);
+
+  --dt-shadow-xl: 0 20px 25px -5px rgb(0 0 0), 0 8px 10px -6px rgb(0 0 0);
+  --dt-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --dt-drop-shadow-md: drop-shadow(0 4px 3px rgb(0 0 0))
+    drop-shadow(0 2px 2px rgb(0 0 0));
+  /* Dark theme shadows */
+
+  /* Shadows */
 }
 
 @supports (scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2)) {

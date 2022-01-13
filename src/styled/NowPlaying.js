@@ -13,7 +13,6 @@ export const NowPlayingContainer = styled.div`
   justify-content: center;
   color: var(--lt-body-font-regular);
   font: var(--font-body);
-  box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, 0.3);
 
   h5 {
     font: var(--h5-bold);
@@ -25,6 +24,7 @@ export const NowPlayingContainer = styled.div`
     background: var(--dt-background);
     color: var(--dt-body-font-regular);
     justify-content: center;
+
     h5 {
       color: var(--dt-body-font-bold);
     }
@@ -40,8 +40,10 @@ export const NowPlayingContainer = styled.div`
     margin-bottom: 0;
     z-index: 100;
     background: var(--lt-navbar-background);
+    box-shadow: var(--lt-shadow-lg-top);
     @media (prefers-color-scheme: dark) {
       background: var(--dt-navbar-background);
+      box-shadow: 10px 0 15px -3px rgb(0 0 0), 4px 0 6px -4px rgb(0 0 0);
     }
 
     h5 {
@@ -129,6 +131,7 @@ export const AlbumCover = styled.img`
   width: auto;
   border-radius: 25%;
   aspect-ratio: 1;
+  box-shadow: var(--lt-shadow-md);
 
   @media screen and (orientation: landscape) and (max-width: 1023px) {
     max-height: 50%;
@@ -145,6 +148,10 @@ export const AlbumCover = styled.img`
     left: 0;
     bottom: 90px;
     z-index: 100;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 

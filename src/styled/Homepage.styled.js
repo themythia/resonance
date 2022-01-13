@@ -119,9 +119,12 @@ export const StyledAlbumCover = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 30px;
   margin-bottom: 8px;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
+  box-shadow: var(--lt-shadow-md);
   @media only screen and (max-height: 414px) and (orientation: landscape) {
     border-radius: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 export const StyledAlbumImage = styled.img`
@@ -262,15 +265,15 @@ export const StyledSongImageContainer = styled.div`
   min-width: 60px;
   max-width: 60px;
   overflow: hidden;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
-
+  box-shadow: var(--lt-shadow-md);
   border-radius: 15%;
   @media screen and (min-width: 1024px) {
     border-radius: 30px;
-
     max-width: 100%;
-
     margin-bottom: 8px;
+  }
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 

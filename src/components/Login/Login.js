@@ -54,9 +54,6 @@ const Login = () => {
         <ButtonLogin onClick={goToLogin}>
           Log in with <SpotifyButton />
         </ButtonLogin>
-        <Link to='/'>
-          <Backward />
-        </Link>
       </CenterContainer>
     </StyledWrapper>
   );

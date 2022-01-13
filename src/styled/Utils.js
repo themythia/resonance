@@ -119,7 +119,7 @@ export const ButtonLogin = styled.button`
   border: none;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
+  box-shadow: var(--lt-shadow-md);
   margin: 25% auto 10px auto;
   display: flex;
   justify-content: center;
@@ -130,6 +130,7 @@ export const ButtonLogin = styled.button`
   @media (prefers-color-scheme: dark) {
     background: var(--dt-radial-gradient);
     color: white;
+    box-shadow: var(--dt-shadow-md);
   }
   @media (min-width: 1280px) {
     margin: 15% auto 10px auto;
@@ -140,6 +141,10 @@ export const ButtonLogin = styled.button`
   }
   &:hover {
     transform: scale(1.05);
+    box-shadow: var(--lt-shadow-lg);
+    @media (prefers-color-scheme: dark) {
+      box-shadow: var(--dt-shadow-lg);
+    }
   }
 `;
 
@@ -150,17 +155,5 @@ export const SpotifyButton = styled(Spotify)`
   margin-left: 5px;
   @media (prefers-color-scheme: dark) {
     color: white;
-  }
-`;
-
-export const Backward = styled(ControllerFastBackward)`
-  color: var(--cl-primary1-700);
-  width: 80px;
-  height: 80px;
-  display: block;
-  margin: 0 auto;
-
-  @media (prefers-color-scheme: dark) {
-    color: var(--dt-sound-logo);
   }
 `;

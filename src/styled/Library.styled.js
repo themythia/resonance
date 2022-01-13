@@ -99,11 +99,13 @@ export const StyledAlbumThumbnail = styled.img`
   max-width: 56px;
   object-fit: cover;
   aspect-ratio: 1;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
-
+  box-shadow: var(--lt-shadow-md);
   border-radius: 14px;
   @media screen and (min-width: 1024px) {
     max-width: 100%;
+  }
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 

@@ -10,14 +10,14 @@ export const HeaderContainer = styled.div`
   position: fixed;
   padding: 0 16px;
   top: 0;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
-
+  /* box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3); */
+  box-shadow: var(--lt-shadow-lg-bottom);
   @media (prefers-color-scheme: dark) {
     background: var(--dt-navbar-background);
+    box-shadow: var(--dt-shadow-lg-bottom);
   }
 
   @media screen and (min-width: 1024px) {
-    box-shadow: none;
     height: 56px;
     width: calc(100vw - calc(100vw / 6));
     right: 0;
@@ -125,16 +125,16 @@ export const Menu = styled.div`
   background: var(--lt-navbar-background);
   position: absolute;
   @media screen and (min-width: 1024px) {
-    top: 56px;
+    top: 60px;
     right: 40px;
   }
   right: 8px;
+  top: 60px;
   border-radius: 10px;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
-
+  box-shadow: var(--lt-shadow-xl);
   @media (prefers-color-scheme: dark) {
     background: var(--dt-navbar-background);
-    box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.7);
+    box-shadow: var(--dt-shadow-xl);
   }
 `;
 
@@ -172,13 +172,13 @@ export const SearchResultContainer = styled.div`
   top: 60px;
   background: var(--lt-navbar-background);
   z-index: 9999;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
+  box-shadow: var(--lt-shadow-xl);
   padding: 16px 16px 8px 16px;
   border-radius: 10px;
 
   @media (prefers-color-scheme: dark) {
     background: var(--dt-navbar-background);
-    box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.7);
+    box-shadow: var(--dt-shadow-xl);
   }
   @media screen and (min-width: 1024px) {
     width: calc(100vw * 5 / 6 - 48px);
@@ -194,7 +194,7 @@ export const TrackSearchResultContainer = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   @media screen and (min-width: 1024px) {
     margin-bottom: 24px;
   }
@@ -204,10 +204,13 @@ export const TrackCover = styled.img`
   height: 40px;
   width: 40px;
   border-radius: 14px;
-  box-shadow: 0px 0px 8px 2px rgba(0, 14, 51, 0.2);
+  box-shadow: var(--lt-shadow-md);
   margin-right: 8px;
   @media screen and (min-width: 1024px) {
     border-radius: 5px;
+  }
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 export const TrackInfo = styled.div`
