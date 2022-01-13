@@ -37,7 +37,7 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   --cl-primary3-300: #ffbc51;
   --cl-primary3-400: #ffad2c;
   --cl-primary3-500: #ff9f0c;
-  --cl-primary3-600: #ff9f0c;
+  --cl-primary3-600: #fe930a;
   --cl-primary3-700: #f88307;
   --cl-primary3-800: #f27405;
   --cl-primary3-900: #e95a03;
@@ -57,7 +57,7 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   --dt-body-font-regular: var(--cl-primary1-400);
   --dt-active-color: var(--cl-primary3-500);
   --dt-inactive-color: var(--cl-primary1-400);
-  --dt-searchbar-border: var(--cl-primary3-800);
+  --dt-searchbar-border: var(--cl-primary3-500);
   --dt-navbar-background: var(--cl-primary1-800);
   --dt-footer-background: var(--cl-primary1-800);
   /* dark theme colors */
