@@ -2,7 +2,7 @@
 
 This is Music streaming app with sleek and smooth app-like animations.
 
-#### Demo Link: https://resonance-murex.vercel.app/
+#### Demo Link: https://resonance-zeta.vercel.app/
 
 #### Demo Account
 Mail: resonance_spotify@gmail.com
