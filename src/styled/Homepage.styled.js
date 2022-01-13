@@ -11,6 +11,7 @@ export const StyledGridWrapper = styled.div`
   margin: 56px 0 48px;
   padding: 16px 0;
   overflow-y: auto;
+  overflow-x: hidden;
   grid-template-columns: 16px 1fr 16px;
   grid-template-rows: auto minmax(max-content, auto) auto minmax(160px, 1fr);
   background-color: var(--lt-background);
