@@ -7,6 +7,7 @@ export const StyledGridWrapper = styled.div`
   display: grid;
   row-gap: 16px;
   width: 100vw;
+  max-width: 100vw;
   height: calc(100vh - 104px);
   margin: 56px 0 48px;
   padding: 16px 0;
@@ -37,6 +38,7 @@ export const StyledGridWrapper = styled.div`
 `;
 
 export const StyledTitleRecommended = styled.div`
+  max-width: calc(100vw - 32px);
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   h5 {
@@ -75,7 +77,7 @@ export const StyledListContainer = styled.section`
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   overflow-x: hidden;
-
+  max-width: calc(100vw - 32px);
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
     grid-row: 2 / 3;
@@ -88,6 +90,7 @@ export const StyledRecommendedList = styled.div`
   /* height: 100%; */
   overflow-x: auto;
   padding-bottom: 8px;
+  max-width: 100%;
 `;
 
 export const StyledAlbumContainer = styled.div`
