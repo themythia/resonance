@@ -38,6 +38,7 @@ export const StyledGridWrapper = styled.div`
 `;
 
 export const StyledTitleRecommended = styled.div`
+  max-width: calc(100vw - 32px);
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   h5 {
@@ -76,8 +77,7 @@ export const StyledListContainer = styled.section`
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   overflow-x: hidden;
-  max-width: 100%;
-  width: 100%;
+  max-width: calc(100vw - 32px);
   @media screen and (min-width: 1024px) {
     grid-column: 2 / -1;
     grid-row: 2 / 3;
