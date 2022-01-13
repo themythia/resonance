@@ -7,6 +7,7 @@ import {
   ButtonLogin,
   SpotifyButton,
   Backward,
+  SpotifyLogo,
 } from '../../styled/Utils';
 import querystring from 'querystring';
 
@@ -45,14 +46,14 @@ const Login = () => {
     <StyledWrapper>
       <TopContainer>
         <Logo />
+        <p>
+          Powered By <SpotifyLogo />
+        </p>
       </TopContainer>
       <CenterContainer>
         <ButtonLogin onClick={goToLogin}>
           Log in with <SpotifyButton />
         </ButtonLogin>
-        <Link to='/'>
-          <Backward />
-        </Link>
       </CenterContainer>
     </StyledWrapper>
   );

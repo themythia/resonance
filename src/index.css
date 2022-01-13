@@ -37,7 +37,7 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   --cl-primary3-300: #ffbc51;
   --cl-primary3-400: #ffad2c;
   --cl-primary3-500: #ff9f0c;
-  --cl-primary3-600: #ff9f0c;
+  --cl-primary3-600: #fe930a;
   --cl-primary3-700: #f88307;
   --cl-primary3-800: #f27405;
   --cl-primary3-900: #e95a03;
@@ -57,7 +57,7 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   --dt-body-font-regular: var(--cl-primary1-400);
   --dt-active-color: var(--cl-primary3-500);
   --dt-inactive-color: var(--cl-primary1-400);
-  --dt-searchbar-border: var(--cl-primary3-800);
+  --dt-searchbar-border: var(--cl-primary3-500);
   --dt-navbar-background: var(--cl-primary1-800);
   --dt-footer-background: var(--cl-primary1-800);
   /* dark theme colors */
@@ -76,31 +76,69 @@ Also, font-family must be declared last of all values, otherwise, again, the ent
   --lt-footer-background: var(--cl-primary1-100);
 
   /* light theme colors */
+
+  /* Shadows */
+
+  /* Light theme shadows */
+  --lt-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3),
+    0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --lt-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3),
+    0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --lt-shadow-lg-top: 10px 0 15px -3px rgb(0 0 0 / 0.7),
+    4px 0 6px -4px rgb(0 0 0 / 0.7);
+  --lt-shadow-lg-bottom: -10px 0 15px -3px rgb(0 0 0 / 0.7),
+    -4px 0 6px -4px rgb(0 0 0 / 0.7);
+  --lt-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3),
+    0 8px 10px -6px rgb(0 0 0 / 0.3);
+  --lt-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --lt-drop-shadow-md: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  /* Light theme shadows */
+
+  /* Dark theme shadows */
+  --dt-shadow-md: 0 4px 6px -1px rgb(0 0 0), 0 2px 4px -2px rgb(0 0 0);
+  --dt-shadow-lg: 0 10px 15px -3px rgb(0 0 0), 0 4px 6px -4px rgb(0 0 0);
+  --dt-shadow-lg-top: 10px 0 15px -3px rgb(0 0 0), 4px 0 6px -4px rgb(0 0 0);
+  --dt-shadow-lg-bottom: -10px 0 15px -3px rgb(0 0 0),
+    -4px 0 6px -4px rgb(0 0 0);
+
+  --dt-shadow-xl: 0 20px 25px -5px rgb(0 0 0), 0 8px 10px -6px rgb(0 0 0);
+  --dt-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --dt-drop-shadow-md: drop-shadow(0 4px 3px rgb(0 0 0))
+    drop-shadow(0 2px 2px rgb(0 0 0));
+  /* Dark theme shadows */
+
+  /* Shadows */
 }
 
-@supports (scrollbar-color: orangered rgba(245, 182, 66, 0.2)) {
-  @media screen and (min-width: 1024px) {
+@supports (scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2)) {
+  * {
+    scrollbar-color: var(--lt-active-color) rgba(245, 182, 66, 0.2);
+    scrollbar-width: thin;
+  }
+  @media (prefers-color-scheme: dark) {
     * {
-      scrollbar-color: orangered rgba(245, 182, 66, 0.2);
-      scrollbar-width: thin;
+      scrollbar-color: var(--dt-active-color) rgba(245, 182, 66, 0.2);
     }
   }
 }
 
-@media screen and (min-width: 1024px) {
-  ::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgba(245, 182, 66, 0.2);
-    border-radius: 100vw;
-    margin-inline: 8px;
-  }
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(245, 182, 66, 0.2);
+  border-radius: 100vw;
+  margin-inline: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--lt-active-color);
+  border-radius: 100vw;
+}
+@media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-thumb {
-    background: var(--dt-radial-gradient);
-
-    border-radius: 100vw;
+    background: var(--dt-active-color);
   }
 }
 

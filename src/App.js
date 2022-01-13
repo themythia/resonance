@@ -73,7 +73,7 @@ function App() {
       const timeOfLogin = BigInt(localStorage.getItem('timeOfLogin'));
       // eslint-disable-next-line no-undef
       const now = BigInt(Date.now());
-      if (now - timeOfLogin < 3600000) {
+      if (now - timeOfLogin < 900000) {
         setUserData({
           isLoggedIn: true,
           data: JSON.parse(localStorage.getItem('userdata')),
