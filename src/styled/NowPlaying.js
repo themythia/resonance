@@ -13,7 +13,6 @@ export const NowPlayingContainer = styled.div`
   justify-content: center;
   color: var(--lt-body-font-regular);
   font: var(--font-body);
-  box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, 0.3);
 
   h5 {
     font: var(--h5-bold);
@@ -25,6 +24,7 @@ export const NowPlayingContainer = styled.div`
     background: var(--dt-background);
     color: var(--dt-body-font-regular);
     justify-content: center;
+
     h5 {
       color: var(--dt-body-font-bold);
     }
@@ -40,8 +40,10 @@ export const NowPlayingContainer = styled.div`
     margin-bottom: 0;
     z-index: 100;
     background: var(--lt-navbar-background);
+    box-shadow: var(--lt-shadow-lg-top);
     @media (prefers-color-scheme: dark) {
       background: var(--dt-navbar-background);
+      box-shadow: 10px 0 15px -3px rgb(0 0 0), 4px 0 6px -4px rgb(0 0 0);
     }
 
     h5 {
@@ -129,6 +131,7 @@ export const AlbumCover = styled.img`
   width: auto;
   border-radius: 25%;
   aspect-ratio: 1;
+  box-shadow: var(--lt-shadow-md);
 
   @media screen and (orientation: landscape) and (max-width: 1023px) {
     max-height: 50%;
@@ -145,6 +148,10 @@ export const AlbumCover = styled.img`
     left: 0;
     bottom: 90px;
     z-index: 100;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 
@@ -197,14 +204,18 @@ export const PlayingFrom = styled.p`
 `;
 
 // https://codesandbox.io/s/input-range-custom-styled-components-x149y?file=/src/index.js
-const upperColor = 'rgb(124, 26, 4)';
-const lowerColor = 'var(--cl-primary3-500)';
+const upperColorDark = '#4E4B47';
+const upperColor = '#d1cdbf';
+const lowerColorDark = 'var(--cl-primary3-500)';
+const lowerColor = 'var(--cl-primary3-800)';
 const thumbHoverColor = 'var(--cl-primary3-900)';
 const trackHeight = '4px';
 const height = '32px';
 const thumbHeight = 0;
 const upperBackground = `linear-gradient(to bottom, ${upperColor}, ${upperColor}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
 const lowerBackground = `linear-gradient(to bottom, ${lowerColor}, ${lowerColor}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
+const upperBackgroundDark = `linear-gradient(to bottom, ${upperColorDark}, ${upperColorDark}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
+const lowerBackgroundDark = `linear-gradient(to bottom, ${lowerColorDark}, ${lowerColorDark}) 100% 50% / 100% ${trackHeight} no-repeat transparent`;
 
 const makeLongShadow = (color, size) => {
   let i = 1;
@@ -242,6 +253,9 @@ export const ProgressBar = styled.input`
     width: 100%;
     height: ${height};
     background: ${lowerBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${lowerBackgroundDark};
+    }
   }
 
   &::-webkit-slider-thumb {
@@ -256,6 +270,9 @@ export const ProgressBar = styled.input`
     transform: translateY(-50%);
     box-shadow: ${makeLongShadow(upperColor, '2px')};
     transition: background-color 150ms;
+    @media (prefers-color-scheme: dark) {
+      box-shadow: ${makeLongShadow(upperColorDark, '2px')};
+    }
   }
 
   &::-moz-range-track,
@@ -263,10 +280,16 @@ export const ProgressBar = styled.input`
     width: 100%;
     height: ${height};
     background: ${upperBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${upperBackgroundDark};
+    }
   }
 
   &::-moz-range-progress {
     background: ${lowerBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${lowerBackgroundDark};
+    }
   }
 
   &::-moz-range-thumb {
@@ -291,10 +314,16 @@ export const ProgressBar = styled.input`
 
   &::-ms-fill-lower {
     background: ${lowerBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${lowerBackgroundDark};
+    }
   }
 
   &::-ms-fill-upper {
     background: ${upperBackground};
+    @media (prefers-color-scheme: dark) {
+      background: ${upperBackgroundDark};
+    }
   }
 
   &::-ms-thumb {

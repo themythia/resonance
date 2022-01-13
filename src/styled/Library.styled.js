@@ -7,10 +7,14 @@ export const StyledGridWrapper = styled.div`
   display: grid;
   row-gap: 16px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 104px);
+  margin: 56px 0 48px;
+  padding: 16px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   grid-template-columns: 16px 1fr 16px;
-  grid-template-rows: 96px minmax(30px, auto) 1fr 48px;
+  grid-template-rows: minmax(30px, auto) 1fr;
   background-color: var(--lt-background);
 
   @media (prefers-color-scheme: dark) {
@@ -18,17 +22,16 @@ export const StyledGridWrapper = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    gap: 24px;
-    grid-template-columns: calc(100vw / 6) 3fr;
-    grid-template-rows:
-      minmax(100px, max-content) minmax(96px, auto) minmax(auto, 1fr)
-      90px;
+    margin: 56px 0 90px;
+    height: calc(100vh - 146px);
+    grid-template-columns: calc(100vw / 6) 24px 3fr 24px;
+    grid-template-rows: auto minmax(auto, 1fr);
   }
 `;
 
 export const StyledLibraryTitle = styled.div`
   grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
   h5 {
     font: var(--h5-bold);
     color: var(--lt-body-font-bold);
@@ -41,8 +44,8 @@ export const StyledLibraryTitle = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    grid-column: 2 / -1;
-    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
     h5 {
       font: var(--h4-bold);
     }
@@ -51,23 +54,20 @@ export const StyledLibraryTitle = styled.div`
 
 export const StyledAlbumSection = styled.section`
   grid-column: 2 / 3;
-  grid-row: 3 / 4;
+  grid-row: 2 / 3;
 
   display: grid;
   grid-auto-rows: max-content;
   row-gap: 16px;
-  margin-bottom: -16px;
-  overflow: auto;
 
   @media screen and (min-width: 1024px) {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(213px, 1fr));
     column-gap: 24px;
-
+    row-gap: 36px;
     justify-items: center;
-
-    grid-column: 2 / -1;
-    grid-row: 3 / 4;
-    margin-bottom: -24px;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    /* margin-bottom: -24px; */
   }
 `;
 
@@ -87,8 +87,8 @@ export const StyledPlaylistItem = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    max-width: 208px;
-    min-width: 208px;
+    max-width: 100%;
+    width: 100%;
     flex-direction: column;
     text-align: center;
   }
@@ -99,11 +99,13 @@ export const StyledAlbumThumbnail = styled.img`
   max-width: 56px;
   object-fit: cover;
   aspect-ratio: 1;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
-
+  box-shadow: var(--lt-shadow-md);
   border-radius: 14px;
   @media screen and (min-width: 1024px) {
     max-width: 100%;
+  }
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 

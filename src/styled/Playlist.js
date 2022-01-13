@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const PlaylistPageContainer = styled.div`
   grid-row: 1/7;
   grid-column: 1/7;
-  max-height: calc(100vh - 144px);
-  height: calc(100vh - 144px);
-  margin-top: 96px;
+  max-height: calc(100vh - 104px);
+  height: calc(100vh - 104px);
+  margin-top: 56px;
   background: var(--lt-background);
   display: flex;
   flex-direction: column;
@@ -23,10 +23,10 @@ export const PlaylistPageContainer = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    max-height: calc(100vh - 194px);
-    height: calc(100vh - 194px);
+    max-height: calc(100vh - 146px);
+    height: calc(100vh - 146px);
     grid-column: 2/7;
-    margin-top: 104px;
+    margin-top: 56px;
     font: var(--font-body);
     h5 {
       font: var(--h1-bold);
@@ -56,11 +56,14 @@ export const PlaylistCover = styled.img`
   border-radius: 25%;
   margin-top: 40px;
   align-self: center;
-  box-shadow: 0px 0px 4px 1px rgba(0, 14, 51, 0.2);
+  box-shadow: var(--lt-shadow-md);
   @media screen and (min-width: 1024px) {
     border-radius: 14px;
     margin-top: 0;
     margin-right: 24px;
+  }
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
   }
 `;
 
