@@ -53,9 +53,10 @@ export const NowPlayingContainer = styled.div`
   }
 
   @media screen and (orientation: landscape) and (max-width: 1023px) {
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto;
+    margin: 16px;
   } ;
 `;
 
@@ -69,6 +70,10 @@ export const PlayerControlContainer = styled.div`
   @media screen and (min-width: 1024px) {
     width: 192px;
     height: 32px;
+  }
+  @media screen and (orientation: landscape) and (max-width: 1023px) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
   }
 `;
 
@@ -133,9 +138,17 @@ export const AlbumCover = styled.img`
   aspect-ratio: 1;
   box-shadow: var(--lt-shadow-md);
 
+  @media (prefers-color-scheme: dark) {
+    box-shadow: var(--dt-shadow-md);
+  }
   @media screen and (orientation: landscape) and (max-width: 1023px) {
-    max-height: 50%;
-    margin-right: 24px;
+    width: calc(100% - 32px);
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    margin: 16px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -148,10 +161,11 @@ export const AlbumCover = styled.img`
     left: 0;
     bottom: 90px;
     z-index: 100;
-  }
+    box-shadow: none;
 
-  @media (prefers-color-scheme: dark) {
-    box-shadow: var(--dt-shadow-md);
+    @media (prefers-color-scheme: dark) {
+      box-shadow: none;
+    }
   }
 `;
 
@@ -185,8 +199,11 @@ export const SongInfoTextContainer = styled.div`
   }
 
   @media screen and (orientation: landscape) and (max-width: 1023px) {
-    position: absolute;
-    top: 24px;
+    grid-column: 2 / 3;
+    margin: 0;
+    h5 {
+      margin: 0;
+    }
   }
 `;
 
@@ -361,6 +378,16 @@ export const PlayerContainer = styled.div`
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
+  }
+  @media screen and (orientation: landscape) and (max-width: 1023px) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 16px;
+    align-self: flex-start;
   }
 `;
 
