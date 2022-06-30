@@ -1,6 +1,6 @@
 # Resonance Music Streaming App
 
-This is Music streaming app with sleek and smooth app-like animations.
+A music streaming app that provides 30 second previews from Spotify Web API.
 
 #### Demo Link: https://resonance-zeta.vercel.app/
 
