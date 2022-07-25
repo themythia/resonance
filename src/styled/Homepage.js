@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledGridWrapper = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / 1;
-
   display: grid;
   row-gap: 16px;
   width: 100vw;
@@ -117,6 +116,7 @@ export const StyledAlbumContainer = styled.div`
     }
   }
 `;
+
 export const StyledAlbumCover = styled.div`
   width: 100%;
   overflow: hidden;
@@ -131,6 +131,7 @@ export const StyledAlbumCover = styled.div`
     box-shadow: var(--dt-shadow-md);
   }
 `;
+
 export const StyledAlbumImage = styled.img`
   max-width: 100%;
   height: 100%;
@@ -139,6 +140,7 @@ export const StyledAlbumImage = styled.img`
   object-fit: contain;
   src: url(${(props) => props.src});
 `;
+
 export const StyledAlbumTextContainer = styled.div`
   text-align: center;
 
@@ -183,7 +185,7 @@ export const StyledAlbumTextContainer = styled.div`
   }
 `;
 
-// Recently Played Section ***********************
+// Recently Played Section
 
 export const StyledTitleRecent = styled.div`
   grid-column: 2 / 3;

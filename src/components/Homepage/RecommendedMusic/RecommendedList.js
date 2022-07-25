@@ -1,4 +1,4 @@
-import { StyledRecommendedList } from '../../../styled/Homepage.styled';
+import { StyledRecommendedList } from '../../../styled/Homepage';
 import RecommendedArtist from './RecommendedArtist';
 import { useEffect, useRef } from 'react';
 

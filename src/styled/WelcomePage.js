@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import resonanceDark from '../resonance-dark.svg';
-import resonanceLight from '../resonance-light-welcome.svg';
+import resonanceDark from '../assets/resonance-dark.svg';
+import resonanceLight from '../assets/resonance-light-welcome.svg';
 
 export const StyledWrapper = styled.div`
   background: var(--lt-background);

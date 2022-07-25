@@ -14,6 +14,7 @@ import Library from './components/LibraryPage/Library';
 import Authorize from './components/Authorize/Authorize';
 import PrivateRoute from './components/Authorize/PrivateRoute';
 import { playerReducer } from './reducers/playerReducer';
+import { Wrapper } from './styled/App';
 
 function App() {
   const location = useLocation();
@@ -95,7 +96,7 @@ function App() {
   }, [width]);
 
   return (
-    <div className='wrapper'>
+    <Wrapper>
       <UserContext.Provider value={{ userData, setUserData }}>
         <PlayerContext.Provider value={{ playerData, dispatch }}>
           {showMenuBar && location.pathname !== '/nowplaying' && <Header />}
@@ -144,7 +145,7 @@ function App() {
           {showMenuBar && <MenuBar />}
         </PlayerContext.Provider>
       </UserContext.Provider>
-    </div>
+    </Wrapper>
   );
 }
 

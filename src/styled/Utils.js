@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import resonanceDark from '../resonance-dark.svg';
-import resonanceLight from '../resonance-light-welcome.svg';
+import resonanceDark from '../assets/resonance-dark.svg';
+import resonanceLight from '../assets/resonance-light-welcome.svg';
 import { Spotify } from '@styled-icons/boxicons-logos';
 import welcome from '../assets/welcome.svg';
 import welcomeDark from '../assets/welcome_dark.svg';

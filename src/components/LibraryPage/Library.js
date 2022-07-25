@@ -5,7 +5,7 @@ import {
   StyledPlaylistItem,
   StyledAlbumThumbnail,
   StyledAlbumTextContainer,
-} from '../../styled/Library.styled';
+} from '../../styled/Library';
 
 import { UserContext } from '../../contexts/UserContext';
 import { useEffect, useContext, useState } from 'react';

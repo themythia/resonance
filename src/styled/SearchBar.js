@@ -10,7 +10,6 @@ export const HeaderContainer = styled.div`
   position: fixed;
   padding: 0 16px;
   top: 0;
-  /* box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3); */
   box-shadow: var(--lt-shadow-lg-bottom);
   @media (prefers-color-scheme: dark) {
     background: var(--dt-navbar-background);

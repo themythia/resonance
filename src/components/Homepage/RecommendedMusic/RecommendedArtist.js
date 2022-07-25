@@ -3,7 +3,7 @@ import {
   StyledAlbumCover,
   StyledAlbumImage,
   StyledAlbumTextContainer,
-} from '../../../styled/Homepage.styled';
+} from '../../../styled/Homepage';
 import { useNavigate } from 'react-router-dom';
 
 const RecommendedArtist = ({

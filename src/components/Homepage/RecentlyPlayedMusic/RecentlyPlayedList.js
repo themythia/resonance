@@ -1,4 +1,4 @@
-import { StyledRecentlyPlayedList } from '../../../styled/Homepage.styled';
+import { StyledRecentlyPlayedList } from '../../../styled/Homepage';
 import RecentlyPlayedSong from './RecentlyPlayedSong';
 
 const RecentlyPlayedList = ({ songlist }) => {

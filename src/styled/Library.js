@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledGridWrapper = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / 1;
-
   display: grid;
   row-gap: 16px;
   width: 100vw;
@@ -12,7 +11,6 @@ export const StyledGridWrapper = styled.div`
   padding: 16px 0;
   overflow-y: auto;
   overflow-x: hidden;
-
   grid-template-columns: 16px 1fr 16px;
   grid-template-rows: minmax(30px, auto) 1fr;
   background-color: var(--lt-background);
@@ -67,7 +65,6 @@ export const StyledAlbumSection = styled.section`
     justify-items: center;
     grid-column: 3 / 4;
     grid-row: 2 / 3;
-    /* margin-bottom: -24px; */
   }
 `;
 
@@ -101,9 +98,11 @@ export const StyledAlbumThumbnail = styled.img`
   aspect-ratio: 1;
   box-shadow: var(--lt-shadow-md);
   border-radius: 14px;
+
   @media screen and (min-width: 1024px) {
     max-width: 100%;
   }
+
   @media (prefers-color-scheme: dark) {
     box-shadow: var(--dt-shadow-md);
   }
@@ -113,7 +112,6 @@ export const StyledAlbumTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 8px;
-
   max-width: 50%;
 
   & > p,
@@ -131,6 +129,7 @@ export const StyledAlbumTextContainer = styled.div`
     color: var(--lt-body-font-regular);
     font: var(--font-body-small);
   }
+
   @media (prefers-color-scheme: dark) {
     p {
       color: var(--dt-body-font-bold);

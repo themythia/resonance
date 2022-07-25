@@ -4,7 +4,7 @@ import {
   StyledRecentlyPlayedContainer,
   StyledTitleRecent,
   StyledTitleRecommended,
-} from '../../styled/Homepage.styled';
+} from '../../styled/Homepage';
 import RecommendedList from './RecommendedMusic/RecommendedList';
 import RecentlyPlayedList from './RecentlyPlayedMusic/RecentlyPlayedList';
 import { useContext, useEffect, useState, useRef } from 'react';
