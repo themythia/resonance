@@ -8,6 +8,7 @@ import {
   SignoutButton,
   UserName,
 } from '../../styled/SearchBar';
+import profilePic from '../../assets/album_cover_placeholder.png';
 
 const Signout = () => {
   const { userData, setUserData } = useContext(UserContext);
@@ -34,10 +35,7 @@ const Signout = () => {
         </UserName>
       )}
       <ProfilePic
-        src={
-          userData.data.images?.[0]?.url ||
-          'https://puu.sh/IsNdG/069cf308d1.png'
-        }
+        src={userData.data.images?.[0]?.url || profilePic}
         alt='user avatar'
       />
       {show && (
