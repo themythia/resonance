@@ -263,3 +263,24 @@ export const NotFound = styled(Title)`
     margin-bottom: 24px;
   }
 `;
+
+export const Error = styled.div`
+  background: red;
+  color: #ebf7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px;
+
+  @media screen and (min-width: 1024px) {
+    top: 56px;
+    left: 0px;
+    height: 40px;
+  }
+
+  /* z-index: 9999; */
+`;

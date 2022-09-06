@@ -11,6 +11,7 @@ export const playerReducer = (state, action) => {
     case 'SET_CURRENT':
       return {
         ...state,
+        error: action.track.src ? false : true,
         current: {
           ...state.current,
           index: action.index,

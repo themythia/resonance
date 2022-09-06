@@ -30,6 +30,7 @@ function App() {
 
   // stores everything about playlist & player
   const [playerData, dispatch] = useReducer(playerReducer, {
+    error: false,
     device: 'mobile',
     current: {
       index: null,

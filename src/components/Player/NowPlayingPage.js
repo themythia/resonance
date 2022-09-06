@@ -7,6 +7,7 @@ import {
 } from '../../styled/NowPlaying';
 import VolumeBar from './VolumeBar';
 import { PlayerContext } from '../../contexts/PlayerContext';
+import { Error } from '../../styled/SearchBar';
 
 const NowPlayingPage = () => {
   const { playerData } = useContext(PlayerContext);
@@ -14,6 +15,12 @@ const NowPlayingPage = () => {
 
   return (
     <NowPlayingContainer>
+      {playerData.error && playerData.device === 'mobile' && (
+        <Error>
+          Requested song not available due to Spotify region restrictions.
+        </Error>
+      )}
+
       {current.playlistId && <AlbumCover src={current.track.album.image} />}
       <SongInfoTextContainer>
         <h5>{current.track.name}</h5>
