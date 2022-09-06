@@ -5,9 +5,9 @@ A music streaming app that provides 30 second previews from Spotify Web API.
 #### Demo Link: https://resonance-zeta.vercel.app/
 
 #### Demo Account
-Mail: resonance_spotify@gmail.com
 
-Password: Resonance
+Mail: demo.resonance@gmail.com
+Password: resonance
 
 ## Features
 
