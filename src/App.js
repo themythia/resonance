@@ -1,4 +1,3 @@
-import './App.css';
 import { useLayoutEffect, useState, useReducer, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
