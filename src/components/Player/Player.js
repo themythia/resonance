@@ -32,7 +32,7 @@ const Player = (props) => {
       // gets the preview_url through scraping
       // sets it as source
       const spotifyUrl = `https://open.spotify.com/embed/track/${playerData.current.track.id}`;
-      const corsHerokuProxy = 'https://pacific-caverns-96128.herokuapp.com/';
+      const corsHerokuProxy = 'https://corsproxy.fly.dev/';
 
       fetch(corsHerokuProxy + spotifyUrl)
         .then((res) => res.text())
